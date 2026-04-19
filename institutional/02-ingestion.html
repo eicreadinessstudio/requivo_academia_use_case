@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institutional Demo — Ingestion</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body data-page="institutional">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">RQ</div>
+        <div>
+          <div class="brand-title">Requivo interactive pilot demo</div>
+          <div class="brand-sub">Institutional / administrative track</div>
+        </div>
+      </a>
+      <a class="btn btn-ghost" href="../index.html">Back to use-case selection</a>
+    </div>
+  </header>
 
+  <div class="wrap layout">
+    <div id="sidebarHost"></div>
+
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+          <div>
+            <div class="kicker">Step 1 · Ingestion</div>
+            <h1 class="hero-title">Connect what the university already has</h1>
+            <p class="hero-lead">
+              Requivo ingests the institution’s existing academic and administrative
+              evidence: SOPs, grant guidance, archived proposals, wiki fragments,
+              and email-derived process clarifications.
+            </p>
+          </div>
+          <div class="hero-side-copy">
+            <p>
+              The pilot does not start from a clean system. It starts from the
+              reality of fragmented university process material already distributed
+              across offices, folders, templates, and decisions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="progress-strip">
+        <div class="progress-count">2 / 8</div>
+        <div class="progress-dots" aria-hidden="true">
+          <span class="progress-dot"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <section class="editorial-section">
+        <div class="editorial-grid">
+          <h2 class="editorial-title">Evidence before governance</h2>
+          <div class="editorial-copy">
+            Requivo begins by turning scattered institutional material into one analysable
+            evidence space. The purpose is not to assume the university is already structured,
+            but to make fragmented process knowledge legible enough to work with.
+          </div>
+        </div>
+        <div class="rule"></div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Source connectors</div>
+          <button class="btn btn-primary" id="connectNormalizeBtn">Connect & normalise</button>
+        </div>
+        <div class="product-body">
+          <div id="sourceRows" class="source-list"></div>
+
+          <div id="ingestionSummary" class="hidden" style="margin-top:14px;">
+            <div class="summary-banner">
+              <strong>824 evidence objects</strong> normalised from 7 academic sources.
+              Each is typed, dated, linked to origin, and ready for knowledge construction.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Why this matters</div>
+        </div>
+        <div class="product-body">
+          <div class="cards-3">
+            <div class="info-card">
+              <h3>Administrative use case corpus</h3>
+              <p>
+                Grant templates, ethics guidance, startup checklists, project-office
+                emails, archived proposals, and internal wiki fragments.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>Messy by design</h3>
+              <p>
+                The value of the pilot is not in a curated toy dataset, but in dealing
+                with the actual evidence mess universities already operate with.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>Next step</h3>
+              <p>
+                Once normalised, the evidence becomes usable for structured article
+                generation, conflict detection, and later expert verification.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="next-prev">
+        <a class="btn btn-ghost" href="../institutional/01-meet-the-customer.html">← Meet the customer</a>
+        <a class="btn btn-primary" href="../institutional/03-writer.html">Knowledge Writer →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
