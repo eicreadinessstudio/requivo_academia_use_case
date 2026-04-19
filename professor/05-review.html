@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professor Demo — Review</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body data-page="professor">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">RQ</div>
+        <div>
+          <div class="brand-title">Requivo interactive pilot demo</div>
+          <div class="brand-sub">Professor use-case track</div>
+        </div>
+      </a>
+      <a class="btn btn-ghost" href="../index.html">Back to use-case selection</a>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <div id="sidebarHost"></div>
+
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+          <div>
+            <div class="kicker">Step 4 · Review</div>
+            <h1 class="hero-title">The professor reviews only what matters</h1>
+            <p class="hero-lead">
+              Instead of editing everything manually, the professor reviews the exact
+              inconsistency and teaching gap flagged by the system.
+            </p>
+          </div>
+          <div class="hero-side-copy">
+            <p>
+              This makes the workflow lighter: the professor does not have to rebuild the
+              lesson from scratch, only confirm and refine what is genuinely important.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="progress-strip">
+        <div class="progress-count">5 / 8</div>
+        <div class="progress-dots" aria-hidden="true">
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <section class="editorial-section">
+        <div class="editorial-grid">
+          <h2 class="editorial-title">Focused academic review</h2>
+          <div class="editorial-copy">
+            The professor remains the final academic authority, but the review burden is
+            narrowed to the exact points where teaching logic and institutional reality need alignment.
+          </div>
+        </div>
+        <div class="rule"></div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Professor review thread</div>
+          <button class="btn btn-primary" id="threadActionBtn">Review lesson</button>
+        </div>
+        <div class="product-body verifier-grid">
+          <div class="avatar-card">
+            <div class="avatar-badge">GR</div>
+            <h3>Prof. Giulia Rinaldi</h3>
+            <div class="avatar-role">Professor of Clinical Research Methods</div>
+            <p>
+              Final academic reviewer for the lesson package. She decides whether the teaching
+              draft reflects current institutional logic and whether the student-facing structure is sound.
+            </p>
+          </div>
+
+          <div class="thread">
+            <div class="bubble ai hidden" data-thread-part>
+              <strong>Requivo review prompt</strong>
+              The current draft lesson includes an older simplified ethics sequence. Please confirm
+              whether the lesson should reflect current institutional startup logic and whether
+              a practice-based bridge should be added for students.
+            </div>
+
+            <div class="bubble human hidden" data-thread-part>
+              <strong>Professor answer</strong>
+              Yes. The lesson should reflect the current institutional logic, not the older simplified version.
+              Add a short case-based section showing how ethics timing and project startup differ in practice
+              depending on data sensitivity.
+            </div>
+
+            <div class="bubble system hidden" data-thread-part>
+              <strong>Lesson update</strong>
+              Lesson package updated. Inconsistency resolved. Practice bridge added.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="threadSummary" class="hidden">
+        <div class="summary-banner">
+          <strong>Lesson package refined.</strong>
+          The professor reviewed only the issues that mattered and the draft now reflects current teaching intent more accurately.
+        </div>
+      </div>
+
+      <div class="next-prev">
+        <a class="btn btn-ghost" href="../professor/04-conflicts.html">← Conflict & gap detection</a>
+        <a class="btn btn-primary" href="../professor/06-governed-teaching.html">Governed teaching knowledge →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
