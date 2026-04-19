@@ -23,33 +23,12 @@
   <div class="wrap layout">
     <div id="sidebarHost"></div>
 
-    <main class="page">
-      <section class="hero-panel">
-        <div class="hero-overlay"></div>
-        <div class="hero-inner">
-          <div>
-            <div class="kicker">Step 2 · Knowledge Writer</div>
-            <h1 class="hero-title">Administrative wiki articles nobody had to write</h1>
-            <p class="hero-lead">
-              Requivo detects process topics across fragmented institutional evidence
-              and generates structured procedural articles with role logic and evidence citations.
-            </p>
-          </div>
-          <div class="hero-side-copy">
-            <p>
-              Instead of asking staff to manually assemble one more internal guideline,
-              the system turns scattered process material into a reviewable draft that
-              can be verified and governed.
-            </p>
-          </div>
-        </div>
-      </section>
-
+    <main class="page page-compact">
       <div class="progress-strip">
         <div class="progress-count">3 / 8</div>
         <div class="progress-dots" aria-hidden="true">
-          <span class="progress-dot"></span>
-          <span class="progress-dot"></span>
+          <span class="progress-dot progress-dot-done"></span>
+          <span class="progress-dot progress-dot-done"></span>
           <span class="progress-dot active"></span>
           <span class="progress-dot"></span>
           <span class="progress-dot"></span>
@@ -59,67 +38,36 @@
         </div>
       </div>
 
-      <section class="editorial-section">
-        <div class="editorial-grid">
-          <h2 class="editorial-title">From fragments to structure</h2>
-          <div class="editorial-copy">
-            Once the evidence has been normalised, Requivo can detect a process topic
-            and draft one structured institutional article instead of forcing the university
-            to work from disconnected files, notes, and implicit know-how.
-          </div>
-        </div>
-        <div class="rule"></div>
+      <section class="step-header">
+        <div class="step-kicker">Step 2 · Knowledge Writer</div>
+        <h1 class="step-title">Wiki articles nobody had to write</h1>
+        <p class="step-lead">
+          Requivo detects topics across institutional sources and generates
+          structured wiki articles — complete with procedure steps and citations.
+        </p>
       </section>
 
-      <section class="product-panel">
-        <div class="product-head">
-          <div class="product-label">Knowledge Writer</div>
-          <button class="btn btn-primary" id="writerActionBtn">Write wiki article</button>
+      <section class="writer-shell writer-shell-compact">
+        <div class="writer-head">
+          <div class="writer-label">Knowledge Writer</div>
+          <div class="writer-pill">Auto-generated</div>
         </div>
-        <div class="product-body">
-          <div class="writer-shell">
-            <div class="writer-head">
-              <div class="writer-label">Generated institutional procedure</div>
-              <div class="writer-pill">Auto-generated draft</div>
-            </div>
-            <div class="writer-output" id="writerOutput">
+
+        <div class="writer-output writer-output-compact" id="writerOutput">
 Click “Write wiki article” to generate a structured procedural article from fragmented institutional evidence.
-            </div>
-          </div>
-
-          <div id="writerSummary" class="hidden" style="margin-top:14px;">
-            <div class="summary-banner">
-              <strong>1 wiki article generated</strong> with step logic, ownership cues,
-              and evidence references. Status: Draft — awaiting institutional verification.
-            </div>
-          </div>
         </div>
       </section>
 
-      <section class="product-panel">
-        <div class="product-head">
-          <div class="product-label">Why this matters</div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="writerActionBtn">Write wiki article</button>
+      </div>
+
+      <div id="writerSummary" class="hidden">
+        <div class="summary-banner">
+          <strong>1 wiki article generated</strong> with step logic, ownership cues,
+          and evidence references. Status: Draft — awaiting institutional verification.
         </div>
-        <div class="product-body">
-          <div class="cards-2">
-            <div class="info-card">
-              <h3>Article topic</h3>
-              <p>
-                “Externally Funded Research Project Startup Procedure” — a governed draft
-                connecting proposal finalisation, ethics preparation, internal sign-off,
-                and post-award startup.
-              </p>
-            </div>
-            <div class="info-card">
-              <h3>What makes it useful</h3>
-              <p>
-                The university gets one reviewable, traceable operational article instead
-                of many scattered, partially contradictory source fragments.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
 
       <div class="next-prev">
         <a class="btn btn-ghost" href="../institutional/02-ingestion.html">← Ingestion</a>
