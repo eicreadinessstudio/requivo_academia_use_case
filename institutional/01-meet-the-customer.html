@@ -11,7 +11,7 @@
     <div class="wrap topbar-inner">
       <a class="brand" href="../index.html">
         <div class="brand-mark">RQ</div>
-        <div class="brand-copy">
+        <div>
           <div class="brand-title">Requivo interactive pilot demo</div>
           <div class="brand-sub">Institutional / administrative track</div>
         </div>
@@ -24,114 +24,152 @@
     <div id="sidebarHost"></div>
 
     <main class="page">
-      <div class="page-head">
-        <div class="kicker">Meet the customer</div>
-        <h1>Università Medica del Mediterraneo, Catania</h1>
-        <p class="lead">
-          A fictional Sicilian medical university representing research-intensive academic
-          institutions where operational knowledge is fragmented across offices, documents,
-          systems, and individual experts.
-        </p>
+      <section class="hero-panel">
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+          <div>
+            <div class="kicker">Meet the customer</div>
+            <h1 class="hero-title">Università Medica del Mediterraneo</h1>
+            <p class="hero-lead">
+              A fictional Sicilian medical university representing research-intensive
+              academic institutions where operational knowledge is fragmented across
+              offices, documents, systems, and individual experts.
+            </p>
+          </div>
+          <div class="hero-side-copy">
+            <p>
+              The university manages externally funded projects, ethics-sensitive research
+              activities, and cross-functional startup processes involving faculty,
+              research support, project managers, and compliance stakeholders.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="progress-strip">
+        <div class="progress-count">1 / 8</div>
+        <div class="progress-dots" aria-hidden="true">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
       </div>
 
-      <div class="page-body">
-        <section class="section-card">
-          <div class="section-head">
-            <div class="section-title">University profile</div>
+      <section class="editorial-section">
+        <div class="editorial-grid">
+          <h2 class="editorial-title">An overview</h2>
+          <div class="editorial-copy">
+            In research-intensive academic environments, the problem is rarely a lack of
+            information. The problem is that project, ethics, and startup logic are spread
+            across documents, offices, and people, making reliable reconstruction slow and fragile.
           </div>
-          <div class="section-body hero-grid">
-            <div class="box">
+        </div>
+        <div class="rule"></div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">University profile</div>
+        </div>
+        <div class="product-body">
+          <div class="cards-2" style="margin-bottom:14px;">
+            <div class="info-card">
               <h3>Academic environment</h3>
               <p>
                 The university manages externally funded projects, ethics-sensitive research
                 activities, and cross-functional startup processes involving faculty,
                 research support, project managers, and compliance stakeholders.
               </p>
-              <div class="metrics-4" style="margin-top:14px;">
-                <div class="box">
-                  <span class="value">1948</span>
-                  <p>Founded in Sicily</p>
-                </div>
-                <div class="box">
-                  <span class="value">12</span>
-                  <p>Departments and institutes</p>
-                </div>
-                <div class="box">
-                  <span class="value">4</span>
-                  <p>Core research support units</p>
-                </div>
-                <div class="box">
-                  <span class="value">EU + national</span>
-                  <p>Funding landscape</p>
-                </div>
-              </div>
             </div>
-
-            <div class="box">
+            <div class="info-card">
               <h3>Representative stakeholders</h3>
-              <ul>
-                <li><strong>Dr. Elena Messina</strong> — Research Projects & Ethics Coordinator</li>
-                <li><strong>Dr. Paolo Greco</strong> — junior project manager</li>
-                <li><strong>Prof. Giulia Rinaldi</strong> — professor and lecturer</li>
-                <li><strong>Faculty, administrators, and research teams</strong></li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-card">
-          <div class="section-head">
-            <div class="section-title">But under the surface...</div>
-            <button class="btn btn-primary" data-reveal-target="costResults">
-              See the cost of inaction
-            </button>
-          </div>
-          <div class="section-body">
-            <div class="metrics-4" style="margin-bottom:14px;">
-              <div class="box">
-                <span class="value">6+</span>
-                <p>Disconnected knowledge sources</p>
-              </div>
-              <div class="box">
-                <span class="value">2.1 h/day</span>
-                <p>Time staff spend reconstructing process logic</p>
-              </div>
-              <div class="box">
-                <span class="value">41%</span>
-                <p>Guidance files not reviewed in over 2 years</p>
-              </div>
-              <div class="box">
-                <span class="value">1</span>
-                <p>Recent startup delay caused by conflicting process guidance</p>
-              </div>
-            </div>
-
-            <div class="alert red" style="margin-bottom:12px;">
-              <strong>Operational incident:</strong>
-              A project team prepared ethics timing based on an outdated faculty note
-              while the research office followed a newer clarification. Internal review
-              had to be repeated and the startup timeline slipped.
-            </div>
-
-            <div class="alert amber">
-              <strong>Teaching burden:</strong>
-              Prof. Rinaldi prepares lessons from scattered slides, papers, and private notes.
-              Delegating lesson preparation is slow and inconsistent.
-            </div>
-
-            <div id="costResults" class="hidden" style="margin-top:14px;">
-              <div class="alert red">
-                <strong>If senior staff remain the only real holders of procedural and teaching context,</strong>
-                onboarding slows, inconsistency grows, and institutional memory stays fragile.
+              <div class="person-list" style="margin-top:10px;">
+                <span class="person-chip"><span class="person-chip-badge amber">EM</span>Dr. Elena Messina</span>
+                <span class="person-chip"><span class="person-chip-badge blue">PG</span>Dr. Paolo Greco</span>
+                <span class="person-chip"><span class="person-chip-badge green">GR</span>Prof. Giulia Rinaldi</span>
               </div>
             </div>
           </div>
-        </section>
 
-        <div class="next-prev">
-          <span></span>
-          <a class="btn btn-primary" href="../institutional/02-ingestion.html">Ingestion →</a>
+          <div class="metrics-4" style="margin-bottom:14px;">
+            <div class="metric-card">
+              <span class="value">1948</span>
+              <p>Founded in Sicily</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">12</span>
+              <p>Departments and institutes</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">4</span>
+              <p>Core research support units</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">EU + national</span>
+              <p>Funding landscape</p>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">But under the surface...</div>
+        </div>
+        <div class="product-body">
+          <div class="metrics-4" style="margin-bottom:14px;">
+            <div class="metric-card">
+              <span class="value">6+</span>
+              <p>Disconnected knowledge sources</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">2.1 h/day</span>
+              <p>Time staff spend reconstructing process logic</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">41%</span>
+              <p>Guidance files not reviewed in over 2 years</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">1</span>
+              <p>Recent startup delay caused by conflicting process guidance</p>
+            </div>
+          </div>
+
+          <div class="alert red" style="margin-bottom:12px;">
+            <strong>Operational incident:</strong>
+            A project team prepared ethics timing based on an outdated faculty note while
+            the research office followed a newer clarification. Internal review had to be
+            repeated and the startup timeline slipped.
+          </div>
+
+          <div class="alert amber" style="margin-bottom:14px;">
+            <strong>Teaching burden:</strong>
+            Prof. Rinaldi prepares lessons from scattered slides, papers, and private notes.
+            Delegating lesson preparation is slow and inconsistent.
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-primary" data-reveal-target="costResults">See the cost of inaction</button>
+          </div>
+
+          <div id="costResults" class="hidden" style="margin-top:14px;">
+            <div class="alert red flash">
+              <strong>If senior staff remain the only real holders of procedural and teaching context,</strong>
+              onboarding slows, inconsistency grows, and institutional memory stays fragile.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="next-prev">
+        <span></span>
+        <a class="btn btn-primary" href="../institutional/02-ingestion.html">Ingestion →</a>
       </div>
     </main>
   </div>
