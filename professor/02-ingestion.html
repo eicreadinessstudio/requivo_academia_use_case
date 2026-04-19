@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professor Demo — Ingestion</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body data-page="professor">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">RQ</div>
+        <div>
+          <div class="brand-title">Requivo interactive pilot demo</div>
+          <div class="brand-sub">Professor use-case track</div>
+        </div>
+      </a>
+      <a class="btn btn-ghost" href="../index.html">Back to use-case selection</a>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <div id="sidebarHost"></div>
+
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+          <div>
+            <div class="kicker">Step 1 · Ingestion</div>
+            <h1 class="hero-title">Connect existing teaching material</h1>
+            <p class="hero-lead">
+              Requivo ingests the professor’s existing teaching sources without requiring
+              them to be manually rewritten or pre-cleaned first.
+            </p>
+          </div>
+          <div class="hero-side-copy">
+            <p>
+              Slide decks, private notes, paper packs, course outlines, and case material
+              all become one structured teaching evidence space that can support lesson preparation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="progress-strip">
+        <div class="progress-count">2 / 8</div>
+        <div class="progress-dots" aria-hidden="true">
+          <span class="progress-dot"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <section class="editorial-section">
+        <div class="editorial-grid">
+          <h2 class="editorial-title">Teaching evidence first</h2>
+          <div class="editorial-copy">
+            The system starts from the professor’s existing material as it is actually
+            stored and used. The objective is not to create a perfect teaching repository
+            first, but to make scattered teaching sources structurally usable.
+          </div>
+        </div>
+        <div class="rule"></div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Teaching source connectors</div>
+          <button class="btn btn-primary" id="connectNormalizeBtn">Connect & normalise</button>
+        </div>
+        <div class="product-body">
+          <div id="sourceRows" class="source-list"></div>
+
+          <div id="ingestionSummary" class="hidden" style="margin-top:14px;">
+            <div class="summary-banner">
+              <strong>146 teaching evidence objects</strong> normalised from 6 teaching sources.
+              Ready for structured lesson preparation.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Why this matters</div>
+        </div>
+        <div class="product-body">
+          <div class="cards-3">
+            <div class="info-card">
+              <h3>Teaching source corpus</h3>
+              <p>
+                Last year’s slides, raw lecture notes, syllabus fragments, selected papers,
+                clinical examples, and exam-topic cues.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>Delegation becomes possible</h3>
+              <p>
+                Once the material is structurally ingested, assistants and junior staff no
+                longer have to guess how the course content hangs together.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>Next step</h3>
+              <p>
+                Requivo can use this evidence base to draft a structured lesson package
+                instead of relying on one-off manual assembly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="next-prev">
+        <a class="btn btn-ghost" href="../professor/01-meet-the-professor.html">← Meet the professor</a>
+        <a class="btn btn-primary" href="../professor/03-lesson-writer.html">Lesson Writer →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
