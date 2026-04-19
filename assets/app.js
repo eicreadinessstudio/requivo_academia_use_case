@@ -32,7 +32,7 @@
         <h2>Demo pages</h2>
         <nav class="nav-list">${links}</nav>
         <div class="sidebar-note">
-          <strong style="display:block;color:var(--text);margin-bottom:6px;">Track context</strong>
+          <strong>Track context</strong>
           ${data.note}
         </div>
       </aside>
@@ -49,18 +49,20 @@
     sidebarHost.innerHTML = createSidebar(page);
   }
 
-  function bindRevealButton() {
-    const btn = document.querySelector("[data-reveal-target]");
-    if (!btn) return;
+  function bindRevealButtons() {
+    const buttons = document.querySelectorAll("[data-reveal-target]");
+    if (!buttons.length) return;
 
-    btn.addEventListener("click", function () {
-      const targetId = btn.getAttribute("data-reveal-target");
-      const target = document.getElementById(targetId);
-      if (!target) return;
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const targetId = btn.getAttribute("data-reveal-target");
+        const target = document.getElementById(targetId);
+        if (!target) return;
 
-      target.classList.remove("hidden");
-      target.classList.add("flash");
-      btn.disabled = true;
+        target.classList.remove("hidden");
+        target.classList.add("flash");
+        btn.disabled = true;
+      });
     });
   }
 
@@ -68,6 +70,6 @@
     if (!isLanding()) {
       bootTrackedPage();
     }
-    bindRevealButton();
+    bindRevealButtons();
   });
 })();
