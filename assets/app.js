@@ -57,13 +57,56 @@
     return `
       <div class="source-row">
         <div class="source-icon ${item.icon}">${item.code}</div>
-        <div>
+
+        <div class="source-main">
           <strong style="display:block;margin-bottom:2px;">${item.title}</strong>
           <span class="text-muted">${item.meta}</span>
+
+          <div class="source-progress">
+            <div class="source-progress-track">
+              <div class="source-progress-fill"></div>
+            </div>
+            <div class="source-progress-number">0%</div>
+          </div>
         </div>
-        <div class="source-tag">${item.tag}</div>
+
+        <div class="source-status">·</div>
       </div>
     `;
+  }
+
+  async function animateRowProgress(row) {
+    const fill = row.querySelector(".source-progress-fill");
+    const number = row.querySelector(".source-progress-number");
+    const status = row.querySelector(".source-status");
+
+    if (!fill || !number || !status) return;
+
+    const duration = 1050 + Math.floor(Math.random() * 450);
+    const start = performance.now();
+
+    return new Promise((resolve) => {
+      function frame(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const percent = Math.round(progress * 100);
+
+        fill.style.width = percent + "%";
+        number.textContent = percent + "%";
+
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          status.textContent = "✓";
+          status.classList.add("done");
+          row.classList.add("done");
+          number.textContent = "100%";
+          resolve();
+        }
+      }
+
+      requestAnimationFrame(frame);
+    });
   }
 
   async function runStagedRows(button, container, items, summaryEl) {
@@ -72,9 +115,12 @@
 
     for (let i = 0; i < items.length; i++) {
       container.insertAdjacentHTML("beforeend", renderSourceRow(items[i]));
-      const last = container.lastElementChild;
-      if (last) last.classList.add("flash");
-      await wait(240);
+      const row = container.lastElementChild;
+      if (row) {
+        row.classList.add("flash");
+        await animateRowProgress(row);
+        await wait(120);
+      }
     }
 
     if (summaryEl) {
