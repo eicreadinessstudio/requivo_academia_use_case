@@ -53,6 +53,19 @@
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
+  function renderSourceRow(item) {
+    return `
+      <div class="source-row">
+        <div class="source-icon ${item.icon}">${item.code}</div>
+        <div>
+          <strong style="display:block;margin-bottom:2px;">${item.title}</strong>
+          <span class="text-muted">${item.meta}</span>
+        </div>
+        <div class="source-tag">${item.tag}</div>
+      </div>
+    `;
+  }
+
   async function runStagedRows(button, container, items, summaryEl) {
     button.disabled = true;
     container.innerHTML = "";
@@ -68,19 +81,6 @@
       summaryEl.classList.remove("hidden");
       summaryEl.classList.add("flash");
     }
-  }
-
-  function renderSourceRow(item) {
-    return `
-      <div class="source-row">
-        <div class="source-icon ${item.icon}">${item.code}</div>
-        <div>
-          <strong style="display:block;margin-bottom:2px;">${item.title}</strong>
-          <span class="text-muted">${item.meta}</span>
-        </div>
-        <div class="source-tag">${item.tag}</div>
-      </div>
-    `;
   }
 
   async function typeText(outputEl, text, speed = 10) {
@@ -151,6 +151,58 @@
     });
   }
 
+  function bindAnalysisPage() {
+    const button = document.getElementById("runAnalysisBtn");
+    const status = document.getElementById("analysisStatus");
+    const findings = document.getElementById("analysisFindings");
+    const summary = document.getElementById("analysisSummary");
+
+    if (!button || !status || !findings || !summary) return;
+
+    button.addEventListener("click", async function () {
+      button.disabled = true;
+      status.textContent = "Scanning linked evidence...";
+      status.classList.add("flash");
+      await wait(500);
+
+      status.textContent = "Comparing versions and role logic...";
+      await wait(650);
+
+      status.textContent = "Flagging unresolved issues...";
+      await wait(650);
+
+      findings.classList.remove("hidden");
+      findings.classList.add("flash");
+      await wait(180);
+
+      summary.classList.remove("hidden");
+      summary.classList.add("flash");
+
+      status.textContent = "Analysis complete";
+    });
+  }
+
+  function bindThreadPage() {
+    const button = document.getElementById("threadActionBtn");
+    const threadParts = document.querySelectorAll("[data-thread-part]");
+    const summary = document.getElementById("threadSummary");
+
+    if (!button || !threadParts.length || !summary) return;
+
+    button.addEventListener("click", async function () {
+      button.disabled = true;
+
+      for (let i = 0; i < threadParts.length; i++) {
+        threadParts[i].classList.remove("hidden");
+        threadParts[i].classList.add("flash");
+        await wait(520);
+      }
+
+      summary.classList.remove("hidden");
+      summary.classList.add("flash");
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     if (!isLanding()) {
       bootTrackedPage();
@@ -159,5 +211,7 @@
     bindRevealButtons();
     bindIngestionPage();
     bindWriterPage();
+    bindAnalysisPage();
+    bindThreadPage();
   });
 })();
