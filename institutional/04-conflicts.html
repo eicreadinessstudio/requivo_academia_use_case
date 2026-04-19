@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institutional Demo — Conflict & Gap Detection</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body data-page="institutional">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">RQ</div>
+        <div>
+          <div class="brand-title">Requivo interactive pilot demo</div>
+          <div class="brand-sub">Institutional / administrative track</div>
+        </div>
+      </a>
+      <a class="btn btn-ghost" href="../index.html">Back to use-case selection</a>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <div id="sidebarHost"></div>
+
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+          <div>
+            <div class="kicker">Step 3 · Conflict & gap detection</div>
+            <h1 class="hero-title">Find what others miss</h1>
+            <p class="hero-lead">
+              Requivo automatically surfaces contradictions between institutional sources
+              and identifies missing operational logic before it causes delays or compliance errors.
+            </p>
+          </div>
+          <div class="hero-side-copy">
+            <p>
+              The system does not only draft procedural text. It also makes ambiguity visible,
+              so the university can resolve the exact issue rather than relying on silent divergence.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="progress-strip">
+        <div class="progress-count">4 / 8</div>
+        <div class="progress-dots" aria-hidden="true">
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <section class="editorial-section">
+        <div class="editorial-grid">
+          <h2 class="editorial-title">Detection before failure</h2>
+          <div class="editorial-copy">
+            Universities often discover procedural inconsistency only after it has already
+            slowed a real project. Requivo is designed to surface contradiction and incompleteness
+            before operational risk becomes visible downstream.
+          </div>
+        </div>
+        <div class="rule"></div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Analysis Engine</div>
+          <button class="btn btn-primary" id="runAnalysisBtn">Run analysis</button>
+        </div>
+        <div class="product-body">
+          <div class="status-line" style="margin-bottom:14px;">
+            <span class="status-dot live"></span>
+            <span id="analysisStatus">Ready to analyse linked evidence objects</span>
+          </div>
+
+          <div id="analysisFindings" class="analysis-shell hidden">
+            <div class="finding-card conflict">
+              <h3>Conflict detected: ethics pre-screening timing</h3>
+              <p>
+                Three institutional sources disagree on when ethics pre-screening must happen
+                for externally funded studies involving patient data.
+              </p>
+              <ul>
+                <li>Older SOP implies it must happen before internal proposal submission.</li>
+                <li>Updated FAQ suggests it may start only after funding confirmation.</li>
+                <li>Email clarification indicates it depends on study type and data category.</li>
+              </ul>
+            </div>
+
+            <div class="finding-card gap">
+              <h3>Gap detected: startup document register ownership</h3>
+              <p>
+                The evidence set refers to a startup document register but does not define
+                who opens it, which template is authoritative, or when ownership passes
+                from grants office to project manager.
+              </p>
+            </div>
+          </div>
+
+          <div id="analysisSummary" class="hidden" style="margin-top:14px;">
+            <div class="summary-banner">
+              <strong>1 conflict and 1 gap detected.</strong>
+              Each is linked to exact evidence sources and routed to the most relevant institutional expert.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="next-prev">
+        <a class="btn btn-ghost" href="../institutional/03-writer.html">← Knowledge Writer</a>
+        <a class="btn btn-primary" href="../institutional/05-verifier.html">Knowledge Verifier →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
