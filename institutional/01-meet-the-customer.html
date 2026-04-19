@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institutional Demo — Meet the Customer</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body data-page="institutional">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">RQ</div>
+        <div class="brand-copy">
+          <div class="brand-title">Requivo interactive pilot demo</div>
+          <div class="brand-sub">Institutional / administrative track</div>
+        </div>
+      </a>
+      <a class="btn btn-ghost" href="../index.html">Back to use-case selection</a>
+    </div>
+  </header>
 
+  <div class="wrap layout">
+    <div id="sidebarHost"></div>
+
+    <main class="page">
+      <div class="page-head">
+        <div class="kicker">Meet the customer</div>
+        <h1>Università Medica del Mediterraneo, Catania</h1>
+        <p class="lead">
+          A fictional Sicilian medical university representing research-intensive academic
+          institutions where operational knowledge is fragmented across offices, documents,
+          systems, and individual experts.
+        </p>
+      </div>
+
+      <div class="page-body">
+        <section class="section-card">
+          <div class="section-head">
+            <div class="section-title">University profile</div>
+          </div>
+          <div class="section-body hero-grid">
+            <div class="box">
+              <h3>Academic environment</h3>
+              <p>
+                The university manages externally funded projects, ethics-sensitive research
+                activities, and cross-functional startup processes involving faculty,
+                research support, project managers, and compliance stakeholders.
+              </p>
+              <div class="metrics-4" style="margin-top:14px;">
+                <div class="box">
+                  <span class="value">1948</span>
+                  <p>Founded in Sicily</p>
+                </div>
+                <div class="box">
+                  <span class="value">12</span>
+                  <p>Departments and institutes</p>
+                </div>
+                <div class="box">
+                  <span class="value">4</span>
+                  <p>Core research support units</p>
+                </div>
+                <div class="box">
+                  <span class="value">EU + national</span>
+                  <p>Funding landscape</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="box">
+              <h3>Representative stakeholders</h3>
+              <ul>
+                <li><strong>Dr. Elena Messina</strong> — Research Projects & Ethics Coordinator</li>
+                <li><strong>Dr. Paolo Greco</strong> — junior project manager</li>
+                <li><strong>Prof. Giulia Rinaldi</strong> — professor and lecturer</li>
+                <li><strong>Faculty, administrators, and research teams</strong></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card">
+          <div class="section-head">
+            <div class="section-title">But under the surface...</div>
+            <button class="btn btn-primary" data-reveal-target="costResults">
+              See the cost of inaction
+            </button>
+          </div>
+          <div class="section-body">
+            <div class="metrics-4" style="margin-bottom:14px;">
+              <div class="box">
+                <span class="value">6+</span>
+                <p>Disconnected knowledge sources</p>
+              </div>
+              <div class="box">
+                <span class="value">2.1 h/day</span>
+                <p>Time staff spend reconstructing process logic</p>
+              </div>
+              <div class="box">
+                <span class="value">41%</span>
+                <p>Guidance files not reviewed in over 2 years</p>
+              </div>
+              <div class="box">
+                <span class="value">1</span>
+                <p>Recent startup delay caused by conflicting process guidance</p>
+              </div>
+            </div>
+
+            <div class="alert red" style="margin-bottom:12px;">
+              <strong>Operational incident:</strong>
+              A project team prepared ethics timing based on an outdated faculty note
+              while the research office followed a newer clarification. Internal review
+              had to be repeated and the startup timeline slipped.
+            </div>
+
+            <div class="alert amber">
+              <strong>Teaching burden:</strong>
+              Prof. Rinaldi prepares lessons from scattered slides, papers, and private notes.
+              Delegating lesson preparation is slow and inconsistent.
+            </div>
+
+            <div id="costResults" class="hidden" style="margin-top:14px;">
+              <div class="alert red">
+                <strong>If senior staff remain the only real holders of procedural and teaching context,</strong>
+                onboarding slows, inconsistency grows, and institutional memory stays fragile.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="next-prev">
+          <span></span>
+          <a class="btn btn-primary" href="../institutional/02-ingestion.html">Ingestion →</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
