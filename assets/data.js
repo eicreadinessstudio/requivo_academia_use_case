@@ -11,8 +11,83 @@ window.DEMO_DATA = {
       { href: "../institutional/08-get-started.html", label: "Get started" }
     ],
     note:
-      "Institutional track: research operations, grant preparation, ethics routing, project startup, and onboarding."
+      "Institutional track: research operations, grant preparation, ethics routing, project startup, and onboarding.",
+    sources: [
+      {
+        icon: "doc",
+        code: "DOC",
+        title: "Grant_startup_checklist_v2.docx",
+        meta: "Research Office · 2024",
+        tag: "Procedure"
+      },
+      {
+        icon: "pdf",
+        code: "PDF",
+        title: "Ethics_screening_SOP.pdf",
+        meta: "Ethics Office · 2023",
+        tag: "SOP"
+      },
+      {
+        icon: "wiki",
+        code: "WKI",
+        title: "Project startup FAQ (wiki)",
+        meta: "Last edited 2024",
+        tag: "Wiki"
+      },
+      {
+        icon: "mail",
+        code: "EML",
+        title: "Re: ethics timing for patient-data studies",
+        meta: "E. Messina · Jan 2026",
+        tag: "Email decision"
+      },
+      {
+        icon: "xls",
+        code: "XLS",
+        title: "Startup_Register_v3.xlsx",
+        meta: "Projects team archive",
+        tag: "Template"
+      },
+      {
+        icon: "pdf",
+        code: "PDF",
+        title: "Archived Horizon Europe package",
+        meta: "Faculty repository",
+        tag: "Proposal archive"
+      },
+      {
+        icon: "doc",
+        code: "DOC",
+        title: "Internal onboarding note set",
+        meta: "Project office",
+        tag: "Onboarding"
+      }
+    ],
+    articleText: `Title: Externally Funded Research Project Startup Procedure
+
+Purpose
+This procedure describes the operational sequence from near-final grant application to formal project startup for externally funded research projects at the university.
+
+Draft process steps
+1. Confirm the funder deadline, internal pre-review deadline, and faculty sign-off route.
+   Cited: Grant_startup_checklist_v2.docx §1 + project startup FAQ
+
+2. Determine whether ethics pre-screening is needed before submission based on study type and data category.
+   Cited: Ethics_screening_SOP.pdf + email clarification (pending verification)
+
+3. Prepare internal budget and annex package using the current institutional template set.
+   Cited: Research Office template folder + archived Horizon Europe package
+
+4. After award, open the startup document register and assign operational ownership.
+   Cited: Startup_Register_v3.xlsx (gap — authoritative version unclear)
+
+5. Initiate startup checklist: ethics package, DMP baseline, financial code, and kickoff meeting.
+   Cited: project startup FAQ + internal onboarding note set
+
+Status
+Draft generated from fragmented institutional evidence. Awaiting expert verification on ethics timing and startup register ownership.`
   },
+
   professor: {
     nav: [
       { href: "../professor/01-meet-the-professor.html", label: "Meet the professor" },
@@ -25,6 +100,69 @@ window.DEMO_DATA = {
       { href: "../professor/08-get-started.html", label: "Get started" }
     ],
     note:
-      "Professor track: lesson preparation, teaching continuity, structured course knowledge, and faculty-side reuse."
+      "Professor track: lesson preparation, teaching continuity, structured course knowledge, and faculty-side reuse.",
+    sources: [
+      {
+        icon: "doc",
+        code: "SLD",
+        title: "Clinical Research Methods — slides 2025",
+        meta: "Prior-year slide deck",
+        tag: "Slides"
+      },
+      {
+        icon: "doc",
+        code: "DOC",
+        title: "Lecture_notes_raw.docx",
+        meta: "Professor notes",
+        tag: "Notes"
+      },
+      {
+        icon: "pdf",
+        code: "PDF",
+        title: "Syllabus_fragment.pdf",
+        meta: "Course outline excerpt",
+        tag: "Syllabus"
+      },
+      {
+        icon: "pdf",
+        code: "PDF",
+        title: "Selected paper pack",
+        meta: "Teaching paper bundle",
+        tag: "Papers"
+      },
+      {
+        icon: "doc",
+        code: "CAS",
+        title: "Clinical case note set",
+        meta: "Example scenarios",
+        tag: "Case set"
+      },
+      {
+        icon: "xls",
+        code: "EXM",
+        title: "Exam topics list",
+        meta: "Student assessment cues",
+        tag: "Assessment"
+      }
+    ],
+    lessonText: `Lesson package: Clinical Research Methods — Ethics, Data Governance, and Study Startup
+
+Learning objectives
+- Explain the difference between grant submission readiness and project startup readiness
+- Distinguish ethics pre-screening, formal ethics review, and operational startup activities
+- Understand why fragmented institutional knowledge creates delays in real research environments
+
+Suggested lecture structure
+1. Opening scenario: a funded medical research project fails to start on time because process knowledge is split across documents and people
+2. Core concepts: ethics timing, startup ownership, DMP baseline, and institutional sign-off
+3. Case discussion: compare written SOP logic with operational reality
+4. Student exercise: reconstruct the correct startup sequence from fragmented evidence
+5. Closing synthesis: why governed academic knowledge matters
+
+Recommended evidence basis
+Prior-year slides, professor notes, policy excerpts, selected case-study materials, and syllabus fragments.
+
+Status
+Draft lesson package generated from fragmented teaching material. Ready for professor review and refinement.`
   }
 };
