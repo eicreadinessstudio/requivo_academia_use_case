@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professor Demo — Meet the Professor</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body data-page="professor">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">RQ</div>
+        <div class="brand-copy">
+          <div class="brand-title">Requivo interactive pilot demo</div>
+          <div class="brand-sub">Professor use-case track</div>
+        </div>
+      </a>
+      <a class="btn btn-ghost" href="../index.html">Back to use-case selection</a>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <div id="sidebarHost"></div>
+
+    <main class="page">
+      <div class="page-head">
+        <div class="kicker">Meet the professor</div>
+        <h1>Prof. Giulia Rinaldi</h1>
+        <p class="lead">
+          A medical professor preparing teaching sessions from fragmented slides, notes,
+          papers, and clinical examples.
+        </p>
+      </div>
+
+      <div class="page-body">
+        <section class="section-card">
+          <div class="section-head">
+            <div class="section-title">Professor profile</div>
+          </div>
+          <div class="section-body hero-grid">
+            <div class="box">
+              <h3>Teaching context</h3>
+              <p>
+                Professor of Clinical Research Methods, teaching advanced students in
+                translational and clinical research. The course relies on materials
+                accumulated over multiple semesters.
+              </p>
+              <div class="cards-3" style="margin-top:14px;">
+                <div class="box">
+                  <h4>Course type</h4>
+                  <p>Advanced teaching in clinical research methods</p>
+                </div>
+                <div class="box">
+                  <h4>Teaching material</h4>
+                  <p>Slides, notes, papers, case examples, syllabus fragments</p>
+                </div>
+                <div class="box">
+                  <h4>Need</h4>
+                  <p>Faster, structured lesson preparation without manual reconstruction</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="box">
+              <h3>Teaching pain points</h3>
+              <ul>
+                <li><strong>Teaching material is scattered</strong> across folders, files, and formats.</li>
+                <li><strong>Preparation is difficult to delegate</strong> to assistants or junior staff.</li>
+                <li><strong>Course logic is not always explicit</strong>; much of the structure exists only in the professor’s own head.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card">
+          <div class="section-head">
+            <div class="section-title">What this means in practice</div>
+            <button class="btn btn-primary" data-reveal-target="teachingBurden">
+              See the teaching burden
+            </button>
+          </div>
+          <div class="section-body">
+            <div class="cards-3" style="margin-bottom:14px;">
+              <div class="box">
+                <span class="value">Old decks</span>
+                <p>Prior-year slide logic remains mixed with newer material.</p>
+              </div>
+              <div class="box">
+                <span class="value">Scattered notes</span>
+                <p>Key explanations are often trapped in raw notes, not reusable teaching objects.</p>
+              </div>
+              <div class="box">
+                <span class="value">Difficult handover</span>
+                <p>Assistants struggle to know what is current, essential, or optional.</p>
+              </div>
+            </div>
+
+            <div id="teachingBurden" class="hidden">
+              <div class="alert amber">
+                <strong>Without a structured teaching layer,</strong>
+                lesson preparation remains person-dependent, difficult to reuse, and hard
+                to hand over cleanly to assistants or future semesters.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="next-prev">
+          <span></span>
+          <a class="btn btn-primary" href="../professor/02-ingestion.html">Ingestion →</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
