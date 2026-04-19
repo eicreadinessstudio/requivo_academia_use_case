@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Institutional Demo — Knowledge Verifier</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body data-page="institutional">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">RQ</div>
+        <div>
+          <div class="brand-title">Requivo interactive pilot demo</div>
+          <div class="brand-sub">Institutional / administrative track</div>
+        </div>
+      </a>
+      <a class="btn btn-ghost" href="../index.html">Back to use-case selection</a>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <div id="sidebarHost"></div>
+
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+          <div>
+            <div class="kicker">Step 4 · Knowledge Verifier</div>
+            <h1 class="hero-title">The right academic expert gets the right question</h1>
+            <p class="hero-lead">
+              Requivo identifies who can resolve the issue and sends a focused validation request
+              instead of requiring broad manual review.
+            </p>
+          </div>
+          <div class="hero-side-copy">
+            <p>
+              This is where fragmented evidence becomes accountable knowledge:
+              the unresolved issue is routed to the most relevant institutional owner.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="progress-strip">
+        <div class="progress-count">5 / 8</div>
+        <div class="progress-dots" aria-hidden="true">
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <section class="editorial-section">
+        <div class="editorial-grid">
+          <h2 class="editorial-title">Targeted verification</h2>
+          <div class="editorial-copy">
+            Requivo does not ask everyone to re-read everything. It isolates the unresolved
+            issue and routes a focused question to the person who can actually close the gap.
+          </div>
+        </div>
+        <div class="rule"></div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Verification Queue</div>
+          <button class="btn btn-primary" id="threadActionBtn">Start verification round</button>
+        </div>
+        <div class="product-body verifier-grid">
+          <div class="avatar-card">
+            <div class="avatar-badge">EM</div>
+            <h3>Dr. Elena Messina</h3>
+            <div class="avatar-role">Research Projects & Ethics Coordinator</div>
+            <p>
+              Relevant because she knows the current operational logic behind ethics routing,
+              internal sign-off, and project startup — including the parts that never made it
+              into fully governed written guidance.
+            </p>
+          </div>
+
+          <div class="thread">
+            <div class="bubble ai hidden" data-thread-part>
+              <strong>Requivo validation request</strong>
+              Three sources disagree on ethics timing for externally funded projects involving
+              patient data. Please confirm the current rule and define who opens the startup
+              document register and which template is authoritative.
+            </div>
+
+            <div class="bubble human hidden" data-thread-part>
+              <strong>Expert answer</strong>
+              Ethics pre-screening is required before internal submission only for projects
+              involving identifiable patient data or invasive procedures. In all other cases
+              it can begin after award confirmation. The startup document register is opened
+              by the assigned project manager immediately after award notice using “Startup Register v4”.
+            </div>
+
+            <div class="bubble system hidden" data-thread-part>
+              <strong>Governed update</strong>
+              Conflict resolved. Gap filled. The generated article is updated, linked to expert
+              validation, and marked verified for the relevant process sections.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div id="threadSummary" class="hidden">
+        <div class="summary-banner">
+          <strong>Conflict resolved.</strong>
+          Ethics timing clarified. Startup register ownership assigned. Governed article updated automatically.
+        </div>
+      </div>
+
+      <div class="next-prev">
+        <a class="btn btn-ghost" href="../institutional/04-conflicts.html">← Conflict & gap detection</a>
+        <a class="btn btn-primary" href="../institutional/06-governed.html">Governed knowledge →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
