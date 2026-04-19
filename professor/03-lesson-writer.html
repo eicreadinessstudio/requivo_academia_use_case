@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professor Demo — Lesson Writer</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body data-page="professor">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">RQ</div>
+        <div>
+          <div class="brand-title">Requivo interactive pilot demo</div>
+          <div class="brand-sub">Professor use-case track</div>
+        </div>
+      </a>
+      <a class="btn btn-ghost" href="../index.html">Back to use-case selection</a>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <div id="sidebarHost"></div>
+
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-overlay"></div>
+        <div class="hero-inner">
+          <div>
+            <div class="kicker">Step 2 · Knowledge Writer</div>
+            <h1 class="hero-title">Lessons nobody had to assemble manually</h1>
+            <p class="hero-lead">
+              Requivo prepares a structured lesson package from fragmented professor-side
+              materials, giving the professor a cleaner starting point for review.
+            </p>
+          </div>
+          <div class="hero-side-copy">
+            <p>
+              Instead of manually reconstructing teaching logic from old decks and notes,
+              the professor gets one structured draft with learning objectives, sequence,
+              and evidence basis.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="progress-strip">
+        <div class="progress-count">3 / 8</div>
+        <div class="progress-dots" aria-hidden="true">
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <section class="editorial-section">
+        <div class="editorial-grid">
+          <h2 class="editorial-title">From teaching fragments to lesson logic</h2>
+          <div class="editorial-copy">
+            Once the teaching evidence has been normalised, Requivo can prepare one coherent
+            lesson package out of slide fragments, notes, papers, and case examples that
+            would otherwise remain scattered.
+          </div>
+        </div>
+        <div class="rule"></div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Lesson Writer</div>
+          <button class="btn btn-primary" id="writerActionBtn">Prepare lesson</button>
+        </div>
+        <div class="product-body">
+          <div class="writer-shell">
+            <div class="writer-head">
+              <div class="writer-label">Generated student-facing lesson package</div>
+              <div class="writer-pill">Professor workflow</div>
+            </div>
+            <div class="writer-output" id="writerOutput">
+Click “Prepare lesson” to generate a structured lesson package from fragmented teaching material.
+            </div>
+          </div>
+
+          <div id="writerSummary" class="hidden" style="margin-top:14px;">
+            <div class="summary-banner">
+              <strong>Lesson package generated</strong> with learning objectives, lecture structure,
+              and evidence basis. Ready for professor review.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-panel">
+        <div class="product-head">
+          <div class="product-label">Why this matters</div>
+        </div>
+        <div class="product-body">
+          <div class="cards-2">
+            <div class="info-card">
+              <h3>Lesson topic</h3>
+              <p>
+                “Clinical Research Methods — Ethics, Data Governance, and Study Startup”
+                generated from fragmented slides, notes, and supporting materials.
+              </p>
+            </div>
+            <div class="info-card">
+              <h3>What makes it useful</h3>
+              <p>
+                The professor gets one structured, reviewable teaching draft instead of
+                rebuilding the session manually from disconnected preparation files.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="next-prev">
+        <a class="btn btn-ghost" href="../professor/02-ingestion.html">← Ingestion</a>
+        <a class="btn btn-primary" href="../professor/04-conflicts.html">Conflict & gap detection →</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/data.js"></script>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
