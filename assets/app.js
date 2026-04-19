@@ -49,6 +49,55 @@
     sidebarHost.innerHTML = createSidebar(page);
   }
 
+  function wait(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function runStagedRows(button, container, items, summaryEl) {
+    button.disabled = true;
+    container.innerHTML = "";
+
+    for (let i = 0; i < items.length; i++) {
+      container.insertAdjacentHTML("beforeend", renderSourceRow(items[i]));
+      const last = container.lastElementChild;
+      if (last) last.classList.add("flash");
+      await wait(240);
+    }
+
+    if (summaryEl) {
+      summaryEl.classList.remove("hidden");
+      summaryEl.classList.add("flash");
+    }
+  }
+
+  function renderSourceRow(item) {
+    return `
+      <div class="source-row">
+        <div class="source-icon ${item.icon}">${item.code}</div>
+        <div>
+          <strong style="display:block;margin-bottom:2px;">${item.title}</strong>
+          <span class="text-muted">${item.meta}</span>
+        </div>
+        <div class="source-tag">${item.tag}</div>
+      </div>
+    `;
+  }
+
+  async function typeText(outputEl, text, speed = 10) {
+    outputEl.textContent = "";
+    outputEl.classList.add("typing-cursor");
+
+    for (let i = 0; i < text.length; i++) {
+      outputEl.textContent += text[i];
+      if (i % 2 === 0) {
+        await wait(speed);
+      }
+      outputEl.scrollTop = outputEl.scrollHeight;
+    }
+
+    outputEl.classList.remove("typing-cursor");
+  }
+
   function bindRevealButtons() {
     const buttons = document.querySelectorAll("[data-reveal-target]");
     if (!buttons.length) return;
@@ -66,10 +115,49 @@
     });
   }
 
+  function bindIngestionPage() {
+    const button = document.getElementById("connectNormalizeBtn");
+    const rowsHost = document.getElementById("sourceRows");
+    const summary = document.getElementById("ingestionSummary");
+    const track = document.body.dataset.page;
+
+    if (!button || !rowsHost || !summary || !track) return;
+    if (!window.DEMO_DATA || !window.DEMO_DATA[track]) return;
+
+    button.addEventListener("click", async function () {
+      await runStagedRows(button, rowsHost, window.DEMO_DATA[track].sources, summary);
+    });
+  }
+
+  function bindWriterPage() {
+    const track = document.body.dataset.page;
+    const button = document.getElementById("writerActionBtn");
+    const output = document.getElementById("writerOutput");
+    const summary = document.getElementById("writerSummary");
+
+    if (!track || !button || !output || !summary) return;
+    if (!window.DEMO_DATA || !window.DEMO_DATA[track]) return;
+
+    const text =
+      track === "institutional"
+        ? window.DEMO_DATA.institutional.articleText
+        : window.DEMO_DATA.professor.lessonText;
+
+    button.addEventListener("click", async function () {
+      button.disabled = true;
+      await typeText(output, text, 10);
+      summary.classList.remove("hidden");
+      summary.classList.add("flash");
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     if (!isLanding()) {
       bootTrackedPage();
     }
+
     bindRevealButtons();
+    bindIngestionPage();
+    bindWriterPage();
   });
 })();
