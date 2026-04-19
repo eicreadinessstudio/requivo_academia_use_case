@@ -3,427 +3,288 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Requivo Demo — Academic Pilot Use Case</title>
+  <title>Requivo Demo — Medical University Pilot</title>
   <style>
     :root {
-      --bg: #f7f8fc;
+      --bg: #f4f5f7;
       --panel: #ffffff;
-      --panel-2: #f2f4fb;
-      --line: #dfe4f1;
-      --text: #10182b;
-      --text-soft: #5b6883;
-      --indigo: #3730a3;
-      --indigo-2: #4f46e5;
-      --sky: #0ea5e9;
-      --ok: #0f9f6e;
-      --warn: #c97a00;
-      --danger: #c53b4c;
+      --panel-soft: #fafafa;
+      --line: #e2e5ea;
+      --text: #111827;
+      --muted: #6b7280;
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+      --green: #16a34a;
+      --green-soft: #ecfdf5;
+      --red: #dc2626;
+      --red-soft: #fef2f2;
+      --amber: #d97706;
+      --amber-soft: #fffbeb;
+      --shadow: 0 12px 36px rgba(17,24,39,.06);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
       --max: 1180px;
-      --radius: 18px;
-      --shadow: 0 18px 60px rgba(16,24,43,.08);
-      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --serif: Iowan Old Style, Palatino Linotype, Book Antiqua, Georgia, serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
       font-family: var(--sans);
-      background: linear-gradient(180deg, #f9fbff 0%, #f5f7fc 100%);
+      background: var(--bg);
       color: var(--text);
-      -webkit-font-smoothing: antialiased;
       line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; text-decoration: none; }
-    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    button { font: inherit; }
 
-    .shell {
-      padding: 28px 0 56px;
-      min-height: 100vh;
+    .wrap {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
     }
 
     .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: rgba(244,245,247,.92);
+      border-bottom: 1px solid rgba(17,24,39,.06);
+    }
+
+    .topbar-inner {
+      min-height: 68px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
-      margin-bottom: 18px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 600;
-      color: var(--text);
+      font-weight: 700;
       letter-spacing: -.02em;
     }
 
-    .brand-badge {
-      width: 40px;
-      height: 40px;
+    .brand-mark {
+      width: 38px;
+      height: 38px;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--indigo) 0%, var(--sky) 100%);
       display: grid;
       place-items: center;
+      background: var(--blue);
       color: white;
-      font-family: var(--mono);
       font-size: 12px;
-      box-shadow: 0 12px 24px rgba(55,48,163,.22);
+      font-family: var(--mono);
+      box-shadow: 0 10px 20px rgba(37,99,235,.22);
     }
 
-    .top-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .brand-meta small {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      margin-top: 2px;
     }
 
-    .btn {
-      border: 1px solid transparent;
-      background: white;
-      color: var(--text);
-      padding: 11px 16px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
-    }
-
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--indigo);
-      color: white;
-      box-shadow: 0 12px 24px rgba(55,48,163,.18);
-    }
-    .btn-secondary {
-      border-color: var(--line);
-      background: rgba(255,255,255,.8);
-    }
-
-    .hero {
-      background: radial-gradient(circle at top right, rgba(79,70,229,.10), transparent 28%), var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .hero-inner {
-      padding: 28px;
+    .layout {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 290px minmax(0, 1fr);
       gap: 22px;
-      align-items: stretch;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--indigo-2);
-      background: rgba(79,70,229,.08);
-      border-radius: 999px;
-      padding: 7px 10px;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      font-family: var(--serif);
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: .98;
-      letter-spacing: -.04em;
-      font-weight: 400;
-    }
-
-    .hero-sub {
-      margin: 0 0 20px;
-      font-size: 17px;
-      color: var(--text-soft);
-      max-width: 780px;
-    }
-
-    .hero-points {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .point-card {
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
-    }
-
-    .point-card small {
-      display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-      margin-bottom: 6px;
-    }
-
-    .point-card strong {
-      display: block;
-      font-size: 22px;
-      letter-spacing: -.03em;
-      margin-bottom: 4px;
-    }
-
-    .point-card span {
-      color: var(--text-soft);
-      font-size: 13px;
-    }
-
-    .hero-side {
-      background: linear-gradient(180deg, #121a33 0%, #0f1730 100%);
-      color: #d7def0;
-      border-radius: 22px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-height: 100%;
-    }
-
-    .side-label {
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: #88a0c8;
-    }
-
-    .issue-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .issue {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      padding: 12px;
-    }
-
-    .issue strong {
-      display: block;
-      color: white;
-      margin-bottom: 4px;
-    }
-
-    .issue span {
-      color: #a8b7d5;
-      font-size: 14px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 280px minmax(0, 1fr);
-      gap: 20px;
-      align-items: start;
+      padding: 24px 0 48px;
     }
 
     .sidebar {
       position: sticky;
-      top: 18px;
-      background: rgba(255,255,255,.78);
-      backdrop-filter: blur(14px);
+      top: 92px;
+      align-self: start;
+      background: rgba(255,255,255,.82);
       border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 14px;
+      border-radius: var(--radius-xl);
       box-shadow: var(--shadow);
+      padding: 16px;
     }
 
     .sidebar h2 {
-      margin: 0 0 10px;
+      margin: 2px 0 14px;
       font-size: 14px;
-      letter-spacing: -.02em;
+      letter-spacing: -.01em;
     }
 
-    .step-nav {
+    .nav-list {
       display: grid;
       gap: 8px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
-    .step-btn {
-      width: 100%;
-      text-align: left;
+    .nav-link {
+      display: block;
       border: 1px solid var(--line);
-      background: white;
       border-radius: 16px;
+      background: white;
       padding: 12px;
-      cursor: pointer;
-      transition: border-color .18s ease, background .18s ease, transform .18s ease;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
     }
 
-    .step-btn:hover { transform: translateY(-1px); }
-    .step-btn.active {
-      border-color: rgba(79,70,229,.28);
-      background: rgba(79,70,229,.06);
+    .nav-link:hover { transform: translateY(-1px); }
+    .nav-link.active {
+      border-color: rgba(37,99,235,.25);
+      background: var(--blue-soft);
     }
 
-    .step-btn small {
+    .nav-link small {
       display: block;
       font-family: var(--mono);
       font-size: 10px;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--text-soft);
+      color: var(--muted);
       margin-bottom: 4px;
     }
 
-    .step-btn strong {
+    .nav-link strong {
       display: block;
       font-size: 14px;
-      color: var(--text);
+      letter-spacing: -.02em;
     }
 
-    .sidebar-box {
+    .sidebar-note {
       border-top: 1px solid var(--line);
-      padding-top: 12px;
-      color: var(--text-soft);
+      padding-top: 14px;
+      color: var(--muted);
       font-size: 13px;
     }
 
-    .stage {
+    .page {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-radius: 30px;
       box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .stage-head {
-      padding: 22px 22px 16px;
+    .page-head {
+      padding: 26px 26px 18px;
       border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(79,70,229,.04), rgba(79,70,229,0));
+      background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(250,250,250,1));
     }
 
-    .stage-head small {
-      display: block;
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: .14em;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--indigo-2);
-      margin-bottom: 8px;
+      font-weight: 700;
+      margin-bottom: 14px;
     }
 
-    .stage-head h3 {
-      margin: 0 0 8px;
-      font-size: clamp(24px, 3vw, 36px);
-      letter-spacing: -.03em;
-      line-height: 1.04;
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(34px, 4.8vw, 58px);
+      line-height: .98;
+      letter-spacing: -.05em;
     }
 
-    .stage-head p {
+    .lead {
       margin: 0;
-      color: var(--text-soft);
-      max-width: 900px;
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 860px;
+      line-height: 1.65;
     }
 
-    .stage-body {
-      padding: 22px;
+    .page-body {
+      padding: 24px 26px 30px;
       display: grid;
       gap: 18px;
     }
 
-    .cards-2, .cards-3 {
-      display: grid;
-      gap: 16px;
+    .section-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, #fff, #fbfbfc);
+      overflow: hidden;
     }
+
+    .section-head {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #6b7280;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-body { padding: 18px; }
+
+    .hero-grid,
+    .cards-2,
+    .cards-3,
+    .metrics-4,
+    .flow-4 {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-grid { grid-template-columns: 1.1fr .9fr; }
     .cards-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .metrics-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .flow-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-    .card {
-      background: #fff;
+    .box {
       border: 1px solid var(--line);
-      border-radius: 18px;
+      background: var(--panel-soft);
+      border-radius: var(--radius-lg);
       padding: 16px;
     }
 
-    .card h4 {
-      margin: 0 0 10px;
-      font-size: 17px;
+    .box h3, .box h4, .box h5 {
+      margin: 0 0 8px;
       letter-spacing: -.02em;
     }
 
-    .card p {
+    .box p, .box li, .muted {
       margin: 0;
-      color: var(--text-soft);
+      color: var(--muted);
       font-size: 14px;
     }
 
-    .meta {
-      display: inline-flex;
-      align-items: center;
+    .box ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
       gap: 8px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-      margin-bottom: 10px;
     }
 
-    .list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .list li {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      background: #fbfcff;
-    }
-
-    .list li strong {
+    .value {
       display: block;
-      margin-bottom: 4px;
-      font-size: 14px;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -.06em;
+      line-height: 1;
+      margin-bottom: 8px;
     }
-
-    .list li span {
-      color: var(--text-soft);
-      font-size: 13px;
-    }
-
-    .sources {
-      display: grid;
-      gap: 10px;
-    }
-
-    .source-row {
-      display: grid;
-      grid-template-columns: 170px 1fr auto;
-      gap: 12px;
-      align-items: center;
-      border: 1px solid var(--line);
-      background: #fbfcff;
-      border-radius: 14px;
-      padding: 12px;
-    }
-
-    .source-row strong { font-size: 14px; }
-    .source-row span { font-size: 13px; color: var(--text-soft); }
 
     .pill {
       display: inline-flex;
@@ -431,757 +292,722 @@
       justify-content: center;
       border-radius: 999px;
       padding: 6px 10px;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      border: 1px solid transparent;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .02em;
       white-space: nowrap;
+      border: 1px solid transparent;
     }
 
-    .pill-blue { background: rgba(14,165,233,.10); color: #0a7fb3; border-color: rgba(14,165,233,.18); }
-    .pill-indigo { background: rgba(79,70,229,.09); color: #4f46e5; border-color: rgba(79,70,229,.18); }
-    .pill-green { background: rgba(15,159,110,.10); color: var(--ok); border-color: rgba(15,159,110,.16); }
-    .pill-orange { background: rgba(201,122,0,.10); color: var(--warn); border-color: rgba(201,122,0,.16); }
-    .pill-red { background: rgba(197,59,76,.10); color: var(--danger); border-color: rgba(197,59,76,.16); }
+    .pill.blue { background: var(--blue-soft); color: var(--blue); }
+    .pill.green { background: var(--green-soft); color: var(--green); }
+    .pill.red { background: var(--red-soft); color: var(--red); }
+    .pill.amber { background: var(--amber-soft); color: var(--amber); }
 
-    .article {
-      border: 1px solid var(--line);
+    .action-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease, background .16s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 10px 22px rgba(37,99,235,.18);
+    }
+    .btn.ghost {
+      background: white;
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .btn:disabled {
+      opacity: .55;
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .hidden { display: none !important; }
+
+    .flash {
+      animation: fadeIn .35s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .alert {
       border-radius: 18px;
-      background: linear-gradient(180deg, #fff, #fbfcff);
+      padding: 16px 18px;
+      border: 1px solid transparent;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .alert.red { background: var(--red-soft); border-color: rgba(220,38,38,.20); color: #7f1d1d; }
+    .alert.amber { background: var(--amber-soft); border-color: rgba(217,119,6,.20); color: #92400e; }
+    .alert.green { background: var(--green-soft); border-color: rgba(22,163,74,.18); color: #166534; }
+    .alert.blue { background: var(--blue-soft); border-color: rgba(37,99,235,.18); color: #1d4ed8; }
+
+    .source-list { display: grid; gap: 10px; }
+    .source-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: #fff;
+    }
+
+    .source-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .source-icon.pdf { background: #ef4444; }
+    .source-icon.doc { background: #2563eb; }
+    .source-icon.xls { background: #16a34a; }
+    .source-icon.mail { background: #d97706; }
+    .source-icon.wiki { background: #4f46e5; }
+
+    .writer-panel {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fff;
       overflow: hidden;
     }
 
-    .article-head {
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    .article-title {
-      font-size: 20px;
-      letter-spacing: -.03em;
-      margin: 0 0 4px;
-    }
-
-    .article-body {
+    .writer-content {
+      min-height: 420px;
+      max-height: 420px;
+      overflow: auto;
+      white-space: pre-wrap;
       padding: 18px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1f2937;
+      font-family: var(--sans);
+      background: #fcfcfd;
+    }
+
+    .typing-cursor::after {
+      content: '▋';
+      display: inline-block;
+      margin-left: 2px;
+      color: var(--blue);
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .chat-grid {
       display: grid;
+      grid-template-columns: 320px 1fr;
       gap: 14px;
     }
 
-    .article-section {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: white;
-    }
-
-    .article-section h5 {
-      margin: 0 0 8px;
-      font-size: 14px;
-      letter-spacing: -.01em;
-    }
-
-    .article-section p,
-    .article-section li {
-      color: var(--text-soft);
-      font-size: 14px;
-    }
-
-    .article-section ul {
-      margin: 0;
-      padding-left: 18px;
-      display: grid;
-      gap: 8px;
-    }
-
-    .evidence-grid {
-      display: grid;
-      gap: 10px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .evidence {
-      border: 1px dashed var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      background: #fafbff;
-    }
-
-    .evidence strong {
-      display: block;
-      font-size: 13px;
-      margin-bottom: 4px;
-    }
-
-    .evidence span {
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
-    .conflict-box {
-      border-left: 4px solid var(--danger);
-      background: #fff8f9;
-      border: 1px solid rgba(197,59,76,.16);
-      border-left-width: 4px;
-      border-radius: 16px;
-      padding: 16px;
-    }
-
-    .gap-box {
-      border-left: 4px solid var(--warn);
-      background: #fffaf3;
-      border: 1px solid rgba(201,122,0,.16);
-      border-left-width: 4px;
-      border-radius: 16px;
-      padding: 16px;
-    }
-
-    .verifier {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 16px;
-    }
-
-    .person {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px;
-      background: #fbfcff;
-    }
-
-    .person-avatar {
+    .avatar {
       width: 56px;
       height: 56px;
       border-radius: 18px;
-      background: linear-gradient(135deg, rgba(79,70,229,.16), rgba(14,165,233,.18));
       display: grid;
       place-items: center;
-      font-weight: 700;
-      color: var(--indigo);
+      font-weight: 800;
+      color: var(--blue);
+      background: var(--blue-soft);
       margin-bottom: 12px;
     }
 
-    .person p { color: var(--text-soft); font-size: 14px; margin: 8px 0 0; }
-
-    .qa {
-      display: grid;
-      gap: 12px;
-    }
-
     .bubble {
-      border-radius: 16px;
-      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
       font-size: 14px;
-      border: 1px solid var(--line);
+      line-height: 1.65;
     }
 
-    .bubble.ai {
-      background: #f7f7ff;
-      border-color: rgba(79,70,229,.14);
-    }
+    .bubble.ai { background: #f8fbff; }
+    .bubble.human { background: #f7fcf8; border-color: rgba(22,163,74,.18); }
 
-    .bubble.human {
-      background: #f7fdf9;
-      border-color: rgba(15,159,110,.16);
-    }
-
-    .status-board {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .status {
+    .flow-box {
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px;
-      background: white;
-    }
-
-    .status strong {
-      display: block;
-      font-size: 26px;
-      letter-spacing: -.04em;
-      margin: 8px 0 4px;
-    }
-
-    .status span {
-      color: var(--text-soft);
-      font-size: 13px;
-    }
-
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      align-items: stretch;
-    }
-
-    .flow-step {
-      background: linear-gradient(180deg, #fff, #fafbff);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px;
+      background: #fff;
       position: relative;
     }
 
-    .flow-step::after {
+    .flow-box:not(:last-child)::after {
       content: '→';
       position: absolute;
       right: -10px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--text-soft);
-      font-size: 18px;
+      color: var(--muted);
+      font-size: 20px;
+      background: var(--bg);
+      padding: 0 4px;
     }
 
-    .flow-step:last-child::after { display: none; }
-
-    .flow-step small {
-      display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-      margin-bottom: 8px;
-    }
-
-    .flow-step strong {
-      display: block;
-      margin-bottom: 8px;
-      letter-spacing: -.02em;
-    }
-
-    .flow-step span {
-      color: var(--text-soft);
-      font-size: 13px;
-    }
-
-    .cta {
-      background: linear-gradient(135deg, #151d39 0%, #0f1730 100%);
-      color: white;
-      border-radius: 22px;
-      padding: 24px;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
+    .next-prev {
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 4px;
     }
-
-    .cta h4 {
-      margin: 0 0 10px;
-      font-size: clamp(24px, 3vw, 34px);
-      letter-spacing: -.03em;
-      line-height: 1.04;
-    }
-
-    .cta p {
-      margin: 0;
-      color: #b7c4dc;
-      max-width: 760px;
-    }
-
-    .cta-box {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .cta-box strong {
-      display: block;
-      margin-bottom: 10px;
-      color: white;
-    }
-
-    .cta-box ul {
-      margin: 0;
-      padding-left: 18px;
-      color: #c7d3ea;
-      display: grid;
-      gap: 8px;
-      font-size: 14px;
-    }
-
-    .hidden { display: none !important; }
 
     @media (max-width: 1080px) {
-      .hero-inner,
-      .grid,
-      .verifier,
-      .cta { grid-template-columns: 1fr; }
-      .hero-points,
-      .cards-3,
-      .status-board,
-      .flow { grid-template-columns: 1fr 1fr; }
+      .layout, .hero-grid, .chat-grid { grid-template-columns: 1fr; }
+      .cards-3, .metrics-4, .flow-4 { grid-template-columns: 1fr 1fr; }
+      .sidebar { position: static; }
     }
 
-    @media (max-width: 760px) {
-      .shell { padding: 18px 0 40px; }
-      .wrap { width: calc(100% - 20px); }
-      .hero-inner,
-      .stage-body,
-      .stage-head { padding: 16px; }
-      .hero-points,
-      .cards-2,
-      .cards-3,
-      .status-board,
-      .flow,
-      .evidence-grid { grid-template-columns: 1fr; }
-      .source-row { grid-template-columns: 1fr; }
-      .topbar { align-items: flex-start; flex-direction: column; }
-      .sidebar { position: static; }
-      .flow-step::after { display: none; }
+    @media (max-width: 740px) {
+      .wrap { width: calc(100% - 18px); }
+      .page-head, .page-body { padding-left: 16px; padding-right: 16px; }
+      .cards-2, .cards-3, .metrics-4, .flow-4 { grid-template-columns: 1fr; }
+      .source-row { grid-template-columns: auto 1fr; }
+      .source-row .pill { grid-column: 2; justify-self: start; }
+      .flow-box:not(:last-child)::after { display: none; }
+      .next-prev { flex-direction: column; align-items: stretch; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <div class="wrap">
-      <div class="topbar">
-        <div class="brand">
-          <div class="brand-badge">RQ</div>
-          <div>
-            <div>Requivo demo</div>
-            <div style="font-size:13px;color:var(--text-soft);font-weight:500;">Academic pilot use case</div>
-          </div>
-        </div>
-        <div class="top-actions">
-          <button class="btn btn-secondary" id="prevTop">Previous</button>
-          <button class="btn btn-primary" id="nextTop">Next step</button>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">RQ</div>
+        <div class="brand-meta">
+          Requivo interactive pilot demo
+          <small>Medical university · Sicily · academic + professor use case</small>
         </div>
       </div>
-
-      <section class="hero">
-        <div class="hero-inner">
-          <div>
-            <div class="eyebrow">Pilot partner walkthrough · University / research environment</div>
-            <h1>From fragmented academic procedures to governed research operations.</h1>
-            <p class="hero-sub">This demo shows how Requivo can turn dispersed grant, ethics, SOP, onboarding, and project-execution knowledge into a governed operational knowledge layer for an academic institution.</p>
-            <div class="hero-points">
-              <div class="point-card">
-                <small>Institution</small>
-                <strong>Helix University</strong>
-                <span>Faculty of Translational Life Sciences</span>
-              </div>
-              <div class="point-card">
-                <small>Target pain</small>
-                <strong>Research operations</strong>
-                <span>Grant preparation, ethics, SOPs, onboarding</span>
-              </div>
-              <div class="point-card">
-                <small>Pilot goal</small>
-                <strong>Governed clarity</strong>
-                <span>One verified procedure layer across teams</span>
-              </div>
-            </div>
-          </div>
-          <div class="hero-side">
-            <div class="side-label">Why this partner cares</div>
-            <div class="issue-list">
-              <div class="issue">
-                <strong>Knowledge is split across many repositories</strong>
-                <span>Grant templates, ethics documents, SharePoint folders, old proposals, SOP PDFs, email decisions, and internal wiki fragments.</span>
-              </div>
-              <div class="issue">
-                <strong>Critical process knowledge is expert-dependent</strong>
-                <span>Research managers and study coordinators know the real sequence, but much of it is not captured in one governed place.</span>
-              </div>
-              <div class="issue">
-                <strong>New staff need faster onboarding</strong>
-                <span>Postdocs, project managers, and PhD candidates lose time trying to reconstruct submission and study-startup logic.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="grid">
-        <aside class="sidebar">
-          <h2>Demo flow</h2>
-          <div class="step-nav" id="stepNav"></div>
-          <div class="sidebar-box">
-            <strong style="display:block;color:var(--text);margin-bottom:6px;">Suggested pilot scope</strong>
-            1 faculty or institute · 1 operational process family · 1 controlled corpus · expert validation loop with 2–3 academic stakeholders.
-          </div>
-        </aside>
-
-        <main class="stage">
-          <div class="stage-head">
-            <small id="stageKicker">Step 1</small>
-            <h3 id="stageTitle">Title</h3>
-            <p id="stageLead">Lead text</p>
-          </div>
-          <div class="stage-body" id="stageBody"></div>
-        </main>
+      <div class="action-row">
+        <a class="btn ghost" href="#/meet-the-customer">Start</a>
       </div>
     </div>
+  </header>
+
+  <div class="wrap layout">
+    <aside class="sidebar">
+      <h2>Demo pages</h2>
+      <nav class="nav-list" id="navList"></nav>
+      <div class="sidebar-note">
+        <strong style="display:block;color:var(--text);margin-bottom:6px;">Scenario</strong>
+        Pilot partner: a medical university in Sicily. Two connected use cases: institutional research administration and professor-side lesson preparation for students.
+      </div>
+    </aside>
+
+    <main class="page">
+      <div class="page-head">
+        <div class="kicker" id="pageKicker">Meet the customer</div>
+        <h1 id="pageTitle">Title</h1>
+        <p class="lead" id="pageLead">Lead</p>
+      </div>
+      <div class="page-body" id="pageBody"></div>
+    </main>
   </div>
 
   <script>
-    const steps = [
-      {
-        kicker: 'Meet the customer',
-        title: 'A realistic academic pilot partner with fragmented research operations knowledge',
-        lead: 'Helix University’s Faculty of Translational Life Sciences runs collaborative research projects, clinical studies, and competitive grant applications. The operational problem is not a lack of documents, but the absence of one governed and reusable knowledge layer across grant, ethics, SOP, and onboarding workflows.',
-        body: `
-          <div class="cards-3">
-            <div class="card">
-              <div class="meta">Institution profile</div>
-              <h4>Academic environment</h4>
-              <p>One faculty, 11 research groups, 3 core facilities, clinical collaborations, and multiple parallel funding and compliance obligations.</p>
-            </div>
-            <div class="card">
-              <div class="meta">Operational pain</div>
-              <h4>Process knowledge is scattered</h4>
-              <p>Grant preparation, ethics submission, data handling, and project startup steps are split across tools, documents, and people.</p>
-            </div>
-            <div class="card">
-              <div class="meta">Pilot intention</div>
-              <h4>One governed procedure layer</h4>
-              <p>The pilot focuses on one operational family: preparing and launching externally funded research projects.</p>
-            </div>
-          </div>
-          <div class="cards-2">
-            <div class="card">
-              <div class="meta">Symptoms</div>
-              <ul class="list">
-                <li><strong>Duplicate templates and outdated guidance</strong><span>Teams use different versions of the same grant and ethics materials.</span></li>
-                <li><strong>Critical steps remain implicit</strong><span>Experienced staff know what really happens, but new staff reconstruct it manually.</span></li>
-                <li><strong>Cross-functional handover is weak</strong><span>PIs, grants office, ethics support, and project managers work from overlapping but non-aligned sources.</span></li>
-              </ul>
-            </div>
-            <div class="card">
-              <div class="meta">Pilot actors</div>
-              <ul class="list">
-                <li><strong>Research Support Office</strong><span>Owns templates, deadlines, and internal submission guidance.</span></li>
-                <li><strong>Ethics / Compliance Coordinator</strong><span>Clarifies which approvals and documents are actually required.</span></li>
-                <li><strong>Senior Project Manager</strong><span>Knows the operational sequence from proposal to project startup.</span></li>
-              </ul>
-            </div>
-          </div>
-        `
-      },
-      {
-        kicker: 'Step 1 · Ingestion',
-        title: 'Requivo ingests fragmented academic source material from across the institution',
-        lead: 'The pilot begins by connecting the institution’s real evidence sources. The goal is not to assume that the corpus is clean, but to bring fragmented operational evidence into one analysable context.',
-        body: `
-          <div class="sources">
-            <div class="source-row">
-              <div><strong>SharePoint / Teams folders</strong></div>
-              <span>Grant templates, submission checklists, internal approval forms, budget examples</span>
-              <div class="pill pill-blue">312 files</div>
-            </div>
-            <div class="source-row">
-              <div><strong>PDF / Word SOP archive</strong></div>
-              <span>Ethics SOPs, data-management rules, study-startup instructions, document naming standards</span>
-              <div class="pill pill-blue">184 files</div>
-            </div>
-            <div class="source-row">
-              <div><strong>Old proposals and annexes</strong></div>
-              <span>Successful Horizon Europe, national grant, and foundation submissions used as historical references</span>
-              <div class="pill pill-indigo">126 records</div>
-            </div>
-            <div class="source-row">
-              <div><strong>Internal wiki / FAQ</strong></div>
-              <span>Scattered institutional guidance with partial duplication and missing ownership</span>
-              <div class="pill pill-indigo">74 pages</div>
-            </div>
-            <div class="source-row">
-              <div><strong>Email-derived decisions</strong></div>
-              <span>Clarifications on deadline logic, internal signatures, ethics routing, and deviations from written SOPs</span>
-              <div class="pill pill-orange">58 decision items</div>
-            </div>
-            <div class="source-row">
-              <div><strong>Role-based expert input</strong></div>
-              <span>Structured knowledge from research managers and ethics staff captured during pilot elicitation</span>
-              <div class="pill pill-green">23 elicited items</div>
-            </div>
-          </div>
-          <div class="cards-3">
-            <div class="card"><div class="meta">Evidence objects</div><h4>777</h4><p>Total initial pilot corpus objects normalised into one machine-processable knowledge context.</p></div>
-            <div class="card"><div class="meta">Operational family</div><h4>Grant-to-startup process</h4><p>The pilot scope covers pre-award, ethics preparation, and project startup for external research funding.</p></div>
-            <div class="card"><div class="meta">Why this matters</div><h4>Messy by design</h4><p>The value is not in a clean demo dataset, but in handling mixed real-world academic evidence.</p></div>
-          </div>
-        `
-      },
-      {
-        kicker: 'Step 2 · Knowledge Writer',
-        title: 'Requivo generates a structured academic operational article from fragmented evidence',
-        lead: 'Using the ingested evidence, Requivo creates a first structured operational article. In this pilot, the generated article addresses one high-value institutional process: how to prepare and launch an externally funded research project.',
-        body: `
-          <div class="article">
-            <div class="article-head">
-              <div>
-                <div class="meta">Generated draft article</div>
-                <h4 class="article-title">Externally Funded Research Project Startup Procedure</h4>
-                <div style="font-size:13px;color:var(--text-soft);">Draft assembled from 8 evidence groups · version 0.8 · pending expert validation</div>
-              </div>
-              <div class="pill pill-indigo">Knowledge Writer</div>
-            </div>
-            <div class="article-body">
-              <div class="article-section">
-                <h5>Purpose</h5>
-                <p>This procedure describes the internal sequence from near-final grant application to formal project startup, including internal approvals, ethics review preparation, data-management setup, and kickoff readiness.</p>
-              </div>
-              <div class="article-section">
-                <h5>Draft process flow</h5>
-                <ul>
-                  <li>Confirm funder deadline, internal pre-review deadline, and faculty sign-off route.</li>
-                  <li>Prepare budget and partner documentation using the current institutional template set.</li>
-                  <li>Determine whether ethics pre-screening is required before submission.</li>
-                  <li>Create project folder structure and initial document register for funded projects.</li>
-                  <li>After award, initiate startup checklist: grant agreement, ethics package, DMP baseline, financial code, and project kickoff meeting.</li>
-                </ul>
-              </div>
-              <div class="article-section">
-                <h5>Why this is already useful</h5>
-                <p>The article pulls one operational narrative out of otherwise disconnected templates, SOPs, wiki notes, and expert-derived evidence. It is not yet final, but it is already reviewable, traceable, and much easier to validate than the raw corpus.</p>
-              </div>
-            </div>
-          </div>
-          <div class="evidence-grid">
-            <div class="evidence"><strong>Source cluster A</strong><span>Faculty grant checklist 2024, budget annex guide, internal sign-off form</span></div>
-            <div class="evidence"><strong>Source cluster B</strong><span>Ethics submission SOP, pre-screen email clarification, study document template</span></div>
-            <div class="evidence"><strong>Source cluster C</strong><span>Old Horizon Europe proposal package and funded-project onboarding notes</span></div>
-            <div class="evidence"><strong>Source cluster D</strong><span>Research manager elicitation answers on actual institutional practice</span></div>
-          </div>
-        `
-      },
-      {
-        kicker: 'Step 3 · Conflict & gap detection',
-        title: 'Requivo surfaces what is missing, contradictory, or weakly governed',
-        lead: 'The value is not only that Requivo generates a structured article, but that it also surfaces the unresolved areas that matter operationally. In this pilot, it detects both a conflict and a critical gap.',
-        body: `
-          <div class="cards-2">
-            <div class="conflict-box">
-              <div class="meta">Conflict detected</div>
-              <h4 style="margin:0 0 8px;">When is ethics pre-screening required?</h4>
-              <p style="margin:0 0 10px;color:var(--text-soft);">Three evidence sources imply different rules for externally funded projects involving patient data.</p>
-              <ul style="margin:0;padding-left:18px;color:var(--text-soft);display:grid;gap:8px;">
-                <li>Old SOP says ethics pre-screening is always required before internal submission.</li>
-                <li>FAQ page says it is only required after confirmation of funding.</li>
-                <li>Email decision from coordinator says it depends on study type and data category.</li>
-              </ul>
-            </div>
-            <div class="gap-box">
-              <div class="meta">Gap detected</div>
-              <h4 style="margin:0 0 8px;">No governed owner for startup document register</h4>
-              <p style="margin:0;color:var(--text-soft);">The corpus mentions the need for a project startup document register, but does not define who creates it, when it is opened, or which template is current.</p>
-            </div>
-          </div>
-          <div class="cards-3">
-            <div class="card">
-              <div class="meta">Why this matters</div>
-              <h4>Operational risk</h4>
-              <p>Without this clarification, teams may miss ethics timing requirements or use outdated startup documentation logic.</p>
-            </div>
-            <div class="card">
-              <div class="meta">What Requivo adds</div>
-              <h4>Structured escalation</h4>
-              <p>Instead of hiding ambiguity, the system isolates the unresolved issue and turns it into a reviewable validation task.</p>
-            </div>
-            <div class="card">
-              <div class="meta">Academic relevance</div>
-              <h4>Governance before AI reuse</h4>
-              <p>This is particularly relevant where institutions want AI-supported access without spreading unverified procedural content.</p>
-            </div>
-          </div>
-        `
-      },
-      {
-        kicker: 'Step 4 · Knowledge Verifier',
-        title: 'The right academic expert receives a focused validation request',
-        lead: 'Requivo routes the unresolved issue to the most relevant expert, instead of requiring broad manual review. In this pilot, the validation request goes to the Research Operations & Ethics Coordinator.',
-        body: `
-          <div class="verifier">
-            <div class="person">
-              <div class="person-avatar">EM</div>
-              <h4 style="margin:0;">Dr. Eva Marković</h4>
-              <div class="meta" style="margin-top:8px;">Research Operations & Ethics Coordinator</div>
-              <p>Relevant because she owns the ethics-routing practice, startup document logic, and recent process clarifications that are only partially reflected in formal SOPs.</p>
-            </div>
-            <div class="qa">
-              <div class="bubble ai">
-                <strong style="display:block;margin-bottom:6px;">Requivo validation request</strong>
-                Three sources disagree on whether ethics pre-screening is required before internal submission for externally funded projects involving patient data. Please confirm the current rule and specify who opens the project startup document register.
-              </div>
-              <div class="bubble human">
-                <strong style="display:block;margin-bottom:6px;">Expert answer</strong>
-                Ethics pre-screening is not universally required before internal submission. It is required before submission only for projects involving identifiable patient data or invasive procedures. For other cases, it may begin after funding confirmation. The startup document register is opened by the assigned project manager immediately after award notification using the current faculty template “Startup Register v3”.
-              </div>
-              <div class="bubble ai">
-                <strong style="display:block;margin-bottom:6px;">Governed update</strong>
-                Conflict resolved. Gap filled. The generated article is updated, trace-linked to the validation response, and marked as verified for the relevant process section.
-              </div>
-            </div>
-          </div>
-        `
-      },
-      {
-        kicker: 'Step 5 · Governed knowledge',
-        title: 'A governed academic procedure layer is created from fragmented evidence',
-        lead: 'After validation, the pilot use case is no longer just a generated draft. It becomes a governed operational knowledge object: structured, validated, traceable, and reusable across institutional workflows.',
-        body: `
-          <div class="status-board">
-            <div class="status"><div class="meta">Process status</div><strong>Verified</strong><span>Core startup logic confirmed by responsible academic expert</span></div>
-            <div class="status"><div class="meta">Coverage</div><strong>84%</strong><span>Most critical process sections covered in first pilot corpus</span></div>
-            <div class="status"><div class="meta">Conflicts resolved</div><strong>1</strong><span>Ethics pre-screening rule clarified and trace-linked</span></div>
-            <div class="status"><div class="meta">Gaps filled</div><strong>1</strong><span>Startup register ownership and template defined</span></div>
-          </div>
-          <div class="flow">
-            <div class="flow-step">
-              <small>Source evidence</small>
-              <strong>Templates, SOPs, old proposals, wiki fragments, email decisions</strong>
-              <span>Fragmented and partially inconsistent academic operational evidence.</span>
-            </div>
-            <div class="flow-step">
-              <small>Structured draft</small>
-              <strong>Generated startup procedure</strong>
-              <span>One reviewable article instead of many disconnected references.</span>
-            </div>
-            <div class="flow-step">
-              <small>Expert validation</small>
-              <strong>Conflict and gap resolution</strong>
-              <span>The right expert confirms actual current institutional logic.</span>
-            </div>
-            <div class="flow-step">
-              <small>Governed layer</small>
-              <strong>Reusable operational knowledge object</strong>
-              <span>Validated, maintainable, and traceable for later reuse.</span>
-            </div>
-          </div>
-        `
-      },
-      {
-        kicker: 'Step 6 · Application layer',
-        title: 'One governed layer can support multiple academic workflows',
-        lead: 'The pilot is not only about one article. Once Requivo creates a governed operational knowledge layer, multiple institutional applications can build on top of it.',
-        body: `
-          <div class="cards-2">
-            <div class="card">
-              <div class="meta">Knowledge Writer</div>
-              <h4>Generate and update structured academic procedures</h4>
-              <p>Create and maintain faculty-specific guidance for grants, ethics, onboarding, SOP navigation, or study startup based on governed institutional evidence.</p>
-            </div>
-            <div class="card">
-              <div class="meta">Knowledge Manager</div>
-              <h4>Identify duplication, outdated instructions, and weakly covered areas</h4>
-              <p>Surface conflicting guidance across old templates, wiki pages, archived SOPs, and scattered process notes.</p>
-            </div>
-            <div class="card">
-              <div class="meta">Knowledge Verifier</div>
-              <h4>Route unresolved issues to the right academic expert</h4>
-              <p>Turn ambiguity into explicit validation tasks for grants officers, ethics coordinators, project managers, or senior administrators.</p>
-            </div>
-            <div class="card">
-              <div class="meta">Controlled AI / MCP access</div>
-              <h4>Expose governed institutional knowledge instead of raw document chaos</h4>
-              <p>Enable safer internal AI use for staff who need reliable operational guidance without querying ungoverned source corpora.</p>
-            </div>
-          </div>
-          <div class="cards-3">
-            <div class="card"><div class="meta">Pilot extension path</div><h4>Grant preparation</h4><p>Submission workflow, budgeting logic, internal reviews, annex package preparation.</p></div>
-            <div class="card"><div class="meta">Pilot extension path</div><h4>Study startup</h4><p>Ethics, site initiation, DMP baseline, startup document register, kickoff readiness.</p></div>
-            <div class="card"><div class="meta">Pilot extension path</div><h4>Research onboarding</h4><p>What new postdocs, coordinators, and PhD candidates need to do and in what order.</p></div>
-          </div>
-        `
-      },
-      {
-        kicker: 'Get started',
-        title: 'A concrete pilot offer for an academic partner',
-        lead: 'The pilot is designed to be narrow, realistic, and useful. The purpose is not to digitise everything at once, but to prove that fragmented academic evidence can be turned into governed operational knowledge for one high-value institutional process family.',
-        body: `
-          <div class="cta">
-            <div>
-              <h4>Suggested academic pilot</h4>
-              <p>Start with one faculty, institute, or research-support unit. Focus on one operational process family: grant preparation, project startup, ethics routing, or research onboarding. Use a controlled corpus, define clear validation owners, and produce one governed knowledge layer that can support multiple later applications.</p>
-            </div>
-            <div class="cta-box">
-              <strong>Pilot structure</strong>
-              <ul>
-                <li>1 selected institutional use case</li>
-                <li>1 controlled evidence corpus</li>
-                <li>2–3 expert validators</li>
-                <li>1 generated and governed process layer</li>
-                <li>Clear review of duplication, gaps, and conflicts</li>
-              </ul>
-            </div>
-          </div>
-          <div class="cards-3">
-            <div class="card"><div class="meta">Pilot question</div><h4>Can Requivo reduce reconstruction effort?</h4><p>Does the institution need less manual effort to understand how the process really works?</p></div>
-            <div class="card"><div class="meta">Pilot question</div><h4>Can it expose operational ambiguity early?</h4><p>Does the pilot surface conflicts and gaps before they create administrative or compliance problems?</p></div>
-            <div class="card"><div class="meta">Pilot question</div><h4>Can one governed layer support broader reuse?</h4><p>Can the same governed knowledge object support onboarding, AI access, and process maintenance later on?</p></div>
-          </div>
-        `
-      }
+    const routes = [
+      { id: 'meet-the-customer', kicker: 'Meet the customer', title: 'Università Medica del Mediterraneo, Catania', lead: 'A fictional Sicilian medical university representing the kind of academic pilot partner Requivo could support: fragmented institutional procedures, dispersed project knowledge, and growing pressure to operationalise research, teaching, and compliance knowledge.', render: renderMeetCustomer },
+      { id: 'ingestion', kicker: 'Step 1 · Ingestion', title: 'Connect what the university already has', lead: 'Requivo ingests the institution’s existing academic and administrative evidence: internal SOPs, ethics guidance, legacy grant files, lesson materials, and email-derived process clarifications. No migration-first project is required.', render: renderIngestion },
+      { id: 'writer-admin', kicker: 'Step 2 · Knowledge Writer', title: 'Administrative wiki articles nobody had to write', lead: 'Requivo detects process topics across the university’s source material and generates structured procedural articles with steps, ownership logic, and evidence references.', render: renderWriterAdmin },
+      { id: 'conflicts', kicker: 'Step 3 · Conflict & gap detection', title: 'Surface contradictions and missing institutional logic', lead: 'The system does not only generate drafts. It also highlights where the university’s operational knowledge is contradictory, outdated, or incomplete.', render: renderConflicts },
+      { id: 'verifier', kicker: 'Step 4 · Knowledge Verifier', title: 'Ask the right academic expert instead of everyone', lead: 'Requivo routes unresolved issues to the most relevant person: in this scenario, the Research Projects & Ethics Coordinator who knows the actual operating logic beyond the written documents.', render: renderVerifier },
+      { id: 'governed', kicker: 'Step 5 · Governed knowledge', title: 'Create a governed operational layer for the institution', lead: 'After verification, the generated article becomes a governed operational knowledge object: structured, validated, traceable, and reusable across institutional workflows and internal AI access.', render: renderGoverned },
+      { id: 'professor', kicker: 'Professor use case', title: 'Prepare student-facing teaching material from fragmented academic sources', lead: 'A connected professor-side use case: one professor wants help preparing structured lessons for students from fragmented notes, slides, publications, and clinical teaching material.', render: renderProfessor },
+      { id: 'get-started', kicker: 'Get started', title: 'Pilot structure for a Sicilian medical university', lead: 'The pilot is intentionally narrow and concrete: one institutional process family plus one professor-side teaching use case, each showing how fragmented academic evidence can become governed and reusable knowledge.', render: renderGetStarted }
     ];
 
-    const stepNav = document.getElementById('stepNav');
-    const stageKicker = document.getElementById('stageKicker');
-    const stageTitle = document.getElementById('stageTitle');
-    const stageLead = document.getElementById('stageLead');
-    const stageBody = document.getElementById('stageBody');
-    const prevTop = document.getElementById('prevTop');
-    const nextTop = document.getElementById('nextTop');
+    const state = {
+      ingestionStarted: false,
+      ingestionFinished: false,
+      adminWriting: false,
+      adminWritten: false,
+      professorWriting: false,
+      professorWritten: false
+    };
 
-    let current = 0;
+    const navList = document.getElementById('navList');
+    const pageKicker = document.getElementById('pageKicker');
+    const pageTitle = document.getElementById('pageTitle');
+    const pageLead = document.getElementById('pageLead');
+    const pageBody = document.getElementById('pageBody');
 
-    function renderNav() {
-      stepNav.innerHTML = steps.map((step, index) => `
-        <button class="step-btn ${index === current ? 'active' : ''}" data-step="${index}">
-          <small>${index === 0 ? 'Intro' : `Step ${index}`}</small>
-          <strong>${step.kicker}</strong>
-        </button>
-      `).join('');
-
-      stepNav.querySelectorAll('.step-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          current = Number(btn.dataset.step);
-          render();
-        });
-      });
+    function currentRouteId() {
+      return (location.hash || '#/meet-the-customer').replace('#/', '');
     }
 
-    function renderStage() {
-      const step = steps[current];
-      stageKicker.textContent = step.kicker;
-      stageTitle.textContent = step.title;
-      stageLead.textContent = step.lead;
-      stageBody.innerHTML = step.body;
-      prevTop.disabled = current === 0;
-      nextTop.textContent = current === steps.length - 1 ? 'Restart demo' : 'Next step';
+    function getRouteIndex(id) {
+      return routes.findIndex(r => r.id === id);
+    }
+
+    function routeById(id) {
+      return routes.find(r => r.id === id) || routes[0];
+    }
+
+    function navigate(id) {
+      location.hash = '#/' + id;
+    }
+
+    function renderNav(activeId) {
+      navList.innerHTML = routes.map((r, i) => `
+        <a href="#/${r.id}" class="nav-link ${r.id === activeId ? 'active' : ''}">
+          <small>${i === 0 ? 'Intro' : i === 6 ? 'Teaching' : i === 7 ? 'Pilot' : 'Step ' + i}</small>
+          <strong>${r.kicker}</strong>
+        </a>
+      `).join('');
+    }
+
+    function nextPrev(activeId) {
+      const index = getRouteIndex(activeId);
+      const prev = index > 0 ? routes[index - 1] : null;
+      const next = index < routes.length - 1 ? routes[index + 1] : null;
+      return `
+        <div class="next-prev">
+          ${prev ? `<a class="btn ghost" href="#/${prev.id}">← ${prev.kicker}</a>` : `<span></span>`}
+          ${next ? `<a class="btn primary" href="#/${next.id}">${next.kicker} →</a>` : `<a class="btn primary" href="#/meet-the-customer">Restart demo</a>`}
+        </div>
+      `;
     }
 
     function render() {
-      renderNav();
-      renderStage();
+      const route = routeById(currentRouteId());
+      renderNav(route.id);
+      pageKicker.textContent = route.kicker;
+      pageTitle.textContent = route.title;
+      pageLead.textContent = route.lead;
+      pageBody.innerHTML = route.render(route.id);
+      attachInteractions(route.id);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    prevTop.addEventListener('click', () => {
-      if (current > 0) {
-        current -= 1;
-        render();
-      }
-    });
+    function renderMeetCustomer(id) {
+      return `
+        <div class="section-card">
+          <div class="section-head"><div class="section-title">University profile</div></div>
+          <div class="section-body hero-grid">
+            <div class="box">
+              <h3>Università Medica del Mediterraneo</h3>
+              <p class="muted" style="margin-bottom:14px;">Fictional Sicilian medical university · representative of research-intensive, clinically connected academic institutions.</p>
+              <div class="metrics-4">
+                <div class="box"><span class="value">1948</span><p>Founded in Sicily</p></div>
+                <div class="box"><span class="value">12</span><p>Departments and institutes</p></div>
+                <div class="box"><span class="value">4</span><p>Core research offices</p></div>
+                <div class="box"><span class="value">EU + national</span><p>Grant portfolio</p></div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="section-title" style="margin-bottom:10px;color:#374151;">Representative stakeholders</div>
+              <ul>
+                <li><strong>Prof. Giulia Rinaldi</strong> — clinical professor and lecturer</li>
+                <li><strong>Dr. Elena Messina</strong> — Research Projects & Ethics Coordinator</li>
+                <li><strong>Dr. Paolo Greco</strong> — junior project manager onboarding into EU grant operations</li>
+                <li><strong>Department teams</strong> — faculty, coordinators, PhD students, research administrators</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    nextTop.addEventListener('click', () => {
-      if (current < steps.length - 1) {
-        current += 1;
-      } else {
-        current = 0;
-      }
-      render();
-    });
+        <div class="section-card">
+          <div class="section-head">
+            <div class="section-title">But under the surface...</div>
+            <button class="btn primary" id="showCostBtn">See the cost of inaction</button>
+          </div>
+          <div class="section-body">
+            <div id="costPlaceholder" class="box">
+              <h4>Before the click</h4>
+              <p>The institution looks organised from the outside. The real issue appears when you ask how externally funded projects actually move from proposal to ethics to startup, and how teaching material is prepared across disconnected academic sources.</p>
+            </div>
 
+            <div id="costResults" class="hidden flash">
+              <div class="metrics-4" style="margin-bottom:14px;">
+                <div class="box"><span class="value">6+</span><p>Disconnected knowledge sources</p></div>
+                <div class="box"><span class="value">2.1 h/day</span><p>Time staff spend reconstructing process logic</p></div>
+                <div class="box"><span class="value">41%</span><p>SOP / guidance files not reviewed in over 2 years</p></div>
+                <div class="box"><span class="value">1</span><p>Recent grant-startup delay caused by conflicting guidance</p></div>
+              </div>
+              <div class="alert red" style="margin-bottom:12px;"><strong>Operational incident:</strong> one project team prepared ethics timing based on an outdated faculty note while the research office followed a newer email rule. Internal review had to be repeated and the startup timeline slipped.</div>
+              <div class="alert amber" style="margin-bottom:12px;"><strong>Teaching risk:</strong> Prof. Rinaldi prepares lessons from her own slide decks, papers, and notes. When she delegates teaching support, junior staff need hours to reconstruct what is current, what is essential, and what should not be taught as settled guidance.</div>
+              <div class="alert red"><strong>If Elena and senior faculty remain the only real holders of procedural and pedagogical context, onboarding slows, inconsistency grows, and institutional memory stays fragile.</strong></div>
+            </div>
+          </div>
+        </div>
+
+        ${nextPrev(id)}
+      `;
+    }
+
+    function renderIngestion(id) {
+      return `
+        <div class="section-card">
+          <div class="section-head">
+            <div class="section-title">Source connectors</div>
+            <button class="btn primary" id="ingestBtn" ${state.ingestionFinished ? 'disabled' : ''}>Connect & normalise</button>
+          </div>
+          <div class="section-body">
+            <div class="source-list" id="sourceList">
+              ${renderSourceRows(0)}
+            </div>
+            <div id="ingestSummary" class="hidden flash" style="margin-top:14px;">
+              <div class="alert green"><strong>824 evidence objects</strong> normalised from 7 academic sources. Each is typed, dated, linked to origin, and ready for knowledge construction.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-3">
+          <div class="box">
+            <h4>Administrative use case corpus</h4>
+            <p>Grant templates, ethics guidance, startup checklists, project-office emails, archived proposals, and internal wiki fragments.</p>
+          </div>
+          <div class="box">
+            <h4>Professor use case corpus</h4>
+            <p>Lecture slides, professor notes, selected papers, syllabus fragments, clinical teaching examples, and assessment guidance.</p>
+          </div>
+          <div class="box">
+            <h4>Why this matters</h4>
+            <p>The pilot starts from what the university already has, not from an idealised cleaned dataset.</p>
+          </div>
+        </div>
+
+        ${nextPrev(id)}
+      `;
+    }
+
+    function renderWriterAdmin(id) {
+      return `
+        <div class="section-card">
+          <div class="section-head">
+            <div class="section-title">Knowledge Writer</div>
+            <button class="btn primary" id="writeAdminBtn" ${(state.adminWritten || state.adminWriting) ? 'disabled' : ''}>Write wiki article</button>
+          </div>
+          <div class="section-body">
+            <div class="writer-panel">
+              <div class="section-head" style="border-bottom:1px solid var(--line);padding:12px 16px;">
+                <div class="section-title">Generated institutional procedure</div>
+                <div class="pill blue">Auto-generated draft</div>
+              </div>
+              <div class="writer-content ${state.adminWriting && !state.adminWritten ? 'typing-cursor' : ''}" id="adminWriterOutput">${state.adminWritten ? escapeHtml(adminArticleText) : 'Click “Write wiki article” to generate a governed draft from fragmented institutional evidence.'}</div>
+            </div>
+            <div id="adminWriterSummary" class="${state.adminWritten ? '' : 'hidden'} flash" style="margin-top:14px;">
+              <div class="alert green"><strong>1 wiki article generated</strong> with step logic, role references, and evidence citations. Status: Draft — awaiting institutional verification.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-2">
+          <div class="box">
+            <h4>Article topic</h4>
+            <p>“Externally Funded Research Project Startup Procedure” — a governed draft connecting proposal finalisation, ethics preparation, internal sign-off, and post-award startup.</p>
+          </div>
+          <div class="box">
+            <h4>What makes it useful</h4>
+            <p>The university gets one reviewable, traceable operational article instead of many scattered, partially contradictory source fragments.</p>
+          </div>
+        </div>
+
+        ${nextPrev(id)}
+      `;
+    }
+
+    function renderConflicts(id) {
+      return `
+        <div class="cards-2">
+          <div class="alert red">
+            <strong>Conflict detected:</strong> three institutional sources disagree on when ethics pre-screening must happen for externally funded studies involving patient data.
+            <ul style="margin:10px 0 0;padding-left:18px;display:grid;gap:8px;">
+              <li>Older SOP implies it must happen before internal proposal submission.</li>
+              <li>Updated FAQ suggests it may start only after funding confirmation.</li>
+              <li>Email clarification indicates it depends on study type and data category.</li>
+            </ul>
+          </div>
+          <div class="alert amber">
+            <strong>Gap detected:</strong> the evidence set refers to a startup document register but does not define who opens it, which template is authoritative, or when ownership passes from grants office to project manager.
+          </div>
+        </div>
+
+        <div class="cards-3">
+          <div class="box">
+            <h4>Why Requivo matters here</h4>
+            <p>It does not merely draft content. It surfaces the operational ambiguity that the university must resolve before reusing the knowledge confidently.</p>
+          </div>
+          <div class="box">
+            <h4>Why the pilot partner cares</h4>
+            <p>These are exactly the process inconsistencies that delay project startup, confuse junior staff, and weaken institutional onboarding.</p>
+          </div>
+          <div class="box">
+            <h4>Next step</h4>
+            <p>The unresolved issue becomes a targeted validation task for the most relevant academic expert, rather than a broad manual review across everyone.</p>
+          </div>
+        </div>
+
+        ${nextPrev(id)}
+      `;
+    }
+
+    function renderVerifier(id) {
+      return `
+        <div class="section-card">
+          <div class="section-head"><div class="section-title">Knowledge Verifier</div><div class="pill amber">Targeted expert review</div></div>
+          <div class="section-body chat-grid">
+            <div class="box">
+              <div class="avatar">EM</div>
+              <h3>Dr. Elena Messina</h3>
+              <p class="muted" style="margin-bottom:10px;">Research Projects & Ethics Coordinator</p>
+              <p>Relevant because she knows the current operational logic behind ethics routing, internal sign-off, and project startup — including the parts that never made it into fully governed written guidance.</p>
+            </div>
+            <div style="display:grid;gap:12px;">
+              <div class="bubble ai"><strong style="display:block;margin-bottom:6px;">Requivo validation request</strong>Three sources disagree on ethics timing for externally funded projects involving patient data. Please confirm the current rule and define who opens the startup document register and which template is authoritative.</div>
+              <div class="bubble human"><strong style="display:block;margin-bottom:6px;">Expert answer</strong>Ethics pre-screening is required before internal submission only for projects involving identifiable patient data or invasive procedures. In all other cases it can begin after award confirmation. The startup document register is opened by the assigned project manager immediately after award notice using “Startup Register v4”.</div>
+              <div class="bubble ai"><strong style="display:block;margin-bottom:6px;">Governed update</strong>Conflict resolved. Gap filled. The generated article is updated, linked to expert validation, and marked verified for the relevant process sections.</div>
+            </div>
+          </div>
+        </div>
+
+        ${nextPrev(id)}
+      `;
+    }
+
+    function renderGoverned(id) {
+      return `
+        <div class="metrics-4">
+          <div class="box"><span class="value">Verified</span><p>Core process sections validated by responsible expert</p></div>
+          <div class="box"><span class="value">86%</span><p>Initial process coverage within pilot corpus</p></div>
+          <div class="box"><span class="value">1</span><p>Conflict resolved</p></div>
+          <div class="box"><span class="value">1</span><p>Critical gap filled</p></div>
+        </div>
+
+        <div class="flow-4">
+          <div class="flow-box"><h4>Fragmented evidence</h4><p class="muted">SOPs, wiki pages, archived proposals, email clarifications, templates, expert memory.</p></div>
+          <div class="flow-box"><h4>Generated draft</h4><p class="muted">One structured operational article extracted from academic evidence.</p></div>
+          <div class="flow-box"><h4>Expert validation</h4><p class="muted">Conflict and gap resolution from the right institutional owner.</p></div>
+          <div class="flow-box"><h4>Governed layer</h4><p class="muted">Validated, traceable, reusable knowledge object for staff and internal AI access.</p></div>
+        </div>
+
+        <div class="cards-3">
+          <div class="box"><h4>Administrative onboarding</h4><p>Junior project managers can see how the process actually works without reconstructing it from scattered files.</p></div>
+          <div class="box"><h4>Institutional consistency</h4><p>Different offices no longer rely on conflicting procedural interpretations for the same project family.</p></div>
+          <div class="box"><h4>AI readiness</h4><p>Future internal AI access can point to governed knowledge instead of raw, contradictory document corpora.</p></div>
+        </div>
+
+        ${nextPrev(id)}
+      `;
+    }
+
+    function renderProfessor(id) {
+      return `
+        <div class="section-card">
+          <div class="section-head">
+            <div class="section-title">Professor-side use case</div>
+            <button class="btn primary" id="writeProfessorBtn" ${(state.professorWritten || state.professorWriting) ? 'disabled' : ''}>Prepare lesson</button>
+          </div>
+          <div class="section-body">
+            <div class="cards-2" style="margin-bottom:14px;">
+              <div class="box">
+                <h4>Professor need</h4>
+                <p>Prof. Giulia Rinaldi wants a tool that prepares structured teaching material for students from fragmented slide decks, lecture notes, selected papers, and clinical case references.</p>
+              </div>
+              <div class="box">
+                <h4>Why this fits Requivo</h4>
+                <p>The same core logic applies: fragmented academic evidence becomes a structured, reviewable, reusable teaching knowledge object instead of remaining distributed across personal folders and informal context.</p>
+              </div>
+            </div>
+
+            <div class="writer-panel">
+              <div class="section-head" style="border-bottom:1px solid var(--line);padding:12px 16px;">
+                <div class="section-title">Generated student lesson package</div>
+                <div class="pill blue">Professor workflow</div>
+              </div>
+              <div class="writer-content ${state.professorWriting && !state.professorWritten ? 'typing-cursor' : ''}" id="professorWriterOutput">${state.professorWritten ? escapeHtml(professorLessonText) : 'Click “Prepare lesson” to generate a structured student-ready lesson from fragmented professor-side sources.'}</div>
+            </div>
+            <div id="professorWriterSummary" class="${state.professorWritten ? '' : 'hidden'} flash" style="margin-top:14px;">
+              <div class="alert blue"><strong>Lesson package generated</strong> with learning objectives, lecture structure, key concepts, and recommended evidence basis. Status: Ready for professor review and refinement.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-3">
+          <div class="box"><h4>Input sources</h4><p>Prior-year lecture slides, draft notes, recent paper excerpts, syllabus fragments, clinical vignette examples.</p></div>
+          <div class="box"><h4>Output form</h4><p>Structured lesson outline with a clean teaching sequence rather than a raw document collage.</p></div>
+          <div class="box"><h4>Pilot relevance</h4><p>This expands the partner conversation beyond admin-only knowledge and shows direct faculty value.</p></div>
+        </div>
+
+        ${nextPrev(id)}
+      `;
+    }
+
+    function renderGetStarted(id) {
+      return `
+        <div class="cards-2">
+          <div class="box">
+            <h3>Pilot track A · Institutional operations</h3>
+            <ul>
+              <li>Scope one process family: externally funded project startup.</li>
+              <li>Connect controlled evidence corpus from grants, ethics, SOP, and wiki sources.</li>
+              <li>Generate one procedural article and validate it with 2–3 stakeholders.</li>
+              <li>Measure reduction in reconstruction effort and ambiguity.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Pilot track B · Professor teaching support</h3>
+            <ul>
+              <li>Scope one course or module.</li>
+              <li>Connect existing teaching sources: notes, slides, papers, cases.</li>
+              <li>Generate structured lesson packages for review.</li>
+              <li>Assess usefulness for lesson preparation and teaching consistency.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="alert green"><strong>Recommended pilot framing:</strong> one university, one administrative process family, one professor-side teaching workflow. This keeps the pilot concrete, credible, and highly demonstrable for a real academic partner in Sicily.</div>
+
+        <div class="cards-3">
+          <div class="box"><h4>What the partner sees</h4><p>Requivo is not just an AI writing tool. It is a system for turning fragmented academic evidence into governed, reusable operational knowledge.</p></div>
+          <div class="box"><h4>What you can show next</h4><p>Replace the fictional names with a more realistic partner profile and swap the texts for institution-specific terminology.</p></div>
+          <div class="box"><h4>Deployment note</h4><p>This demo uses separate hash-based subpages, which work well on GitHub Pages without server-side routing.</p></div>
+        </div>
+
+        ${nextPrev(id)}
+      `;
+    }
+
+    function renderSourceRows(count) {
+      const rows = [
+        { icon: 'doc', label: 'Grant_startup_checklist_v2.docx', tag: 'Procedure', meta: 'Research Office · 2024' },
+        { icon: 'pdf', label: 'Ethics_screening_SOP.pdf', tag: 'SOP', meta: 'Ethics Office · 2023' },
+        { icon: 'wiki', label: 'Project startup FAQ (wiki)', tag: 'Wiki', meta: 'Last edit 2024' },
+        { icon: 'mail', label: 'Re: ethics timing for patient-data studies', tag: 'Email decision', meta: 'E. Messina · Jan 2026' },
+        { icon: 'xls', label: 'Startup_Register_v3.xlsx', tag: 'Template', meta: 'Projects team archive' },
+        { icon: 'doc', label: 'Lecture notes — Clinical Research Methods', tag: 'Teaching', meta: 'Prof. Rinaldi' },
+        { icon: 'pdf', label: 'Selected paper pack — translational case studies', tag: 'Paper set', meta: 'Course materials' }
+      ];
+      return rows.slice(0, count).map(r => `
+        <div class="source-row flash">
+          <div class="source-icon ${r.icon}">${r.icon.toUpperCase().slice(0,3)}</div>
+          <div>
+            <strong style="display:block;margin-bottom:2px;">${r.label}</strong>
+            <span class="muted">${r.meta}</span>
+          </div>
+          <div class="pill blue">${r.tag}</div>
+        </div>
+      `).join('');
+    }
+
+    const adminArticleText = `Title: Externally Funded Research Project Startup Procedure\n\nPurpose\nThis article describes the operational sequence from near-final grant application to formal project startup for externally funded research projects at the university.\n\nDraft process steps\n1. Confirm the funder deadline, internal pre-review deadline, and faculty sign-off route.\n   Cited: grant_startup_checklist_v2.docx §1 + project startup FAQ\n\n2. Determine whether ethics pre-screening is needed before submission based on study type and data category.\n   Cited: Ethics_screening_SOP.pdf + email clarification (pending verification)\n\n3. Prepare internal budget and annex package using the current institutional template set.\n   Cited: Research Office template folder\n\n4. After award, open the startup document register and assign operational ownership.\n   Cited: Startup_Register_v3.xlsx (gap — authoritative version unclear)\n\n5. Initiate startup checklist: ethics package, DMP baseline, financial code, and kickoff meeting.\n   Cited: project startup FAQ + archived proposal onboarding notes\n\nStatus\nDraft generated from fragmented institutional evidence. Awaiting expert verification on ethics timing and startup register ownership.`;
+
+    const professorLessonText = `Lesson package: Clinical Research Methods — Session on Ethics, Data Governance, and Study Startup\n\nLearning objectives\n- Explain the difference between grant submission readiness and project startup readiness\n- Distinguish ethics pre-screening, formal ethics review, and operational startup activities\n- Understand why fragmented institutional knowledge creates delays in real research environments\n\nSuggested lecture structure\n1. Opening scenario: a funded medical research project fails to start on time because process knowledge is split across documents and people\n2. Core concepts: ethics timing, startup ownership, DMP baseline, institutional sign-off\n3. Case discussion: compare written SOP logic vs operational reality\n4. Student exercise: reconstruct a correct startup sequence from fragmented evidence\n5. Closing synthesis: why governed academic knowledge matters\n\nTeaching notes\n- Draw examples from professor slides, internal notes, and selected policy excerpts\n- Flag where local institutional practice may differ from general teaching principles\n- Use one real-world style vignette to connect methodology with operations\n\nRecommended evidence basis\nCited: prior-year lecture slides, professor notes, translational case study paper pack, ethics SOP excerpts, course outline fragments.`;
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function attachInteractions(routeId) {
+      const showCostBtn = document.getElementById('showCostBtn');
+      if (showCostBtn) {
+        showCostBtn.addEventListener('click', () => {
+          document.getElementById('costPlaceholder').classList.add('hidden');
+          document.getElementById('costResults').classList.remove('hidden');
+          showCostBtn.disabled = true;
+        });
+      }
+
+      const ingestBtn = document.getElementById('ingestBtn');
+      if (ingestBtn) {
+        ingestBtn.addEventListener('click', async () => {
+          if (state.ingestionFinished) return;
+          state.ingestionStarted = true;
+          ingestBtn.disabled = true;
+          const sourceList = document.getElementById('sourceList');
+          sourceList.innerHTML = '';
+          for (let i = 1; i <= 7; i++) {
+            sourceList.innerHTML = renderSourceRows(i);
+            await wait(260);
+          }
+          state.ingestionFinished = true;
+          document.getElementById('ingestSummary').classList.remove('hidden');
+        });
+      }
+
+      const writeAdminBtn = document.getElementById('writeAdminBtn');
+      if (writeAdminBtn) {
+        writeAdminBtn.addEventListener('click', async () => {
+          if (state.adminWritten || state.adminWriting) return;
+          state.adminWriting = true;
+          writeAdminBtn.disabled = true;
+          const out = document.getElementById('adminWriterOutput');
+          out.textContent = '';
+          out.classList.add('typing-cursor');
+          await typeText(out, adminArticleText, 10);
+          out.classList.remove('typing-cursor');
+          state.adminWriting = false;
+          state.adminWritten = true;
+          document.getElementById('adminWriterSummary').classList.remove('hidden');
+        });
+      }
+
+      const writeProfessorBtn = document.getElementById('writeProfessorBtn');
+      if (writeProfessorBtn) {
+        writeProfessorBtn.addEventListener('click', async () => {
+          if (state.professorWritten || state.professorWriting) return;
+          state.professorWriting = true;
+          writeProfessorBtn.disabled = true;
+          const out = document.getElementById('professorWriterOutput');
+          out.textContent = '';
+          out.classList.add('typing-cursor');
+          await typeText(out, professorLessonText, 10);
+          out.classList.remove('typing-cursor');
+          state.professorWriting = false;
+          state.professorWritten = true;
+          document.getElementById('professorWriterSummary').classList.remove('hidden');
+        });
+      }
+    }
+
+    async function typeText(el, text, delay = 12) {
+      for (let i = 0; i < text.length; i++) {
+        el.textContent += text[i];
+        if (i % 2 === 0) await wait(delay);
+      }
+    }
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    window.addEventListener('hashchange', render);
+    if (!location.hash) location.hash = '#/meet-the-customer';
     render();
   </script>
 </body>
