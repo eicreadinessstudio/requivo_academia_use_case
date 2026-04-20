@@ -59,11 +59,15 @@
       <section class="product-panel">
         <div class="product-head">
           <div class="product-label">Verification Queue</div>
+          <div style="display:flex;gap:6px;">
+            <span class="vpill auto">Auto-selected</span>
+            <span class="vpill pending" id="pendingPill">1 pending</span>
+          </div>
         </div>
         <div class="product-body">
           <div class="verifier-phone-layout">
 
-            <!-- Left: expert card + resolution result -->
+            <!-- Left: expert card + confirm button + resolution result -->
             <div>
               <div class="avatar-card">
                 <div class="avatar-badge">EM</div>
@@ -74,10 +78,10 @@
                   routing and project register ownership — including decisions that were
                   never formally documented.
                 </p>
-                <div class="verifier-pills">
-                  <span class="vpill auto">Auto-selected</span>
-                  <span class="vpill pending">1 pending</span>
-                </div>
+              </div>
+
+              <div class="verifier-confirm-area">
+                <button class="btn btn-primary" id="elenaConfirmBtn">Confirm</button>
               </div>
 
               <div id="elenaResult" class="elena-result hidden">
@@ -99,15 +103,19 @@
                     <div class="phone-msg-label">Validation request</div>
                     <p>Three sources disagree on ethics timing for externally funded studies involving patient data. Please confirm the current rule and project register ownership.</p>
                   </div>
-                  <div id="elenaConfirmArea">
-                    <button class="phone-confirm-btn" id="elenaConfirmBtn">Elena taps 'Confirm'</button>
+
+                  <!-- Typing dots (appear after Confirm is clicked) -->
+                  <div id="phoneTypingDots" class="phone-typing-dots hidden">
+                    <span></span><span></span><span></span>
                   </div>
-                  <div id="elenaPhoneResult" class="hidden">
-                    <div class="phone-confirmed-msg">
-                      <span>&#10003;</span> Confirmed
-                    </div>
-                    <div class="phone-verified-pill">Verified</div>
+
+                  <!-- Reply message (slides in from right) -->
+                  <div id="phoneReplyMsg" class="phone-reply-msg hidden">
+                    Pre-screening after funding confirmation unless patient data category A. Register opens day 1, assigned to project office.
                   </div>
+
+                  <!-- Verified pill -->
+                  <div id="phoneVerifiedPill" class="phone-verified-pill hidden">Verified</div>
                 </div>
               </div>
             </div>

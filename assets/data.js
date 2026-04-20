@@ -10,7 +10,7 @@ window.DEMO_DATA = {
       { href: "../institutional/07-application-layer.html", label: "Application Layer" },
       { href: "../institutional/08-get-started.html", label: "Get started" }
     ],
-    note: "Institutional track: research operations, grant preparation, ethics routing, and project onboarding.",
+    note: "Institutional track: research operations, grant preparation, ethics routing, and project initiation.",
     sources: [
       {
         icon: "doc",

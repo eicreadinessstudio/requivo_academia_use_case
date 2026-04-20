@@ -273,19 +273,50 @@
 
     confirmBtn.addEventListener("click", async function () {
       confirmBtn.disabled = true;
-      confirmBtn.textContent = "Sending...";
-      await wait(700);
 
-      // Hide button, show phone confirmation
-      const phoneResult = document.getElementById("elenaPhoneResult");
-      if (phoneResult) {
-        confirmBtn.style.display = "none";
-        phoneResult.classList.remove("hidden");
-        phoneResult.classList.add("flash");
+      // Show typing dots on phone
+      const typingDots = document.getElementById("phoneTypingDots");
+      if (typingDots) {
+        typingDots.classList.remove("hidden");
+        typingDots.classList.add("active");
       }
 
+      // Update pending pill
+      const pendingPill = document.getElementById("pendingPill");
+      if (pendingPill) pendingPill.textContent = "Responding…";
+
+      await wait(1400);
+
+      // Hide typing dots, show reply message (slide in from right)
+      if (typingDots) typingDots.classList.add("hidden");
+
+      const replyMsg = document.getElementById("phoneReplyMsg");
+      if (replyMsg) {
+        replyMsg.classList.remove("hidden");
+        // Force reflow then add visible class to trigger transition
+        replyMsg.getBoundingClientRect();
+        replyMsg.classList.add("visible");
+      }
+
+      await wait(500);
+
+      // Show verified pill on phone
+      const verifiedPill = document.getElementById("phoneVerifiedPill");
+      if (verifiedPill) {
+        verifiedPill.classList.remove("hidden");
+        verifiedPill.classList.add("flash");
+      }
+
+      // Update pending pill to confirmed
+      if (pendingPill) {
+        pendingPill.textContent = "Confirmed";
+        pendingPill.classList.remove("pending");
+        pendingPill.classList.add("verified");
+      }
+
+      await wait(700);
+
       // Show Elena confirmed result on left
-      await wait(900);
       const elenaResult = document.getElementById("elenaResult");
       if (elenaResult) {
         elenaResult.classList.remove("hidden");
@@ -311,8 +342,9 @@
 
       const items = document.querySelectorAll(".procedure-item");
       for (let i = 0; i < items.length; i++) {
-        await wait(380);
+        await wait(360);
         const statusEl = items[i].querySelector(".procedure-status");
+        const numEl = items[i].querySelector(".procedure-number");
         if (statusEl) {
           statusEl.textContent = "Verified";
           statusEl.classList.remove("pending");
@@ -322,11 +354,10 @@
         }
       }
 
-      await wait(280);
-      const summary = document.getElementById("governedSummary");
-      if (summary) {
-        summary.classList.remove("hidden");
-        summary.classList.add("flash");
+      await wait(320);
+      const finalBanner = document.getElementById("governedFinal");
+      if (finalBanner) {
+        finalBanner.classList.add("visible");
       }
     });
   }
@@ -338,35 +369,43 @@
     activateBtn.addEventListener("click", async function () {
       activateBtn.disabled = true;
 
+      // Tiles load one after another
       const tiles = document.querySelectorAll(".app-tile");
       for (let i = 0; i < tiles.length; i++) {
-        await wait(260);
+        await wait(270);
         tiles[i].classList.add("active");
       }
 
       // Show coverage section
-      await wait(380);
+      await wait(400);
       const coverageSection = document.getElementById("coverageSection");
-      if (coverageSection) {
-        coverageSection.classList.add("active");
+      if (!coverageSection) return;
+      coverageSection.classList.add("active");
 
-        await wait(80);
-        const fill = coverageSection.querySelector(".coverage-fill");
-        if (fill) fill.style.width = "87%";
+      // Start green loading line animation
+      await wait(80);
+      const loadingLine = document.getElementById("coverageLoadingLine");
+      if (loadingLine) loadingLine.classList.add("running");
 
-        const valueEl = document.getElementById("coverageValue");
-        if (valueEl) {
-          let count = 0;
-          const target = 87;
-          const tick = () => {
-            if (count < target) {
-              count = Math.min(count + 2, target);
-              valueEl.textContent = count + "%";
-              setTimeout(tick, 28);
-            }
-          };
-          tick();
-        }
+      // After line completes, show metrics
+      await wait(1500);
+      const metrics = document.getElementById("coverageMetrics");
+      if (metrics) metrics.classList.add("visible");
+
+      // Animate coverage value from 0 to 87%
+      const valueEl = document.getElementById("coverageValue");
+      if (valueEl) {
+        valueEl.textContent = "0%";
+        let count = 0;
+        const target = 87;
+        const tick = () => {
+          if (count < target) {
+            count = Math.min(count + 2, target);
+            valueEl.textContent = count + "%";
+            setTimeout(tick, 26);
+          }
+        };
+        tick();
       }
     });
   }

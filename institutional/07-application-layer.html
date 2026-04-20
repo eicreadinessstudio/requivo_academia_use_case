@@ -63,37 +63,89 @@
         <div class="product-body">
 
           <div class="app-tiles-grid">
+
+            <!-- Knowledge Writer -->
             <div class="app-tile">
+              <div class="app-tile-kl-pill">Knowledge layer</div>
               <div class="app-tile-icon">W</div>
               <h3>Knowledge Writer</h3>
               <p>Generate and maintain structured institutional procedures from fragmented evidence.</p>
+              <div class="app-tile-pills-row">
+                <span class="app-tile-status-pill draft">Draft</span>
+                <span class="app-tile-status-pill verified">Verified</span>
+                <span class="app-tile-status-pill review">Review</span>
+              </div>
             </div>
+
+            <!-- Knowledge Manager -->
             <div class="app-tile">
+              <div class="app-tile-kl-pill">Knowledge layer</div>
               <div class="app-tile-icon">M</div>
               <h3>Knowledge Manager</h3>
               <p>Identify duplication, outdated guidance, and weakly covered process areas.</p>
+              <input class="app-tile-search" type="text" placeholder="Search procedures…" readonly tabindex="-1">
+              <div class="app-tile-stats">
+                <div class="app-tile-stat"><strong>24</strong>Articles</div>
+                <div class="app-tile-stat"><strong>87%</strong>Coverage</div>
+                <div class="app-tile-stat"><strong>6</strong>Contributions</div>
+              </div>
             </div>
+
+            <!-- Knowledge Verifier -->
             <div class="app-tile">
+              <div class="app-tile-kl-pill">Knowledge layer</div>
               <div class="app-tile-icon">V</div>
               <h3>Knowledge Verifier</h3>
-              <p>Route unresolved process issues to the most relevant office or expert.</p>
+              <p>Route unresolved issues to the most relevant office or expert.</p>
+              <div class="app-tile-verifier-inner">
+                <div class="app-tile-proc-names">
+                  <div class="app-tile-proc-name">Ethics pre-screening</div>
+                  <div class="app-tile-proc-name">Register ownership</div>
+                  <div class="app-tile-proc-name">Budget sign-off</div>
+                </div>
+                <div class="app-tile-people-pills">
+                  <span class="app-tile-person-pill amber">E. Messina</span>
+                  <span class="app-tile-person-pill blue">P. Greco</span>
+                  <span class="app-tile-person-pill green">G. Rinaldi</span>
+                </div>
+              </div>
             </div>
+
+            <!-- MCP Interface -->
             <div class="app-tile">
+              <div class="app-tile-kl-pill">Knowledge layer</div>
               <div class="app-tile-icon">AI</div>
-              <h3>Controlled AI access</h3>
-              <p>Expose governed institutional knowledge instead of raw document chaos.</p>
+              <h3>MCP Interface</h3>
+              <p>Expose governed knowledge to AI tools — structured, cited, and verifiable.</p>
+              <div class="app-tile-mcp-inner">
+                <div class="app-tile-mcp-query">&gt; query: ethics timing externally funded</div>
+                <div class="app-tile-mcp-result">→ Verified · 2 sources · E. Messina confirmed</div>
+              </div>
             </div>
+
           </div>
 
+          <!-- Coverage summary -->
           <div class="coverage-section" id="coverageSection">
-            <div class="coverage-label">Institutional process coverage</div>
-            <div class="coverage-track">
-              <div class="coverage-fill" id="coverageFill"></div>
-            </div>
-            <div class="coverage-value" id="coverageValue">0%</div>
-            <div class="coverage-desc">
-              Across grant operations, ethics routing, project initiation, and onboarding —
-              one governed layer now covers the majority of active process territory.
+            <div class="coverage-label">Knowledge layer coverage</div>
+            <div class="coverage-loading-line" id="coverageLoadingLine"></div>
+            <div class="coverage-metrics-row" id="coverageMetrics">
+              <div class="cov-metric">
+                <div class="cov-metric-value" id="coverageValue">—</div>
+                <div class="cov-metric-label">Coverage</div>
+              </div>
+              <div class="cov-metric">
+                <div class="cov-metric-value">3</div>
+                <div class="cov-metric-label">Open conflicts</div>
+              </div>
+              <div class="cov-metric">
+                <div class="cov-metric-value">5</div>
+                <div class="cov-metric-label">Knowledge gaps</div>
+              </div>
+              <div class="cov-metric">
+                <div class="cov-metric-value">12</div>
+                <div class="cov-metric-label">Team verifications this month</div>
+              </div>
             </div>
           </div>
 
