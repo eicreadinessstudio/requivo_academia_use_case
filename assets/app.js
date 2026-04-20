@@ -114,7 +114,7 @@
 
     await Promise.all(
       rows.map((row, i) =>
-        wait(i * 55).then(() => {
+        wait(i * 72).then(() => {
           row.classList.add("flash");
           return animateRowProgress(row);
         })
@@ -204,11 +204,11 @@
     if (!pills.length) return;
 
     for (let i = 0; i < pills.length; i++) {
-      await wait(190);
+      await wait(230);
       pills[i].classList.add("pill-active");
     }
 
-    await wait(260);
+    await wait(300);
   }
 
   function bindWriterPage() {
@@ -456,7 +456,7 @@
       // Tiles slide in one by one (horizontal)
       const tiles = document.querySelectorAll(".app-tile");
       for (let i = 0; i < tiles.length; i++) {
-        await wait(240);
+        await wait(260);
         tiles[i].classList.add("active");
       }
 
@@ -475,20 +475,21 @@
       const metrics = document.getElementById("coverageMetrics");
       if (metrics) metrics.classList.add("visible");
 
-      // Animate coverage value
+      // Animate coverage value — eased rAF for natural deceleration
       const valueEl = document.getElementById("coverageValue");
       if (valueEl) {
         valueEl.textContent = "0%";
-        let count = 0;
         const target = 87;
-        const tick = () => {
-          if (count < target) {
-            count = Math.min(count + 2, target);
-            valueEl.textContent = count + "%";
-            setTimeout(tick, 26);
-          }
+        const duration = 1300;
+        const startTs = performance.now();
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+        const tickCoverage = (now) => {
+          const elapsed = Math.min(now - startTs, duration);
+          const t = easeOutCubic(elapsed / duration);
+          valueEl.textContent = Math.round(t * target) + "%";
+          if (elapsed < duration) requestAnimationFrame(tickCoverage);
         };
-        tick();
+        requestAnimationFrame(tickCoverage);
       }
 
       // Healthy banner slides in
