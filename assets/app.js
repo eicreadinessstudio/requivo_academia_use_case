@@ -106,14 +106,12 @@
     button.disabled = true;
     container.innerHTML = "";
 
-    // Render all rows at once
     items.forEach((item) => {
       container.insertAdjacentHTML("beforeend", renderSourceRow(item));
     });
 
     const rows = Array.from(container.querySelectorAll(".source-row"));
 
-    // Animate all rows in parallel with a small stagger for visual polish
     await Promise.all(
       rows.map((row, i) =>
         wait(i * 55).then(() => {
@@ -142,6 +140,14 @@
     }
 
     outputEl.classList.remove("typing-cursor");
+  }
+
+  async function typeIntoElement(el, text, speed = 28) {
+    el.textContent = "";
+    for (let i = 0; i < text.length; i++) {
+      el.textContent += text[i];
+      if (i % 3 === 0) await wait(speed);
+    }
   }
 
   function bindRevealButtons() {
@@ -193,13 +199,25 @@
     });
   }
 
+  async function highlightSourcePillsSequence() {
+    const pills = document.querySelectorAll("#sourcePillsRow .source-pill");
+    if (!pills.length) return;
+
+    for (let i = 0; i < pills.length; i++) {
+      await wait(190);
+      pills[i].classList.add("pill-active");
+    }
+
+    await wait(260);
+  }
+
   function bindWriterPage() {
     const track = document.body.dataset.page;
     const button = document.getElementById("writerActionBtn");
     const output = document.getElementById("writerOutput");
-    const summary = document.getElementById("writerSummary");
+    const summaryHost = document.getElementById("writerSummary");
 
-    if (!track || !button || !output || !summary) return;
+    if (!track || !button || !output || !summaryHost) return;
     if (!window.DEMO_DATA || !window.DEMO_DATA[track]) return;
 
     const text =
@@ -209,38 +227,57 @@
 
     button.addEventListener("click", async function () {
       button.disabled = true;
+
+      // 1. Highlight source pills one by one
+      await highlightSourcePillsSequence();
+
+      // 2. Then type the article
       await typeText(output, text, 10);
-      summary.classList.remove("hidden");
-      summary.classList.add("flash");
+
+      // 3. Show confirmation
+      summaryHost.classList.remove("hidden");
+      summaryHost.classList.add("flash");
     });
   }
 
   function bindAnalysisPage() {
     const button = document.getElementById("runAnalysisBtn");
     const status = document.getElementById("analysisStatus");
-    const findings = document.getElementById("analysisFindings");
+    const conflictCard = document.getElementById("conflictCard");
+    const gapCard = document.getElementById("gapCard");
     const summary = document.getElementById("analysisSummary");
 
-    if (!button || !status || !findings || !summary) return;
+    if (!button || !status) return;
 
     button.addEventListener("click", async function () {
       button.disabled = true;
-      status.textContent = "Scanning linked evidence...";
-      status.classList.add("flash");
-      await wait(500);
 
-      status.textContent = "Comparing versions and role logic...";
-      await wait(650);
+      status.textContent = "Scanning linked evidence…";
+      await wait(480);
 
-      status.textContent = "Flagging unresolved issues...";
-      await wait(650);
+      status.textContent = "Comparing versions and role logic…";
+      await wait(620);
 
-      findings.classList.remove("hidden");
-      findings.classList.add("flash");
-      await wait(180);
+      status.textContent = "Flagging unresolved issues…";
+      await wait(580);
 
-      summary.classList.remove("hidden");
-      summary.classList.add("flash");
+      // Conflict card enters first (left to right)
+      if (conflictCard) {
+        conflictCard.classList.add("visible");
+        await wait(380);
+      }
+
+      // Gap card enters second
+      if (gapCard) {
+        gapCard.classList.add("visible");
+        await wait(360);
+      }
+
+      // Summary last
+      if (summary) {
+        summary.classList.remove("hidden");
+        summary.classList.add("flash");
+      }
 
       status.textContent = "Analysis complete";
     });
@@ -274,63 +311,105 @@
     confirmBtn.addEventListener("click", async function () {
       confirmBtn.disabled = true;
 
-      // Show typing dots on phone
       const typingDots = document.getElementById("phoneTypingDots");
+      const pendingPill = document.getElementById("pendingPill");
+
+      if (pendingPill) pendingPill.textContent = "Responding…";
+
       if (typingDots) {
         typingDots.classList.remove("hidden");
         typingDots.classList.add("active");
       }
 
-      // Update pending pill
-      const pendingPill = document.getElementById("pendingPill");
-      if (pendingPill) pendingPill.textContent = "Responding…";
+      await wait(1500);
 
-      await wait(1400);
-
-      // Hide typing dots, show reply message (slide in from right)
       if (typingDots) typingDots.classList.add("hidden");
 
+      // Show reply bubble and type text character by character
       const replyMsg = document.getElementById("phoneReplyMsg");
+      const replyText =
+        "Pre-screening after funding confirmation unless patient data category A. Register opens day 1, assigned to project office.";
+
       if (replyMsg) {
         replyMsg.classList.remove("hidden");
-        // Force reflow then add visible class to trigger transition
-        replyMsg.getBoundingClientRect();
-        replyMsg.classList.add("visible");
+        await typeIntoElement(replyMsg, replyText, 26);
       }
 
-      await wait(500);
+      await wait(420);
 
-      // Show verified pill on phone
-      const verifiedPill = document.getElementById("phoneVerifiedPill");
-      if (verifiedPill) {
-        verifiedPill.classList.remove("hidden");
-        verifiedPill.classList.add("flash");
+      // Show verified area
+      const verifiedArea = document.getElementById("phoneVerifiedPill");
+      if (verifiedArea) {
+        verifiedArea.classList.remove("hidden");
+        verifiedArea.classList.add("flash");
       }
 
-      // Update pending pill to confirmed
       if (pendingPill) {
         pendingPill.textContent = "Confirmed";
         pendingPill.classList.remove("pending");
         pendingPill.classList.add("verified");
       }
 
-      await wait(700);
+      await wait(600);
 
-      // Show Elena confirmed result on left
       const elenaResult = document.getElementById("elenaResult");
       if (elenaResult) {
         elenaResult.classList.remove("hidden");
         elenaResult.classList.add("flash");
       }
 
-      // Show summary banner
       await wait(500);
+
       const summary = document.getElementById("threadSummary");
       if (summary) {
         summary.classList.remove("hidden");
         summary.classList.add("flash");
       }
     });
+  }
+
+  async function verifyProcedureRow(item) {
+    const membersEl = item.querySelector(".procedure-members");
+    const statusEl = item.querySelector(".procedure-status");
+    const countEl = item.querySelector(".procedure-count");
+    if (!membersEl || !statusEl) return;
+
+    const members = (item.dataset.members || "").split(",").filter(Boolean);
+
+    // 1. Blue circles appear
+    members.forEach((m) => {
+      const circle = document.createElement("div");
+      circle.className = "member-circle neutral";
+      circle.textContent = m;
+      membersEl.appendChild(circle);
+    });
+    membersEl.classList.add("visible");
+
+    await wait(380);
+
+    const circles = membersEl.querySelectorAll(".member-circle");
+
+    // 2. First circle goes green
+    if (circles[0]) {
+      circles[0].classList.remove("neutral");
+      circles[0].classList.add("verified-member");
+    }
+    if (countEl) countEl.textContent = "1 of 2";
+    await wait(420);
+
+    // 3. Second circle goes green
+    if (circles[1]) {
+      circles[1].classList.remove("neutral");
+      circles[1].classList.add("verified-member");
+    }
+    if (countEl) countEl.textContent = "2 of 2";
+    await wait(320);
+
+    // 4. Row goes verified
+    statusEl.textContent = "Verified";
+    statusEl.classList.remove("pending");
+    statusEl.classList.add("verified");
+    item.classList.add("verified-row");
   }
 
   function bindGovernedPage() {
@@ -341,24 +420,16 @@
       activateBtn.disabled = true;
 
       const items = document.querySelectorAll(".procedure-item");
+
       for (let i = 0; i < items.length; i++) {
-        await wait(360);
-        const statusEl = items[i].querySelector(".procedure-status");
-        const numEl = items[i].querySelector(".procedure-number");
-        if (statusEl) {
-          statusEl.textContent = "Verified";
-          statusEl.classList.remove("pending");
-          statusEl.classList.add("verified");
-          items[i].classList.add("verified-row");
-          items[i].classList.add("flash");
-        }
+        await verifyProcedureRow(items[i]);
+        await wait(180);
       }
 
-      await wait(320);
-      const finalBanner = document.getElementById("governedFinal");
-      if (finalBanner) {
-        finalBanner.classList.add("visible");
-      }
+      // Blue banner slides in at the end
+      await wait(300);
+      const blueBanner = document.getElementById("governedBlueBanner");
+      if (blueBanner) blueBanner.classList.add("visible");
     });
   }
 
@@ -369,20 +440,19 @@
     activateBtn.addEventListener("click", async function () {
       activateBtn.disabled = true;
 
-      // Tiles load one after another
+      // Tiles slide in one by one (horizontal)
       const tiles = document.querySelectorAll(".app-tile");
       for (let i = 0; i < tiles.length; i++) {
-        await wait(270);
+        await wait(240);
         tiles[i].classList.add("active");
       }
 
       // Show coverage section
-      await wait(400);
+      await wait(380);
       const coverageSection = document.getElementById("coverageSection");
-      if (!coverageSection) return;
-      coverageSection.classList.add("active");
+      if (coverageSection) coverageSection.classList.add("active");
 
-      // Start green loading line animation
+      // Green loading line
       await wait(80);
       const loadingLine = document.getElementById("coverageLoadingLine");
       if (loadingLine) loadingLine.classList.add("running");
@@ -392,7 +462,7 @@
       const metrics = document.getElementById("coverageMetrics");
       if (metrics) metrics.classList.add("visible");
 
-      // Animate coverage value from 0 to 87%
+      // Animate coverage value
       const valueEl = document.getElementById("coverageValue");
       if (valueEl) {
         valueEl.textContent = "0%";
@@ -407,6 +477,11 @@
         };
         tick();
       }
+
+      // Healthy banner slides in
+      await wait(1600);
+      const healthyBanner = document.getElementById("healthyBanner");
+      if (healthyBanner) healthyBanner.classList.add("visible");
     });
   }
 
