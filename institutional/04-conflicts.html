@@ -54,7 +54,7 @@
       <section class="product-panel">
         <div class="product-head">
           <div class="product-label">Analysis Engine</div>
-          <button class="btn btn-primary" id="runAnalysisBtn">Run analysis</button>
+          <span class="head-pill blue">Automated</span>
         </div>
         <div class="product-body">
           <div class="status-line" style="margin-bottom:12px;">
@@ -63,7 +63,7 @@
           </div>
 
           <div id="analysisFindings" class="analysis-shell hidden">
-            <div class="finding-card conflict">
+            <div class="finding-card conflict" id="conflictCard">
               <h3>Conflict detected: ethics pre-screening timing</h3>
               <p>
                 Three institutional sources disagree on when ethics pre-screening must happen
@@ -76,7 +76,7 @@
               </ul>
             </div>
 
-            <div class="finding-card gap">
+            <div class="finding-card gap" id="gapCard">
               <h3>Gap detected: project document register ownership</h3>
               <p>
                 The evidence set refers to a project document register but does not define
@@ -84,16 +84,18 @@
                 from grants office to project manager.
               </p>
             </div>
-          </div>
 
-          <div id="analysisSummary" class="hidden" style="margin-top:12px;">
-            <div class="summary-banner">
+            <div class="finding-summary" id="analysisSummary">
               <strong>1 conflict and 1 gap detected.</strong>
               Each is linked to exact evidence sources and routed to the most relevant institutional expert.
             </div>
           </div>
         </div>
       </section>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="runAnalysisBtn">Run analysis</button>
+      </div>
 
       <div class="next-prev">
         <a class="btn btn-ghost" href="../institutional/03-writer.html">← Knowledge Writer</a>

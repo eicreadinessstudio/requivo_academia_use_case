@@ -28,19 +28,16 @@
         <span class="page-back-arrow">←</span> Conflict &amp; gap detection
       </a>
 
-      <section class="hero-panel">
-        <div class="hero-overlay"></div>
-        <div class="hero-inner hero-inner-solo">
-          <div>
-            <div class="kicker">Step 4 · Knowledge Verifier</div>
-            <h1 class="hero-title">The right academic expert gets the right question</h1>
-            <p class="hero-lead">
-              Requivo identifies which team member can resolve each finding and sends them
-              a targeted question. They answer on their phone — no meetings, no documents to write.
-            </p>
-          </div>
+      <div class="page-header">
+        <div class="page-header-body">
+          <div class="page-header-kicker">Step 4 · Knowledge Verifier</div>
+          <h1 class="page-header-title">The right academic expert gets the right question</h1>
+          <p class="page-header-lead">
+            Requivo identifies which team member can resolve each finding and sends them
+            a targeted question. They answer on their phone — no meetings, no documents to write.
+          </p>
         </div>
-      </section>
+      </div>
 
       <div class="progress-strip">
         <div class="progress-count">5 / 8</div>
@@ -93,29 +90,41 @@
             <!-- Right: phone UI -->
             <div>
               <div class="phone-frame">
-                <div class="phone-notch"></div>
+                <div class="phone-pill-notch"></div>
                 <div class="phone-screen">
-                  <div class="phone-app-header">
-                    <span class="phone-app-icon">RQ</span>
-                    Requivo
-                  </div>
-                  <div class="phone-msg">
-                    <div class="phone-msg-label">Validation request</div>
-                    <p>Three sources disagree on ethics timing for externally funded studies involving patient data. Please confirm the current rule and project register ownership.</p>
+
+                  <!-- Status bar -->
+                  <div class="phone-status-bar">
+                    <span class="phone-time">09:41</span>
+                    <span class="phone-app-name">Requivo Verifier</span>
+                    <span class="phone-signal">▌▌▌</span>
                   </div>
 
-                  <!-- Typing dots (appear after Confirm is clicked) -->
-                  <div id="phoneTypingDots" class="phone-typing-dots hidden">
-                    <span></span><span></span><span></span>
+                  <!-- Chat area -->
+                  <div class="phone-chat">
+                    <div class="phone-question-bubble">
+                      <div class="phone-question-label">Validation request</div>
+                      Three sources disagree on ethics timing for externally funded studies involving patient data. Please confirm the current rule and project register ownership.
+                    </div>
+
+                    <!-- Typing indicator (appears after Confirm is clicked) -->
+                    <div id="phoneTypingDots" class="phone-typing-dots hidden">
+                      <span></span><span></span><span></span>
+                    </div>
+
+                    <!-- Reply message (container appears, text typed in) -->
+                    <div id="phoneReplyMsg" class="phone-reply-msg hidden"></div>
                   </div>
 
-                  <!-- Reply message (slides in from right) -->
-                  <div id="phoneReplyMsg" class="phone-reply-msg hidden">
-                    Pre-screening after funding confirmation unless patient data category A. Register opens day 1, assigned to project office.
+                  <!-- Verified area (slides in at end) -->
+                  <div id="phoneVerifiedPill" class="phone-verified-area hidden">
+                    <div class="phone-verified-check">✓</div>
+                    <div class="phone-verified-label">
+                      <strong>Verified</strong>
+                      <span>Knowledge layer updated</span>
+                    </div>
                   </div>
 
-                  <!-- Verified pill -->
-                  <div id="phoneVerifiedPill" class="phone-verified-pill hidden">Verified</div>
                 </div>
               </div>
             </div>

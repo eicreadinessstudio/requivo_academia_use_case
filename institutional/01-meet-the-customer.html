@@ -28,20 +28,17 @@
         <span class="page-back-arrow">←</span> Use-case selection
       </a>
 
-      <section class="hero-panel">
-        <div class="hero-overlay"></div>
-        <div class="hero-inner hero-inner-solo">
-          <div>
-            <div class="kicker">Meet the customer</div>
-            <h1 class="hero-title">Università Medica del Mediterraneo</h1>
-            <p class="hero-lead">
-              A fictional Sicilian medical university representing research-intensive
-              academic institutions where operational knowledge is fragmented across
-              offices, documents, systems, and individual experts.
-            </p>
-          </div>
+      <div class="page-header">
+        <div class="page-header-body">
+          <div class="page-header-kicker">Meet the customer</div>
+          <h1 class="page-header-title">Università Medica del Mediterraneo</h1>
+          <p class="page-header-lead">
+            A fictional Sicilian medical university representing research-intensive
+            academic institutions where operational knowledge is fragmented across
+            offices, documents, systems, and individual experts.
+          </p>
         </div>
-      </section>
+      </div>
 
       <div class="progress-strip">
         <div class="progress-count">1 / 8</div>
@@ -62,31 +59,32 @@
           <div class="product-label">University profile</div>
         </div>
         <div class="product-body">
-          <div class="cards-2" style="margin-bottom:12px;">
-            <div class="info-card">
-              <h3>Academic environment</h3>
-              <p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px;align-items:start;">
+            <div>
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:8px;">Academic environment</div>
+              <p style="font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-bottom:10px;">
                 Research-intensive medical university managing externally funded studies,
                 ethics-sensitive activities, and cross-office project initiation procedures.
               </p>
-              <div style="margin-top:8px;" class="clean-list">
-                <ul>
-                  <li>Research support office</li>
-                  <li>Ethics committee</li>
-                  <li>Grants &amp; compliance team</li>
-                  <li>Project management unit</li>
-                </ul>
-              </div>
+              <ul class="clean-list">
+                <li>Research support office</li>
+                <li>Ethics committee</li>
+                <li>Grants &amp; compliance team</li>
+                <li>Project management unit</li>
+              </ul>
             </div>
-            <div class="info-card">
-              <h3>Representative stakeholders</h3>
-              <div class="person-list" style="margin-top:10px;">
+            <div>
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:8px;">Representative stakeholders</div>
+              <div class="person-list">
                 <span class="person-chip"><span class="person-chip-badge amber">EM</span>Dr. Elena Messina</span>
                 <span class="person-chip"><span class="person-chip-badge blue">PG</span>Dr. Paolo Greco</span>
                 <span class="person-chip"><span class="person-chip-badge green">GR</span>Prof. Giulia Rinaldi</span>
               </div>
             </div>
           </div>
+
+          <div style="height:1px;background:var(--border);margin:0 0 16px;"></div>
 
           <div class="metrics-4">
             <div class="metric-card">
@@ -111,10 +109,10 @@
 
       <section class="product-panel">
         <div class="product-head">
-          <div class="product-label">But under the surface...</div>
+          <div class="product-label">But under the surface…</div>
         </div>
         <div class="product-body">
-          <div class="metrics-4" style="margin-bottom:12px;">
+          <div class="metrics-4" style="margin-bottom:14px;">
             <div class="metric-card">
               <span class="value">6+</span>
               <p>Disconnected knowledge sources</p>
@@ -133,25 +131,38 @@
             </div>
           </div>
 
-          <div class="alert red" style="margin-bottom:12px;">
+          <div class="alert red" style="margin-bottom:14px;">
             <strong>Operational incident:</strong>
             A project team prepared ethics timing based on an outdated faculty note while
             the research office followed a newer clarification. Internal review had to be
             repeated and the project timeline slipped.
           </div>
+        </div>
+      </section>
 
-          <div class="btn-row">
-            <button class="btn btn-primary" data-reveal-target="costResults">See the cost of inaction</button>
-          </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" data-reveal-target="costResults">See the cost of inaction</button>
+      </div>
 
-          <div id="costResults" class="hidden" style="margin-top:12px;">
-            <div class="alert red flash">
-              <strong>If senior staff remain the only real holders of procedural context,</strong>
-              onboarding slows, inconsistency grows, and institutional memory stays fragile.
+      <div id="costResults" class="hidden" style="margin-top:12px;margin-bottom:12px;">
+        <div class="inaction-reveal flash">
+          <div class="inaction-claim">If senior staff remain the only real holders of procedural context:</div>
+          <div class="inaction-items">
+            <div class="inaction-item">
+              <div class="inaction-dot red"></div>
+              <span>Onboarding slows — new staff cannot operate independently without personal guidance</span>
+            </div>
+            <div class="inaction-item">
+              <div class="inaction-dot red"></div>
+              <span>Inconsistency grows across teams, documents, and offices over time</span>
+            </div>
+            <div class="inaction-item">
+              <div class="inaction-dot amber"></div>
+              <span>Institutional memory stays fragile and expert-dependent — a single departure can break critical workflows</span>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <div class="next-prev">
         <span></span>

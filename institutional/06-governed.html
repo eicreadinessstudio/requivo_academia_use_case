@@ -28,19 +28,16 @@
         <span class="page-back-arrow">←</span> Knowledge Verifier
       </a>
 
-      <section class="hero-panel">
-        <div class="hero-overlay"></div>
-        <div class="hero-inner hero-inner-solo">
-          <div>
-            <div class="kicker">Step 5 · Governed knowledge</div>
-            <h1 class="hero-title">Governed knowledge, not just generated text</h1>
-            <p class="hero-lead">
-              Every procedure step carries a verification status and audit trail.
-              Your entire team can trust what they read.
-            </p>
-          </div>
+      <div class="page-header">
+        <div class="page-header-body">
+          <div class="page-header-kicker">Step 5 · Governed knowledge</div>
+          <h1 class="page-header-title">Governed knowledge, not just generated text</h1>
+          <p class="page-header-lead">
+            Every procedure step carries a verification status and audit trail.
+            Your entire team can trust what they read.
+          </p>
         </div>
-      </section>
+      </div>
 
       <div class="progress-strip">
         <div class="progress-count">6 / 8</div>
@@ -59,40 +56,65 @@
       <section class="product-panel">
         <div class="product-head">
           <div class="product-label">Knowledge layer — Externally Funded Research Project Initiation</div>
-          <button class="btn btn-primary" id="governedActivateBtn">Activate verification</button>
         </div>
         <div class="product-body">
           <div class="procedure-list">
-            <div class="procedure-item">
+
+            <div class="procedure-item" data-members="EM,PG">
               <span class="procedure-number">1</span>
               <span class="procedure-text">Confirm funder deadline, internal pre-review deadline, and faculty sign-off route</span>
-              <span class="procedure-status pending">Pending</span>
+              <div class="procedure-right">
+                <div class="procedure-members"></div>
+                <div class="procedure-count"></div>
+                <span class="procedure-status pending">Pending</span>
+              </div>
             </div>
-            <div class="procedure-item">
+
+            <div class="procedure-item" data-members="EM,GR">
               <span class="procedure-number">2</span>
               <span class="procedure-text">Determine ethics pre-screening requirement based on study type and data category</span>
-              <span class="procedure-status pending">Pending</span>
+              <div class="procedure-right">
+                <div class="procedure-members"></div>
+                <div class="procedure-count"></div>
+                <span class="procedure-status pending">Pending</span>
+              </div>
             </div>
-            <div class="procedure-item">
+
+            <div class="procedure-item" data-members="PG,GR">
               <span class="procedure-number">3</span>
               <span class="procedure-text">Prepare internal budget and annex package using current institutional templates</span>
-              <span class="procedure-status pending">Pending</span>
+              <div class="procedure-right">
+                <div class="procedure-members"></div>
+                <div class="procedure-count"></div>
+                <span class="procedure-status pending">Pending</span>
+              </div>
             </div>
-            <div class="procedure-item">
+
+            <div class="procedure-item" data-members="EM,PG">
               <span class="procedure-number">4</span>
               <span class="procedure-text">Open project document register after award and assign operational ownership</span>
-              <span class="procedure-status pending">Pending</span>
+              <div class="procedure-right">
+                <div class="procedure-members"></div>
+                <div class="procedure-count"></div>
+                <span class="procedure-status pending">Pending</span>
+              </div>
             </div>
-            <div class="procedure-item">
+
+            <div class="procedure-item" data-members="PG,GR">
               <span class="procedure-number">5</span>
               <span class="procedure-text">Initiate project checklist: ethics package, DMP baseline, financial code, and kickoff meeting</span>
-              <span class="procedure-status pending">Pending</span>
+              <div class="procedure-right">
+                <div class="procedure-members"></div>
+                <div class="procedure-count"></div>
+                <span class="procedure-status pending">Pending</span>
+              </div>
             </div>
+
           </div>
 
-          <div id="governedFinal" class="governed-final-banner">
-            <div class="governed-final-icon">✓</div>
-            <div class="governed-final-text">
+          <div id="governedBlueBanner" class="governed-blue-banner">
+            <div class="governed-blue-banner-icon">✓</div>
+            <div class="governed-blue-banner-text">
               <strong>Knowledge layer verified and locked</strong>
               <p>All 5 procedure steps carry a verification status and audit trail. Your entire team can trust what they read.</p>
             </div>
@@ -100,31 +122,9 @@
         </div>
       </section>
 
-      <section class="product-panel">
-        <div class="product-head">
-          <div class="product-label">Governance status</div>
-        </div>
-        <div class="product-body">
-          <div class="metrics-4">
-            <div class="metric-card">
-              <span class="value">Verified</span>
-              <p>Core process sections validated</p>
-            </div>
-            <div class="metric-card">
-              <span class="value">86%</span>
-              <p>Initial process coverage</p>
-            </div>
-            <div class="metric-card">
-              <span class="value">1</span>
-              <p>Conflict resolved</p>
-            </div>
-            <div class="metric-card">
-              <span class="value">1</span>
-              <p>Critical gap filled</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="governedActivateBtn">Activate verification</button>
+      </div>
 
       <div class="next-prev">
         <a class="btn btn-ghost" href="../institutional/05-verifier.html">← Knowledge Verifier</a>

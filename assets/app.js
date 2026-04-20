@@ -243,6 +243,7 @@
   function bindAnalysisPage() {
     const button = document.getElementById("runAnalysisBtn");
     const status = document.getElementById("analysisStatus");
+    const findingsContainer = document.getElementById("analysisFindings");
     const conflictCard = document.getElementById("conflictCard");
     const gapCard = document.getElementById("gapCard");
     const summary = document.getElementById("analysisSummary");
@@ -259,24 +260,29 @@
       await wait(620);
 
       status.textContent = "Flagging unresolved issues…";
-      await wait(580);
+      await wait(560);
+
+      // Show the container first (cards are opacity:0 via CSS)
+      if (findingsContainer) {
+        findingsContainer.classList.remove("hidden");
+      }
+      await wait(60); // let DOM paint before animating
 
       // Conflict card enters first (left to right)
       if (conflictCard) {
         conflictCard.classList.add("visible");
-        await wait(380);
+        await wait(360);
       }
 
       // Gap card enters second
       if (gapCard) {
         gapCard.classList.add("visible");
-        await wait(360);
+        await wait(340);
       }
 
-      // Summary last
+      // Summary card enters last
       if (summary) {
-        summary.classList.remove("hidden");
-        summary.classList.add("flash");
+        summary.classList.add("visible");
       }
 
       status.textContent = "Analysis complete";
@@ -316,28 +322,35 @@
 
       if (pendingPill) pendingPill.textContent = "Responding…";
 
+      // Show typing indicator
       if (typingDots) {
         typingDots.classList.remove("hidden");
         typingDots.classList.add("active");
       }
 
-      await wait(1500);
+      await wait(1600);
 
-      if (typingDots) typingDots.classList.add("hidden");
+      // Hide typing dots
+      if (typingDots) {
+        typingDots.classList.remove("active");
+        typingDots.classList.add("hidden");
+      }
 
-      // Show reply bubble and type text character by character
+      // Reply bubble appears empty, then text is typed in
       const replyMsg = document.getElementById("phoneReplyMsg");
       const replyText =
         "Pre-screening after funding confirmation unless patient data category A. Register opens day 1, assigned to project office.";
 
       if (replyMsg) {
         replyMsg.classList.remove("hidden");
-        await typeIntoElement(replyMsg, replyText, 26);
+        // Small pause so the empty bubble flashes briefly before typing
+        await wait(80);
+        await typeIntoElement(replyMsg, replyText, 24);
       }
 
-      await wait(420);
+      await wait(480);
 
-      // Show verified area
+      // Verified area appears
       const verifiedArea = document.getElementById("phoneVerifiedPill");
       if (verifiedArea) {
         verifiedArea.classList.remove("hidden");
@@ -350,7 +363,7 @@
         pendingPill.classList.add("verified");
       }
 
-      await wait(600);
+      await wait(580);
 
       const elenaResult = document.getElementById("elenaResult");
       if (elenaResult) {
