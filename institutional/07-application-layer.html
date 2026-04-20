@@ -24,20 +24,18 @@
     <div id="sidebarHost"></div>
 
     <main class="page">
+      <a class="page-back" href="../institutional/06-governed.html">
+        <span class="page-back-arrow">←</span> Governed knowledge
+      </a>
+
       <section class="hero-panel">
         <div class="hero-overlay"></div>
-        <div class="hero-inner">
+        <div class="hero-inner hero-inner-solo">
           <div>
             <div class="kicker">Step 6 · Application Layer</div>
             <h1 class="hero-title">Build once, use across institutional workflows</h1>
             <p class="hero-lead">
               One governed operational layer can support multiple downstream applications across the university.
-            </p>
-          </div>
-          <div class="hero-side-copy">
-            <p>
-              The pilot value is not limited to one article. The same governed layer can support
-              multiple operational interfaces and reduce repeated reconstruction work.
             </p>
           </div>
         </div>
@@ -57,67 +55,48 @@
         </div>
       </div>
 
-      <section class="editorial-section">
-        <div class="editorial-grid">
-          <h2 class="editorial-title">One layer, multiple interfaces</h2>
-          <div class="editorial-copy">
-            Once the institution has a governed operational layer, the same knowledge can support
-            writing, management, verification, and safer AI-enabled access instead of remaining siloed.
-          </div>
-        </div>
-        <div class="rule"></div>
-      </section>
-
       <section class="product-panel">
         <div class="product-head">
           <div class="product-label">Application modules</div>
+          <button class="btn btn-primary" id="appLayerBtn">Activate layer</button>
         </div>
         <div class="product-body">
-          <div class="cards-2">
-            <div class="info-card">
+
+          <div class="app-tiles-grid">
+            <div class="app-tile">
+              <div class="app-tile-icon">W</div>
               <h3>Knowledge Writer</h3>
               <p>Generate and maintain structured institutional procedures from fragmented evidence.</p>
             </div>
-            <div class="info-card">
+            <div class="app-tile">
+              <div class="app-tile-icon">M</div>
               <h3>Knowledge Manager</h3>
               <p>Identify duplication, outdated guidance, and weakly covered process areas.</p>
             </div>
-            <div class="info-card">
+            <div class="app-tile">
+              <div class="app-tile-icon">V</div>
               <h3>Knowledge Verifier</h3>
               <p>Route unresolved process issues to the most relevant office or expert.</p>
             </div>
-            <div class="info-card">
+            <div class="app-tile">
+              <div class="app-tile-icon">AI</div>
               <h3>Controlled AI access</h3>
               <p>Expose governed institutional knowledge instead of raw document chaos.</p>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section class="product-panel">
-        <div class="product-head">
-          <div class="product-label">Institutional value</div>
-        </div>
-        <div class="product-body">
-          <div class="cards-3">
-            <div class="info-card">
-              <h3>Administrative onboarding</h3>
-              <p>Junior project managers can see how the process actually works without reconstructing it from scattered files.</p>
+          <div class="coverage-section" id="coverageSection">
+            <div class="coverage-label">Institutional process coverage</div>
+            <div class="coverage-track">
+              <div class="coverage-fill" id="coverageFill"></div>
             </div>
-            <div class="info-card">
-              <h3>Institutional consistency</h3>
-              <p>Different offices no longer rely on conflicting interpretations for the same workflow.</p>
-            </div>
-            <div class="info-card">
-              <h3>AI readiness</h3>
-              <p>Future internal AI access can point to governed knowledge instead of contradictory source corpora.</p>
+            <div class="coverage-value" id="coverageValue">0%</div>
+            <div class="coverage-desc">
+              Across grant operations, ethics routing, project initiation, and onboarding —
+              one governed layer now covers the majority of active process territory.
             </div>
           </div>
 
-          <div class="summary-banner" style="margin-top:14px;">
-            <strong>The pilot proves broader platform value:</strong>
-            one governed operational layer can support multiple institutional workflows, not only one static procedure.
-          </div>
         </div>
       </section>
 

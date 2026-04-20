@@ -24,21 +24,19 @@
     <div id="sidebarHost"></div>
 
     <main class="page">
+      <a class="page-back" href="../institutional/04-conflicts.html">
+        <span class="page-back-arrow">←</span> Conflict &amp; gap detection
+      </a>
+
       <section class="hero-panel">
         <div class="hero-overlay"></div>
-        <div class="hero-inner">
+        <div class="hero-inner hero-inner-solo">
           <div>
             <div class="kicker">Step 4 · Knowledge Verifier</div>
             <h1 class="hero-title">The right academic expert gets the right question</h1>
             <p class="hero-lead">
-              Requivo identifies who can resolve the issue and sends a focused validation request
-              instead of requiring broad manual review.
-            </p>
-          </div>
-          <div class="hero-side-copy">
-            <p>
-              This is where fragmented evidence becomes accountable knowledge:
-              the unresolved issue is routed to the most relevant institutional owner.
+              Requivo identifies which team member can resolve each finding and sends them
+              a targeted question. They answer on their phone — no meetings, no documents to write.
             </p>
           </div>
         </div>
@@ -58,68 +56,75 @@
         </div>
       </div>
 
-      <section class="editorial-section">
-        <div class="editorial-grid">
-          <h2 class="editorial-title">Targeted verification</h2>
-          <div class="editorial-copy">
-            Requivo does not ask everyone to re-read everything. It isolates the unresolved
-            issue and routes a focused question to the person who can actually close the gap.
-          </div>
-        </div>
-        <div class="rule"></div>
-      </section>
-
       <section class="product-panel">
         <div class="product-head">
           <div class="product-label">Verification Queue</div>
-          <button class="btn btn-primary" id="threadActionBtn">Start verification round</button>
         </div>
-        <div class="product-body verifier-grid">
-          <div class="avatar-card">
-            <div class="avatar-badge">EM</div>
-            <h3>Dr. Elena Messina</h3>
-            <div class="avatar-role">Research Projects & Ethics Coordinator</div>
-            <p>
-              Relevant because she knows the current operational logic behind ethics routing,
-              internal sign-off, and project startup — including the parts that never made it
-              into fully governed written guidance.
-            </p>
-          </div>
+        <div class="product-body">
+          <div class="verifier-phone-layout">
 
-          <div class="thread">
-            <div class="bubble ai hidden" data-thread-part>
-              <strong>Requivo validation request</strong>
-              Three sources disagree on ethics timing for externally funded projects involving
-              patient data. Please confirm the current rule and define who opens the startup
-              document register and which template is authoritative.
+            <!-- Left: expert card + resolution result -->
+            <div>
+              <div class="avatar-card">
+                <div class="avatar-badge">EM</div>
+                <h3>Dr. Elena Messina</h3>
+                <div class="avatar-role">Research Projects &amp; Ethics Coordinator</div>
+                <p>
+                  Selected because she holds the current operational logic behind ethics
+                  routing and project register ownership — including decisions that were
+                  never formally documented.
+                </p>
+                <div class="verifier-pills">
+                  <span class="vpill auto">Auto-selected</span>
+                  <span class="vpill pending">1 pending</span>
+                </div>
+              </div>
+
+              <div id="elenaResult" class="elena-result hidden">
+                <div class="elena-confirmed-label">Elena confirmed</div>
+                <p>Conflict resolved, gap documented. Knowledge layer updated automatically. Katrin and Sophie now see the correct procedure.</p>
+              </div>
             </div>
 
-            <div class="bubble human hidden" data-thread-part>
-              <strong>Expert answer</strong>
-              Ethics pre-screening is required before internal submission only for projects
-              involving identifiable patient data or invasive procedures. In all other cases
-              it can begin after award confirmation. The startup document register is opened
-              by the assigned project manager immediately after award notice using “Startup Register v4”.
+            <!-- Right: phone UI -->
+            <div>
+              <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                  <div class="phone-app-header">
+                    <span class="phone-app-icon">RQ</span>
+                    Requivo
+                  </div>
+                  <div class="phone-msg">
+                    <div class="phone-msg-label">Validation request</div>
+                    <p>Three sources disagree on ethics timing for externally funded studies involving patient data. Please confirm the current rule and project register ownership.</p>
+                  </div>
+                  <div id="elenaConfirmArea">
+                    <button class="phone-confirm-btn" id="elenaConfirmBtn">Elena taps 'Confirm'</button>
+                  </div>
+                  <div id="elenaPhoneResult" class="hidden">
+                    <div class="phone-confirmed-msg">
+                      <span>&#10003;</span> Confirmed
+                    </div>
+                    <div class="phone-verified-pill">Verified</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="bubble system hidden" data-thread-part>
-              <strong>Governed update</strong>
-              Conflict resolved. Gap filled. The generated article is updated, linked to expert
-              validation, and marked verified for the relevant process sections.
-            </div>
           </div>
         </div>
       </section>
 
-      <div id="threadSummary" class="hidden">
+      <div id="threadSummary" class="hidden" style="margin-bottom:12px;">
         <div class="summary-banner">
           <strong>Conflict resolved.</strong>
-          Ethics timing clarified. Startup register ownership assigned. Governed article updated automatically.
+          Ethics timing clarified. Project register ownership assigned. Governed article updated automatically.
         </div>
       </div>
 
       <div class="next-prev">
-        <a class="btn btn-ghost" href="../institutional/04-conflicts.html">← Conflict & gap detection</a>
+        <a class="btn btn-ghost" href="../institutional/04-conflicts.html">← Conflict &amp; gap detection</a>
         <a class="btn btn-primary" href="../institutional/06-governed.html">Governed knowledge →</a>
       </div>
     </main>

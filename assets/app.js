@@ -31,10 +31,6 @@
       <aside class="sidebar">
         <h2>Demo pages</h2>
         <nav class="nav-list">${links}</nav>
-        <div class="sidebar-note">
-          <strong>Track context</strong>
-          ${data.note}
-        </div>
       </aside>
     `;
   }
@@ -57,11 +53,9 @@
     return `
       <div class="source-row">
         <div class="source-icon ${item.icon}">${item.code}</div>
-
         <div class="source-main">
           <strong style="display:block;margin-bottom:2px;">${item.title}</strong>
           <span class="text-muted">${item.meta}</span>
-
           <div class="source-progress">
             <div class="source-progress-track">
               <div class="source-progress-fill"></div>
@@ -69,7 +63,6 @@
             <div class="source-progress-number">0%</div>
           </div>
         </div>
-
         <div class="source-status">·</div>
       </div>
     `;
@@ -82,7 +75,7 @@
 
     if (!fill || !number || !status) return;
 
-    const duration = 1050 + Math.floor(Math.random() * 450);
+    const duration = 900 + Math.floor(Math.random() * 500);
     const start = performance.now();
 
     return new Promise((resolve) => {
@@ -113,15 +106,22 @@
     button.disabled = true;
     container.innerHTML = "";
 
-    for (let i = 0; i < items.length; i++) {
-      container.insertAdjacentHTML("beforeend", renderSourceRow(items[i]));
-      const row = container.lastElementChild;
-      if (row) {
-        row.classList.add("flash");
-        await animateRowProgress(row);
-        await wait(120);
-      }
-    }
+    // Render all rows at once
+    items.forEach((item) => {
+      container.insertAdjacentHTML("beforeend", renderSourceRow(item));
+    });
+
+    const rows = Array.from(container.querySelectorAll(".source-row"));
+
+    // Animate all rows in parallel with a small stagger for visual polish
+    await Promise.all(
+      rows.map((row, i) =>
+        wait(i * 55).then(() => {
+          row.classList.add("flash");
+          return animateRowProgress(row);
+        })
+      )
+    );
 
     if (summaryEl) {
       summaryEl.classList.remove("hidden");
@@ -172,6 +172,24 @@
 
     button.addEventListener("click", async function () {
       await runStagedRows(button, rowsHost, window.DEMO_DATA[track].sources, summary);
+    });
+  }
+
+  function injectSourcePills() {
+    const pillsHost = document.getElementById("sourcePillsRow");
+    if (!pillsHost) return;
+
+    const track = document.body.dataset.page;
+    if (!track || !window.DEMO_DATA || !window.DEMO_DATA[track]) return;
+
+    const sources = window.DEMO_DATA[track].sources;
+    sources.forEach((s) => {
+      const maxLen = 30;
+      const label = s.title.length > maxLen ? s.title.substring(0, maxLen) + "…" : s.title;
+      const pill = document.createElement("span");
+      pill.className = "source-pill";
+      pill.innerHTML = `<span class="source-pill-badge ${s.icon}">${s.code}</span>${label}`;
+      pillsHost.appendChild(pill);
     });
   }
 
@@ -249,6 +267,110 @@
     });
   }
 
+  function bindVerifierPage() {
+    const confirmBtn = document.getElementById("elenaConfirmBtn");
+    if (!confirmBtn) return;
+
+    confirmBtn.addEventListener("click", async function () {
+      confirmBtn.disabled = true;
+      confirmBtn.textContent = "Sending...";
+      await wait(700);
+
+      // Hide button, show phone confirmation
+      const phoneResult = document.getElementById("elenaPhoneResult");
+      if (phoneResult) {
+        confirmBtn.style.display = "none";
+        phoneResult.classList.remove("hidden");
+        phoneResult.classList.add("flash");
+      }
+
+      // Show Elena confirmed result on left
+      await wait(900);
+      const elenaResult = document.getElementById("elenaResult");
+      if (elenaResult) {
+        elenaResult.classList.remove("hidden");
+        elenaResult.classList.add("flash");
+      }
+
+      // Show summary banner
+      await wait(500);
+      const summary = document.getElementById("threadSummary");
+      if (summary) {
+        summary.classList.remove("hidden");
+        summary.classList.add("flash");
+      }
+    });
+  }
+
+  function bindGovernedPage() {
+    const activateBtn = document.getElementById("governedActivateBtn");
+    if (!activateBtn) return;
+
+    activateBtn.addEventListener("click", async function () {
+      activateBtn.disabled = true;
+
+      const items = document.querySelectorAll(".procedure-item");
+      for (let i = 0; i < items.length; i++) {
+        await wait(380);
+        const statusEl = items[i].querySelector(".procedure-status");
+        if (statusEl) {
+          statusEl.textContent = "Verified";
+          statusEl.classList.remove("pending");
+          statusEl.classList.add("verified");
+          items[i].classList.add("verified-row");
+          items[i].classList.add("flash");
+        }
+      }
+
+      await wait(280);
+      const summary = document.getElementById("governedSummary");
+      if (summary) {
+        summary.classList.remove("hidden");
+        summary.classList.add("flash");
+      }
+    });
+  }
+
+  function bindApplicationPage() {
+    const activateBtn = document.getElementById("appLayerBtn");
+    if (!activateBtn) return;
+
+    activateBtn.addEventListener("click", async function () {
+      activateBtn.disabled = true;
+
+      const tiles = document.querySelectorAll(".app-tile");
+      for (let i = 0; i < tiles.length; i++) {
+        await wait(260);
+        tiles[i].classList.add("active");
+      }
+
+      // Show coverage section
+      await wait(380);
+      const coverageSection = document.getElementById("coverageSection");
+      if (coverageSection) {
+        coverageSection.classList.add("active");
+
+        await wait(80);
+        const fill = coverageSection.querySelector(".coverage-fill");
+        if (fill) fill.style.width = "87%";
+
+        const valueEl = document.getElementById("coverageValue");
+        if (valueEl) {
+          let count = 0;
+          const target = 87;
+          const tick = () => {
+            if (count < target) {
+              count = Math.min(count + 2, target);
+              valueEl.textContent = count + "%";
+              setTimeout(tick, 28);
+            }
+          };
+          tick();
+        }
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     if (!isLanding()) {
       bootTrackedPage();
@@ -256,8 +378,12 @@
 
     bindRevealButtons();
     bindIngestionPage();
+    injectSourcePills();
     bindWriterPage();
     bindAnalysisPage();
     bindThreadPage();
+    bindVerifierPage();
+    bindGovernedPage();
+    bindApplicationPage();
   });
 })();

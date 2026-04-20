@@ -24,21 +24,19 @@
     <div id="sidebarHost"></div>
 
     <main class="page">
+      <a class="page-back" href="../institutional/03-writer.html">
+        <span class="page-back-arrow">←</span> Knowledge Writer
+      </a>
+
       <section class="hero-panel">
         <div class="hero-overlay"></div>
-        <div class="hero-inner">
+        <div class="hero-inner hero-inner-solo">
           <div>
-            <div class="kicker">Step 3 · Conflict & gap detection</div>
+            <div class="kicker">Step 3 · Conflict &amp; gap detection</div>
             <h1 class="hero-title">Find what others miss</h1>
             <p class="hero-lead">
               Requivo automatically surfaces contradictions between institutional sources
               and identifies missing operational logic before it causes delays or compliance errors.
-            </p>
-          </div>
-          <div class="hero-side-copy">
-            <p>
-              The system does not only draft procedural text. It also makes ambiguity visible,
-              so the university can resolve the exact issue rather than relying on silent divergence.
             </p>
           </div>
         </div>
@@ -58,25 +56,13 @@
         </div>
       </div>
 
-      <section class="editorial-section">
-        <div class="editorial-grid">
-          <h2 class="editorial-title">Detection before failure</h2>
-          <div class="editorial-copy">
-            Universities often discover procedural inconsistency only after it has already
-            slowed a real project. Requivo is designed to surface contradiction and incompleteness
-            before operational risk becomes visible downstream.
-          </div>
-        </div>
-        <div class="rule"></div>
-      </section>
-
       <section class="product-panel">
         <div class="product-head">
           <div class="product-label">Analysis Engine</div>
           <button class="btn btn-primary" id="runAnalysisBtn">Run analysis</button>
         </div>
         <div class="product-body">
-          <div class="status-line" style="margin-bottom:14px;">
+          <div class="status-line" style="margin-bottom:12px;">
             <span class="status-dot live"></span>
             <span id="analysisStatus">Ready to analyse linked evidence objects</span>
           </div>
@@ -96,16 +82,16 @@
             </div>
 
             <div class="finding-card gap">
-              <h3>Gap detected: startup document register ownership</h3>
+              <h3>Gap detected: project document register ownership</h3>
               <p>
-                The evidence set refers to a startup document register but does not define
+                The evidence set refers to a project document register but does not define
                 who opens it, which template is authoritative, or when ownership passes
                 from grants office to project manager.
               </p>
             </div>
           </div>
 
-          <div id="analysisSummary" class="hidden" style="margin-top:14px;">
+          <div id="analysisSummary" class="hidden" style="margin-top:12px;">
             <div class="summary-banner">
               <strong>1 conflict and 1 gap detected.</strong>
               Each is linked to exact evidence sources and routed to the most relevant institutional expert.
