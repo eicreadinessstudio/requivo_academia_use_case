@@ -2826,3 +2826,109 @@ body[data-page="landing"] .editorial-section { margin-bottom: 24px; }
   display: block;
 }
 
+/* ===================================================
+   STEP 6 — PRECISION PASS 2 (Apr 2026)
+   =================================================== */
+
+/* === PRE-STATE — compact ghost placeholders === */
+.app-pre-state-card {
+  height: 20px;
+}
+
+/* === MCP INTERFACE — governed system endpoint feel === */
+.app-tile-mcp-inner {
+  background: #0c1622;
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 0;
+  overflow: hidden;
+}
+
+.app-tile-mcp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.025);
+}
+
+.app-tile-mcp-endpoint {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: #475569;
+  letter-spacing: 0.02em;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-tile-mcp-badge {
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: rgba(45,82,130,0.55);
+  color: #93c5fd;
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(147,197,253,0.18);
+  flex-shrink: 0;
+}
+
+.app-tile-mcp-query {
+  padding: 8px 10px 7px;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.app-tile-mcp-response {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 10px;
+}
+
+.app-tile-mcp-ok {
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  padding: 1px 7px;
+  border-radius: 3px;
+  border: 1px solid rgba(74,222,128,0.15);
+  flex-shrink: 0;
+}
+
+.app-tile-mcp-meta {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: #475569;
+  line-height: 1.4;
+  text-align: right;
+}
+
+/* === COVERAGE METRICS — semantic color context === */
+.cov-metric--primary .cov-metric-value {
+  color: var(--accent);
+}
+
+.cov-metric--warn .cov-metric-value {
+  color: var(--amber);
+}
+
+.cov-metric--ok .cov-metric-value {
+  color: var(--green);
+}
+
+/* === COVERAGE STATUS DOT — live pulse === */
+.coverage-status-dot {
+  background: var(--green);
+  box-shadow: 0 0 0 2px rgba(21,128,61,0.15);
+  animation: pulseDot 2.4s ease-in-out infinite;
+}
+

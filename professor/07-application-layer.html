@@ -136,8 +136,15 @@
                 <h3>MCP Interface</h3>
                 <p>Expose governed knowledge to AI tools — structured, cited, and verifiable.</p>
                 <div class="app-tile-mcp-inner">
-                  <div class="app-tile-mcp-query">&gt; query: ethics timing externally funded</div>
-                  <div class="app-tile-mcp-result">→ Verified · 2 sources · E. Messina confirmed</div>
+                  <div class="app-tile-mcp-header">
+                    <span class="app-tile-mcp-endpoint">requivo://knowledge/query</span>
+                    <span class="app-tile-mcp-badge">GET</span>
+                  </div>
+                  <div class="app-tile-mcp-query">&gt;&nbsp;ethics timing externally funded</div>
+                  <div class="app-tile-mcp-response">
+                    <span class="app-tile-mcp-ok">200 OK</span>
+                    <span class="app-tile-mcp-meta">2 sources · verified · E. Messina</span>
+                  </div>
                 </div>
               </div>
 
@@ -151,21 +158,21 @@
               </div>
               <div class="coverage-loading-line" id="coverageLoadingLine"></div>
               <div class="coverage-metrics-row" id="coverageMetrics">
-                <div class="cov-metric">
+                <div class="cov-metric cov-metric--primary">
                   <div class="cov-metric-value" id="coverageValue" data-target="87">—</div>
-                  <div class="cov-metric-label">Coverage</div>
+                  <div class="cov-metric-label">Knowledge coverage</div>
                 </div>
-                <div class="cov-metric">
+                <div class="cov-metric cov-metric--warn">
                   <div class="cov-metric-value">3</div>
                   <div class="cov-metric-label">Open conflicts</div>
                 </div>
-                <div class="cov-metric">
+                <div class="cov-metric cov-metric--warn">
                   <div class="cov-metric-value">2</div>
                   <div class="cov-metric-label">Knowledge gaps</div>
                 </div>
-                <div class="cov-metric">
+                <div class="cov-metric cov-metric--ok">
                   <div class="cov-metric-value">6</div>
-                  <div class="cov-metric-label">Team verifications this month</div>
+                  <div class="cov-metric-label">Verifications this month</div>
                 </div>
               </div>
             </div>
