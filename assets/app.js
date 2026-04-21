@@ -485,6 +485,12 @@
     activateBtn.addEventListener("click", async function () {
       activateBtn.disabled = true;
 
+      // Swap pre-state out, reveal tile zone
+      const preState = document.getElementById("appPreState");
+      if (preState) preState.style.display = "none";
+      const revealZone = document.getElementById("appRevealZone");
+      if (revealZone) revealZone.classList.add("active");
+
       // Tiles slide in sequentially — let each settle before the next
       const tiles = document.querySelectorAll(".app-tile");
       for (let i = 0; i < tiles.length; i++) {

@@ -54,116 +54,132 @@
 
       <section class="product-panel">
         <div class="product-head">
-          <div class="product-label">Teaching application modules</div>
-          <span class="head-pill blue">Teaching layer</span>
+          <div class="product-label">Application Modules</div>
+          <span class="head-pill blue">Knowledge Layer</span>
         </div>
         <div class="product-body">
 
-          <div class="app-tiles-grid">
-
-            <!-- Teaching Writer -->
-            <div class="app-tile">
-              <div class="app-tile-head">
-                <div class="app-tile-icon">W</div>
-                <span class="app-tile-kl-pill">Teaching layer</span>
-              </div>
-              <h3>Teaching Writer</h3>
-              <p>Generate structured lesson packages from fragmented course materials, notes, and prior-year slides.</p>
-              <div class="app-tile-pills-row">
-                <span class="app-tile-status-pill draft">Draft</span>
-                <span class="app-tile-status-pill verified">Reviewed</span>
-                <span class="app-tile-status-pill review">Revision</span>
-              </div>
+          <!-- Compact pre-state: visible before button click -->
+          <div class="app-pre-state" id="appPreState">
+            <div class="app-pre-state-grid">
+              <div class="app-pre-state-card"></div>
+              <div class="app-pre-state-card"></div>
+              <div class="app-pre-state-card"></div>
+              <div class="app-pre-state-card"></div>
             </div>
+          </div>
 
-            <!-- Teaching Manager -->
-            <div class="app-tile">
-              <div class="app-tile-head">
-                <div class="app-tile-icon">M</div>
-                <span class="app-tile-kl-pill">Teaching layer</span>
-              </div>
-              <h3>Teaching Manager</h3>
-              <p>Map topic coverage, identify content gaps, and track material across semesters.</p>
-              <input class="app-tile-search" type="text" placeholder="Search lesson topics…" readonly tabindex="-1">
-              <div class="app-tile-stats">
-                <div class="app-tile-stat"><strong>18</strong>Topics</div>
-                <div class="app-tile-stat"><strong>82%</strong>Coverage</div>
-                <div class="app-tile-stat"><strong>4</strong>Semesters</div>
-              </div>
-            </div>
+          <!-- Reveal zone: hidden until button click -->
+          <div class="app-reveal-zone" id="appRevealZone">
 
-            <!-- Lesson Reviewer -->
-            <div class="app-tile">
-              <div class="app-tile-head">
-                <div class="app-tile-icon">R</div>
-                <span class="app-tile-kl-pill">Teaching layer</span>
-              </div>
-              <h3>Lesson Reviewer</h3>
-              <p>Route revision tasks and review requests directly to the professor for structured feedback.</p>
-              <div class="app-tile-verifier-inner">
-                <div class="app-tile-proc-names">
-                  <div class="app-tile-proc-name">Lesson structure</div>
-                  <div class="app-tile-proc-name">Evidence basis</div>
-                  <div class="app-tile-proc-name">Teaching gaps</div>
+            <div class="app-tiles-grid">
+
+              <!-- Knowledge Writer -->
+              <div class="app-tile">
+                <div class="app-tile-head">
+                  <div class="app-tile-icon">W</div>
+                  <span class="app-tile-kl-pill">Knowledge Layer</span>
                 </div>
-                <div class="app-tile-people-pills">
-                  <span class="app-tile-person-pill green">G. Rinaldi</span>
-                  <span class="app-tile-person-pill blue">Assistant</span>
+                <h3>Knowledge Writer</h3>
+                <p>Generate and maintain structured institutional procedures from fragmented evidence.</p>
+                <div class="app-tile-pills-row">
+                  <span class="app-tile-status-pill draft">Draft</span>
+                  <span class="app-tile-status-pill verified">Verified</span>
+                  <span class="app-tile-status-pill review">Review</span>
                 </div>
               </div>
+
+              <!-- Knowledge Manager -->
+              <div class="app-tile">
+                <div class="app-tile-head">
+                  <div class="app-tile-icon">M</div>
+                  <span class="app-tile-kl-pill">Knowledge Layer</span>
+                </div>
+                <h3>Knowledge Manager</h3>
+                <p>Identify duplication, outdated guidance, and weakly covered process areas.</p>
+                <input class="app-tile-search" type="text" placeholder="Search procedures…" readonly tabindex="-1">
+                <div class="app-tile-stats">
+                  <div class="app-tile-stat"><strong>24</strong>Articles</div>
+                  <div class="app-tile-stat"><strong>87%</strong>Coverage</div>
+                  <div class="app-tile-stat"><strong>6</strong>Contributions</div>
+                </div>
+              </div>
+
+              <!-- Knowledge Verifier -->
+              <div class="app-tile">
+                <div class="app-tile-head">
+                  <div class="app-tile-icon">V</div>
+                  <span class="app-tile-kl-pill">Knowledge Layer</span>
+                </div>
+                <h3>Knowledge Verifier</h3>
+                <p>Route unresolved issues to the most relevant office or expert.</p>
+                <div class="app-tile-verifier-inner">
+                  <div class="app-tile-proc-names">
+                    <div class="app-tile-proc-name">Ethics pre-screening</div>
+                    <div class="app-tile-proc-name">Register ownership</div>
+                    <div class="app-tile-proc-name">Budget sign-off</div>
+                  </div>
+                  <div class="app-tile-people-pills">
+                    <span class="app-tile-person-pill blue">E. Messina</span>
+                    <span class="app-tile-person-pill amber">P. Greco</span>
+                    <span class="app-tile-person-pill green">G. Rinaldi</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MCP Interface -->
+              <div class="app-tile">
+                <div class="app-tile-head">
+                  <div class="app-tile-icon">AI</div>
+                  <span class="app-tile-kl-pill">Knowledge Layer</span>
+                </div>
+                <h3>MCP Interface</h3>
+                <p>Expose governed knowledge to AI tools — structured, cited, and verifiable.</p>
+                <div class="app-tile-mcp-inner">
+                  <div class="app-tile-mcp-query">&gt; query: ethics timing externally funded</div>
+                  <div class="app-tile-mcp-result">→ Verified · 2 sources · E. Messina confirmed</div>
+                </div>
+              </div>
+
             </div>
 
-            <!-- MCP Interface -->
-            <div class="app-tile">
-              <div class="app-tile-head">
-                <div class="app-tile-icon">AI</div>
-                <span class="app-tile-kl-pill">Teaching layer</span>
+            <!-- Coverage summary -->
+            <div class="coverage-section" id="coverageSection">
+              <div class="coverage-section-label-row">
+                <div class="coverage-label">Knowledge layer coverage</div>
+                <div class="coverage-status-dot"></div>
               </div>
-              <h3>MCP Interface</h3>
-              <p>Expose teaching knowledge to AI course tools — structured, cited, and professor-reviewed.</p>
-              <div class="app-tile-mcp-inner">
-                <div class="app-tile-mcp-query">&gt; query: ethics module clinical research</div>
-                <div class="app-tile-mcp-result">→ Reviewed · 3 sources · G. Rinaldi confirmed</div>
+              <div class="coverage-loading-line" id="coverageLoadingLine"></div>
+              <div class="coverage-metrics-row" id="coverageMetrics">
+                <div class="cov-metric">
+                  <div class="cov-metric-value" id="coverageValue" data-target="87">—</div>
+                  <div class="cov-metric-label">Coverage</div>
+                </div>
+                <div class="cov-metric">
+                  <div class="cov-metric-value">3</div>
+                  <div class="cov-metric-label">Open conflicts</div>
+                </div>
+                <div class="cov-metric">
+                  <div class="cov-metric-value">2</div>
+                  <div class="cov-metric-label">Knowledge gaps</div>
+                </div>
+                <div class="cov-metric">
+                  <div class="cov-metric-value">6</div>
+                  <div class="cov-metric-label">Team verifications this month</div>
+                </div>
               </div>
             </div>
 
-          </div>
+            <!-- Healthy banner — final system signal -->
+            <div id="healthyBanner" class="knowledge-healthy-banner">
+              <div class="healthy-icon">✓</div>
+              <div class="healthy-text">
+                <strong>Knowledge layer healthy</strong>
+                <p>87% coverage · E. Messina verified · Ready for reuse</p>
+              </div>
+            </div>
 
-          <!-- Coverage summary -->
-          <div class="coverage-section" id="coverageSection">
-            <div class="coverage-section-label-row">
-              <div class="coverage-label">Teaching knowledge coverage</div>
-              <div class="coverage-status-dot"></div>
-            </div>
-            <div class="coverage-loading-line" id="coverageLoadingLine"></div>
-            <div class="coverage-metrics-row" id="coverageMetrics">
-              <div class="cov-metric">
-                <div class="cov-metric-value" id="coverageValue" data-target="82">—</div>
-                <div class="cov-metric-label">Coverage</div>
-              </div>
-              <div class="cov-metric">
-                <div class="cov-metric-value">4</div>
-                <div class="cov-metric-label">Topics integrated</div>
-              </div>
-              <div class="cov-metric">
-                <div class="cov-metric-value">2</div>
-                <div class="cov-metric-label">Gaps resolved</div>
-              </div>
-              <div class="cov-metric">
-                <div class="cov-metric-value">8</div>
-                <div class="cov-metric-label">Lesson confirmations this semester</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Healthy banner — final system signal -->
-          <div id="healthyBanner" class="knowledge-healthy-banner">
-            <div class="healthy-icon">✓</div>
-            <div class="healthy-text">
-              <strong>Teaching layer healthy</strong>
-              <p>82% coverage · Prof. Rinaldi verified · Ready for reuse</p>
-            </div>
-          </div>
+          </div><!-- /app-reveal-zone -->
 
         </div>
       </section>

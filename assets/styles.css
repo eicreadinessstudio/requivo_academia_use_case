@@ -2795,3 +2795,34 @@ body[data-page="landing"] .editorial-section { margin-bottom: 24px; }
   font-size: 16px;
 }
 
+/* ===================================================
+   STEP 6 — PRE-STATE + REVEAL ZONE
+   =================================================== */
+
+/* Compact 2×2 ghost grid shown before button click */
+.app-pre-state {
+  padding: 2px 0 4px;
+}
+
+.app-pre-state-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.app-pre-state-card {
+  height: 42px;
+  border: 1.5px dashed rgba(30,58,95,0.18);
+  border-radius: var(--r-lg);
+  background: transparent;
+}
+
+/* Reveal zone: hidden until JS adds .active */
+#appRevealZone {
+  display: none;
+}
+
+#appRevealZone.active {
+  display: block;
+}
+
