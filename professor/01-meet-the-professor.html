@@ -53,53 +53,53 @@
         </div>
       </div>
 
-      <section class="editorial-section">
-        <div class="editorial-grid">
-          <h2 class="editorial-title">Teaching continuity</h2>
-          <div class="editorial-copy">
-            In many academic settings, course logic is not lost because nobody cares.
-            It is lost because slide decks, notes, papers, and tacit teaching judgment
-            are never turned into one structured, reusable teaching layer.
-          </div>
-        </div>
-        <div class="rule"></div>
-      </section>
-
       <section class="product-panel">
         <div class="product-head">
           <div class="product-label">Professor profile</div>
         </div>
         <div class="product-body">
-          <div class="cards-2" style="margin-bottom:14px;">
-            <div class="info-card">
-              <h3>Teaching context</h3>
-              <p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px;align-items:start;">
+            <div>
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:8px;">Teaching context</div>
+              <p style="font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-bottom:10px;">
                 Professor of Clinical Research Methods, teaching advanced students in
                 translational and clinical research. The course relies on materials
                 accumulated over multiple semesters.
               </p>
+              <ul class="clean-list">
+                <li>Prior-year slide decks</li>
+                <li>Raw lecture notes</li>
+                <li>Selected supporting papers</li>
+                <li>Clinical case examples</li>
+              </ul>
             </div>
-            <div class="info-card">
-              <h3>Core need</h3>
-              <p>
+            <div>
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:8px;">Core need</div>
+              <p style="font-size:12.5px;color:var(--ink-2);line-height:1.7;margin-bottom:10px;">
                 Faster, structured lesson preparation from fragmented professor-side
                 material without losing academic precision or teaching judgment.
               </p>
             </div>
           </div>
 
-          <div class="cards-3">
+          <div style="height:1px;background:var(--border);margin:0 0 16px;"></div>
+
+          <div class="metrics-4">
             <div class="metric-card">
-              <span class="value">Old decks</span>
-              <p>Prior-year slide logic remains mixed with newer material.</p>
+              <span class="value">6+</span>
+              <p>Disconnected teaching source types</p>
             </div>
             <div class="metric-card">
-              <span class="value">Scattered notes</span>
-              <p>Key explanations often remain in raw notes rather than reusable teaching objects.</p>
+              <span class="value">Several h</span>
+              <p>Manual preparation time per session</p>
             </div>
             <div class="metric-card">
-              <span class="value">Difficult handover</span>
-              <p>Assistants struggle to know what is current, essential, or optional.</p>
+              <span class="value">Mixed logic</span>
+              <p>Old slide logic mixed with current understanding</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">Hard</span>
+              <p>Handover to assistants or future semesters</p>
             </div>
           </div>
         </div>
@@ -107,24 +107,60 @@
 
       <section class="product-panel">
         <div class="product-head">
-          <div class="product-label">What this means in practice</div>
+          <div class="product-label">But under the surface…</div>
         </div>
         <div class="product-body">
-          <div class="btn-row">
-            <button class="btn btn-primary" data-reveal-target="teachingBurden">
-              See the teaching burden
-            </button>
+          <div class="metrics-4" style="margin-bottom:14px;">
+            <div class="metric-card">
+              <span class="value">Old decks</span>
+              <p>Prior-year slide logic remains mixed with newer material</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">Scattered</span>
+              <p>Key explanations in raw notes rather than reusable teaching objects</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">No layer</span>
+              <p>Teaching continuity depends on one person's private memory</p>
+            </div>
+            <div class="metric-card">
+              <span class="value">Fragile</span>
+              <p>Any assistant or semester handover starts from scratch</p>
+            </div>
           </div>
 
-          <div id="teachingBurden" class="hidden" style="margin-top:14px;">
-            <div class="alert amber flash">
-              <strong>Without a structured teaching layer,</strong>
-              lesson preparation remains person-dependent, difficult to reuse, and hard
-              to hand over cleanly to assistants or future semesters.
-            </div>
+          <div class="alert amber" style="margin-bottom:14px;">
+            <strong>Teaching continuity gap:</strong>
+            Without a structured teaching layer, lesson preparation remains
+            person-dependent, difficult to reuse, and hard to hand over cleanly
+            to assistants or future semesters.
           </div>
         </div>
       </section>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" data-reveal-target="teachingBurden">See the cost of inaction</button>
+      </div>
+
+      <div id="teachingBurden" class="hidden" style="margin-top:12px;margin-bottom:12px;">
+        <div class="inaction-reveal flash">
+          <div class="inaction-claim">If the professor remains the only real holder of course logic:</div>
+          <div class="inaction-items">
+            <div class="inaction-item">
+              <div class="inaction-dot red"></div>
+              <span>Assistants cannot operate independently — every preparation cycle restarts from scratch</span>
+            </div>
+            <div class="inaction-item">
+              <div class="inaction-dot red"></div>
+              <span>Lesson quality depends on available preparation time rather than structured teaching logic</span>
+            </div>
+            <div class="inaction-item">
+              <div class="inaction-dot amber"></div>
+              <span>Teaching continuity stays fragile — one sabbatical or handover breaks accumulated course knowledge</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="next-prev">
         <span></span>

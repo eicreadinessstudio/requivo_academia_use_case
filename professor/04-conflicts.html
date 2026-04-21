@@ -23,21 +23,10 @@
   <div class="wrap layout">
     <div id="sidebarHost"></div>
 
-    <main class="page">
+    <main class="page page-compact">
       <a class="page-back" href="../professor/03-lesson-writer.html">
         <span class="page-back-arrow">←</span> Lesson Writer
       </a>
-
-      <div class="page-header">
-        <div class="page-header-body">
-          <div class="page-header-kicker">Step 3 · Conflict &amp; gap detection</div>
-          <h1 class="page-header-title">Surface inconsistencies before they reach students</h1>
-          <p class="page-header-lead">
-            Requivo identifies where teaching material is inconsistent, outdated, or incomplete —
-            because course content often carries legacy logic long after the professor’s understanding has evolved.
-          </p>
-        </div>
-      </div>
 
       <div class="progress-strip">
         <div class="progress-count">4 / 8</div>
@@ -53,54 +42,59 @@
         </div>
       </div>
 
-      <section class="editorial-section">
-        <div class="editorial-grid">
-          <h2 class="editorial-title">Teaching quality through structure</h2>
-          <div class="editorial-copy">
-            The system is not only useful when it drafts a lesson. It is also useful when
-            it points out where the draft still reproduces outdated logic or misses an essential bridge.
-          </div>
-        </div>
-        <div class="rule"></div>
+      <section class="step-header">
+        <div class="step-kicker">Step 3 · Conflict &amp; gap detection</div>
+        <h1 class="step-title">Surface inconsistencies before they reach students</h1>
+        <p class="step-lead">
+          Requivo identifies where teaching material is inconsistent, outdated, or incomplete —
+          because course content often carries legacy logic long after the professor's understanding has evolved.
+        </p>
       </section>
 
       <section class="product-panel">
         <div class="product-head">
           <div class="product-label">Teaching analysis</div>
-          <button class="btn btn-primary" id="runAnalysisBtn">Run analysis</button>
+          <span class="head-pill blue">Automated</span>
         </div>
         <div class="product-body">
-          <div class="status-line" style="margin-bottom:14px;">
+          <div class="status-line" style="margin-bottom:12px;">
             <span class="status-dot live"></span>
             <span id="analysisStatus">Ready to analyse teaching evidence</span>
           </div>
 
           <div id="analysisFindings" class="analysis-shell hidden">
-            <div class="finding-card conflict">
+            <div class="finding-card conflict" id="conflictCard">
               <h3>Conflict detected: outdated teaching logic</h3>
               <p>
                 Older slide fragments imply a simpler ethics sequence than current institutional
                 practice and risk teaching an outdated operational picture.
               </p>
+              <ul>
+                <li>Prior-year slides reference a pre-2022 ethics screening sequence.</li>
+                <li>Current lecture notes align with updated institutional guidance.</li>
+                <li>Students are presented with conflicting process logic across materials.</li>
+              </ul>
             </div>
 
-            <div class="finding-card gap">
+            <div class="finding-card gap" id="gapCard">
               <h3>Gap detected: missing bridge from theory to practice</h3>
               <p>
                 The materials explain concepts clearly, but do not yet show how those concepts
                 affect real project startup workflows at the university.
               </p>
             </div>
-          </div>
 
-          <div id="analysisSummary" class="hidden" style="margin-top:14px;">
-            <div class="summary-banner">
+            <div class="finding-summary" id="analysisSummary">
               <strong>1 inconsistency and 1 teaching gap detected.</strong>
-              The professor can review only what actually needs correction.
+              Each is linked to teaching source materials and flagged for professor review.
             </div>
           </div>
         </div>
       </section>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="runAnalysisBtn">Run analysis</button>
+      </div>
 
       <div class="next-prev">
         <a class="btn btn-ghost" href="../professor/03-lesson-writer.html">← Lesson Writer</a>

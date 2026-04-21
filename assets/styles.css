@@ -2719,3 +2719,79 @@ body[data-page="landing"] .editorial-section { margin-bottom: 24px; }
   margin-left: auto;
 }
 
+/* ===================================================
+   STEP 6 — APPLICATION CARD ARCHITECTURE REFINEMENTS
+   =================================================== */
+
+/* Equal-height row: grid stretches cells to tallest in row */
+.app-tiles-grid {
+  align-items: stretch;
+}
+
+/* Flex column layout: separates description zone from module zone */
+.app-tile {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+/* Description text stretches to fill vertical space */
+.app-tile > p {
+  flex: 1;
+}
+
+/* All module zones: auto-margin pins them to card bottom */
+.app-tile .app-tile-pills-row,
+.app-tile .app-tile-search,
+.app-tile .app-tile-verifier-inner,
+.app-tile .app-tile-mcp-inner {
+  margin-top: auto !important;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* Subtle elevation on revealed tiles */
+.app-tile.active {
+  box-shadow: 0 2px 14px rgba(30,58,95,0.07);
+}
+
+/* Stats: stronger number weight, more breathing room */
+.app-tile-stats {
+  gap: 16px;
+  margin-top: 0;
+}
+
+.app-tile-stat strong {
+  font-size: 16px;
+}
+
+/* Coverage: widen gap between primary and secondary metrics */
+.coverage-metrics-row .cov-metric:first-child .cov-metric-value {
+  font-size: 28px;
+}
+
+/* Coverage section entrance: also clip the loading line animation */
+.coverage-section {
+  padding: 16px 18px 18px;
+}
+
+/* ===================================================
+   GET IN TOUCH — CONTACT PANEL REFINEMENTS
+   =================================================== */
+
+/* More generous contact layout on the simplified page */
+.contact-panel {
+  padding: 22px 0 14px;
+  gap: 20px;
+}
+
+.contact-icon {
+  width: 42px;
+  height: 42px;
+  font-size: 16px;
+}
+
+.contact-email {
+  font-size: 16px;
+}
+
