@@ -3090,3 +3090,140 @@ body[data-page="landing"] .editorial-section { margin-bottom: 24px; }
   animation: pulseDot 2.4s ease-in-out infinite;
 }
 
+/* ===================================================
+   LANDING PAGE v2 — LIGHT PREMIUM ENTRY POINT
+   Replaces the heavy dark hero block with a restrained
+   institutional intro and a moving accent line.
+   =================================================== */
+
+/* Remove top padding — intro block owns its own spacing */
+.landing {
+  padding-top: 0;
+}
+
+/* Light intro section: calm, breathing, institutional */
+.landing-intro {
+  padding: 68px 0 52px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+  position: relative;
+}
+
+/* Accent line at top — 1px border with a slow blue beam sweep */
+.landing-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.landing-accent-beam {
+  position: absolute;
+  top: 0;
+  left: -42%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(45, 82, 130, 0.68) 48%,
+    rgba(45, 82, 130, 0.68) 52%,
+    transparent 100%
+  );
+  animation: landingBeamSweep 5.8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+@keyframes landingBeamSweep {
+  0%   { left: -42%; opacity: 0; }
+  6%   { opacity: 1; }
+  72%  { left: 118%; opacity: 1; }
+  78%  { left: 118%; opacity: 0; }
+  100% { left: 118%; opacity: 0; }
+}
+
+/* Kicker: restrained, system-label feel */
+.landing-kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-mid);
+  margin-bottom: 18px;
+  opacity: 0.85;
+}
+
+/* Title: serif, calm, no hero weight */
+.landing-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: normal;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 14px;
+  letter-spacing: -0.012em;
+}
+
+/* Lead: secondary, under 520px width, comfortable line height */
+.landing-lead {
+  font-size: 13.5px;
+  color: var(--ink-3);
+  line-height: 1.75;
+  max-width: 510px;
+}
+
+/* Selector section: pull eyebrow closer to cards */
+.selector-wrap {
+  padding-bottom: 40px;
+}
+
+.selector-eyebrow {
+  padding-bottom: 16px;
+  padding-top: 0;
+  color: var(--ink-3);
+}
+
+/* ===================================================
+   PATH CARDS — system-consistent card architecture
+   Header separator mirrors product-panel product-head
+   =================================================== */
+
+/* Card header row: label + optional pill, with separator */
+.path-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2px;
+}
+
+/* Left-border accent on hover — institutional precision */
+.path-card {
+  border-left-width: 2px;
+  border-left-color: transparent;
+  transition: border-color 0.16s ease, border-left-color 0.16s ease,
+              box-shadow 0.16s ease;
+}
+
+.path-card:hover {
+  border-color: var(--border);
+  border-left-color: var(--accent-mid);
+  box-shadow: 0 4px 24px rgba(30, 58, 95, 0.07);
+}
+
+/* Track tag pill inside card head — subtle system identifier */
+.path-track-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
