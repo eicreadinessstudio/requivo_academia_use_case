@@ -91,76 +91,92 @@ Draft generated from fragmented institutional evidence. Awaiting expert verifica
     nav: [
       { href: "../professor/01-meet-the-professor.html", label: "Meet the professor" },
       { href: "../professor/02-ingestion.html", label: "Ingestion" },
-      { href: "../professor/03-lesson-writer.html", label: "Lesson Writer" },
+      { href: "../professor/03-lesson-writer.html", label: "Knowledge Writer" },
       { href: "../professor/04-conflicts.html", label: "Conflict & gap detection" },
-      { href: "../professor/05-review.html", label: "Review" },
-      { href: "../professor/06-governed-teaching.html", label: "Governed teaching knowledge" },
+      { href: "../professor/05-review.html", label: "Knowledge Verifier" },
+      { href: "../professor/06-governed-teaching.html", label: "Governed knowledge" },
       { href: "../professor/07-application-layer.html", label: "Application Layer" },
       { href: "../professor/08-get-started.html", label: "Get started" }
     ],
-    note: "Professor track: lesson preparation, teaching continuity, structured course knowledge, and faculty-side reuse.",
+    note: "Professor track: teaching continuity, academic methodology, structured course knowledge, and faculty-side delegation.",
     sources: [
       {
         icon: "doc",
-        code: "SLD",
-        title: "Clinical Research Methods — slides 2025",
-        meta: "Prior-year slide deck",
+        code: "PPT",
+        title: "COPD_Lecture_2024.pptx",
+        meta: "Core lecture deck · 2024",
         tag: "Slides"
       },
       {
         icon: "doc",
         code: "DOC",
-        title: "Lecture_notes_raw.docx",
-        meta: "Professor notes",
-        tag: "Notes"
+        title: "Seminar_outline_smoking_harm_reduction.docx",
+        meta: "Seminar notes",
+        tag: "Seminar"
       },
       {
         icon: "pdf",
         code: "PDF",
-        title: "Syllabus_fragment.pdf",
-        meta: "Course outline excerpt",
-        tag: "Syllabus"
-      },
-      {
-        icon: "pdf",
-        code: "PDF",
-        title: "Selected paper pack",
-        meta: "Teaching paper bundle",
-        tag: "Papers"
+        title: "Core_readings_respiratory_medicine.pdf",
+        meta: "Reading list",
+        tag: "Readings"
       },
       {
         icon: "doc",
-        code: "CAS",
-        title: "Clinical case note set",
-        meta: "Example scenarios",
-        tag: "Case set"
+        code: "MD",
+        title: "Lecture_notes_private.md",
+        meta: "Professor working notes",
+        tag: "Notes"
+      },
+      {
+        icon: "doc",
+        code: "PPT",
+        title: "Slides_legacy_module_B.pptx",
+        meta: "Archive · Module B",
+        tag: "Archive"
+      },
+      {
+        icon: "doc",
+        code: "DOC",
+        title: "Assistant_annotations_Q1.docx",
+        meta: "Teaching assistant notes",
+        tag: "Annotations"
       },
       {
         icon: "xls",
-        code: "EXM",
-        title: "Exam topics list",
-        meta: "Student assessment cues",
+        code: "XLS",
+        title: "Exam_topics_master_list.xlsx",
+        meta: "Assessment cues",
         tag: "Assessment"
       }
     ],
-    lessonText: `Lesson package: Clinical Research Methods — Ethics, Data Governance, and Study Initiation
+    lessonText: `Title: Smoking Harm Reduction — lecture sequence and teaching structure
 
-Learning objectives
-- Explain the difference between grant submission readiness and project launch readiness
-- Distinguish ethics pre-screening, formal ethics review, and operational initiation activities
-- Understand why fragmented institutional knowledge creates delays in real research environments
+Teaching context
+This teaching article captures the intended lecture sequence and explanatory logic for the topic of smoking harm reduction in a clinical medicine context. It reflects the professor's preferred conceptual order and source logic.
 
-Suggested lecture structure
-1. Opening scenario: a funded medical research project fails to start on time because process knowledge is split across documents and people
-2. Core concepts: ethics timing, project ownership, DMP baseline, and institutional sign-off
-3. Case discussion: compare written SOP logic with operational reality
-4. Student exercise: reconstruct the correct initiation sequence from fragmented evidence
-5. Closing synthesis: why governed academic knowledge matters
+Teaching structure
+1. Why the topic matters in clinical teaching
+   The harm reduction framework is clinically relevant and academically contested. Students must understand why it exists before evaluating its evidence.
+   Source: COPD lecture 2024 + seminar outline
 
-Recommended evidence basis
-Prior-year slides, professor notes, policy excerpts, selected case-study materials, and syllabus fragments.
+2. Distinguish cessation from harm reduction
+   Cessation and harm reduction operate on different evidence timelines, clinical rationales, and patient communication strategies. This distinction is foundational and must be established before evidence is introduced.
+   Source: Private lecture notes + legacy module B slides
+
+3. Evidence base and common objections
+   Introduce primary evidence sources. Acknowledge the main academic objections. Prepare students for contested clinical territory.
+   Source: Core readings + seminar outline (framing conflict — pending verification)
+
+4. Patient case framing for discussion
+   Use a structured patient case to show how the distinction between cessation and harm reduction plays out in a clinical consultation. Surfaces student assumptions before correction.
+   Source: Seminar outline + assistant annotations Q1
+
+5. Recommended reading and teaching sequence
+   Primary evidence first, then policy implications, then patient communication literature. The sequence reflects the professor's intended conceptual order, not just topic relevance.
+   Source: Exam topics master list + professor working notes
 
 Status
-Draft lesson package generated from fragmented teaching material. Ready for professor review and refinement.`
+Draft generated from professor's teaching material. Awaiting professor verification on concept order and framing emphasis.`
   }
 };

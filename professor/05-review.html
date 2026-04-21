@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professor Demo — Review</title>
+  <title>Professor Demo — Knowledge Verifier</title>
   <link rel="stylesheet" href="../assets/styles.css" />
 </head>
 <body data-page="professor">
@@ -30,11 +30,11 @@
 
       <div class="page-header">
         <div class="page-header-body">
-          <div class="page-header-kicker">Step 4 · Review</div>
-          <h1 class="page-header-title">The professor reviews only what matters</h1>
+          <div class="page-header-kicker">Step 4 · Knowledge Verifier</div>
+          <h1 class="page-header-title">The right academic expert gets the right question</h1>
           <p class="page-header-lead">
-            Instead of editing everything manually, the professor reviews the exact inconsistency
-            and teaching gap flagged by the system — the workflow is lighter by design.
+            Requivo identifies who can resolve each finding and sends them one focused validation request.
+            They respond quickly — no meetings, no rewriting of materials required.
           </p>
         </div>
       </div>
@@ -55,58 +55,95 @@
 
       <section class="product-panel">
         <div class="product-head">
-          <div class="product-label">Professor review thread</div>
-        </div>
-        <div class="product-body verifier-grid">
-          <div>
-            <div class="avatar-card">
-              <div class="avatar-badge">GR</div>
-              <h3>Prof. Giulia Rinaldi</h3>
-              <div class="avatar-role">Professor of Clinical Research Methods</div>
-              <p>
-                Final academic reviewer for the lesson package. She decides whether the teaching
-                draft reflects current institutional logic and whether the student-facing structure is sound.
-              </p>
-            </div>
-
-            <div class="verifier-confirm-area">
-              <button class="btn btn-primary" id="threadActionBtn">Review lesson</button>
-            </div>
+          <div class="product-label">Verification Queue</div>
+          <div style="display:flex;gap:6px;">
+            <span class="vpill pending" id="pendingPill">1 pending</span>
           </div>
+        </div>
+        <div class="product-body">
+          <div class="verifier-phone-layout">
 
-          <div class="thread">
-            <div class="bubble ai hidden" data-thread-part>
-              <strong>Requivo review prompt</strong>
-              The current draft lesson includes an older simplified ethics sequence. Please confirm
-              whether the lesson should reflect current institutional startup logic and whether
-              a practice-based bridge should be added for students.
+            <!-- Left: expert card + resolution result -->
+            <div>
+              <div class="avatar-card">
+                <div class="avatar-card-header">
+                  <div class="avatar-badge">MR</div>
+                  <span class="vpill auto">Auto-selected</span>
+                </div>
+                <h3>Prof. Matteo Rinaldi</h3>
+                <div class="avatar-role">Senior Professor · Course Lead</div>
+                <p>
+                  Requivo detected that Matteo authored the original teaching sequence and has resolved
+                  similar conceptual inconsistencies before. He receives a focused question — no meeting required.
+                </p>
+              </div>
+
+              <div id="matteoResult" class="elena-result hidden">
+                <div class="elena-confirmed-label">Matteo confirmed</div>
+                <p>Conflict resolved, explanatory bridge documented. Teaching knowledge layer updated automatically. Luca and Sara now see the correct lesson logic.</p>
+              </div>
             </div>
 
-            <div class="bubble human hidden" data-thread-part>
-              <strong>Professor answer</strong>
-              Yes. The lesson should reflect the current institutional logic, not the older simplified version.
-              Add a short case-based section showing how ethics timing and project startup differ in practice
-              depending on data sensitivity.
+            <!-- Right: phone UI -->
+            <div>
+              <div class="phone-frame">
+                <div class="phone-pill-notch"></div>
+                <div class="phone-screen">
+
+                  <!-- Status bar -->
+                  <div class="phone-status-bar">
+                    <span class="phone-time">09:41</span>
+                    <span class="phone-app-name">Requivo Verifier</span>
+                    <span class="phone-signal">▌▌▌</span>
+                  </div>
+
+                  <!-- Chat area -->
+                  <div class="phone-chat">
+                    <div class="phone-question-bubble">
+                      <div class="phone-question-label">Validation request</div>
+                      Three sources frame the position of harm reduction differently. Please confirm the current teaching sequence and where the concept should be introduced for students.
+                    </div>
+
+                    <!-- Typing indicator (appears after Confirm is clicked) -->
+                    <div id="phoneTypingDots" class="phone-typing-dots hidden">
+                      <span></span><span></span><span></span>
+                    </div>
+
+                    <!-- Reply message (container appears, text typed in) -->
+                    <div id="phoneReplyMsg" class="phone-reply-msg hidden"></div>
+                  </div>
+
+                  <!-- Verified area (slides in at end) -->
+                  <div id="phoneVerifiedPill" class="phone-verified-area hidden">
+                    <div class="phone-verified-check">✓</div>
+                    <div class="phone-verified-label">
+                      <strong>Verified</strong>
+                      <span>Knowledge layer updated</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
             </div>
 
-            <div class="bubble system hidden" data-thread-part>
-              <strong>Lesson update</strong>
-              Lesson package updated. Inconsistency resolved. Practice bridge added.
-            </div>
           </div>
         </div>
       </section>
 
+      <div class="btn-row" style="margin-bottom:4px;">
+        <button class="btn btn-primary" id="matteoConfirmBtn">Matteo taps 'Confirm'</button>
+      </div>
+
       <div id="threadSummary" class="hidden" style="margin-bottom:12px;">
         <div class="summary-banner">
-          <strong>Lesson package refined.</strong>
-          The professor reviewed only the issues that mattered and the draft now reflects current teaching intent more accurately.
+          <strong>Conflict resolved.</strong>
+          Topic framing clarified. Teaching transition documented. Governed article updated automatically.
         </div>
       </div>
 
       <div class="next-prev">
         <a class="btn btn-ghost" href="../professor/04-conflicts.html">← Conflict &amp; gap detection</a>
-        <a class="btn btn-primary" href="../professor/06-governed-teaching.html">Governed teaching knowledge →</a>
+        <a class="btn btn-primary" href="../professor/06-governed-teaching.html">Governed knowledge →</a>
       </div>
     </main>
   </div>

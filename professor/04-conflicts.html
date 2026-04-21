@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professor Demo — Conflict & Gap Detection</title>
+  <title>Professor Demo — Conflict &amp; Gap Detection</title>
   <link rel="stylesheet" href="../assets/styles.css" />
 </head>
 <body data-page="professor">
@@ -25,7 +25,7 @@
 
     <main class="page page-compact">
       <a class="page-back" href="../professor/03-lesson-writer.html">
-        <span class="page-back-arrow">←</span> Lesson Writer
+        <span class="page-back-arrow">←</span> Knowledge Writer
       </a>
 
       <div class="progress-strip">
@@ -44,49 +44,48 @@
 
       <section class="step-header">
         <div class="step-kicker">Step 3 · Conflict &amp; gap detection</div>
-        <h1 class="step-title">Surface inconsistencies before they reach students</h1>
+        <h1 class="step-title">Find where the teaching logic breaks</h1>
         <p class="step-lead">
-          Requivo identifies where teaching material is inconsistent, outdated, or incomplete —
-          because course content often carries legacy logic long after the professor's understanding has evolved.
+          Requivo detects conflicts between teaching sources and missing conceptual bridges before
+          they turn into inconsistent lesson preparation.
         </p>
       </section>
 
       <section class="product-panel">
         <div class="product-head">
-          <div class="product-label">Teaching analysis</div>
+          <div class="product-label">Analysis Engine</div>
           <span class="head-pill blue">Automated</span>
         </div>
         <div class="product-body">
           <div class="status-line" style="margin-bottom:12px;">
             <span class="status-dot live"></span>
-            <span id="analysisStatus">Ready to analyse teaching evidence</span>
+            <span id="analysisStatus">Ready to analyse linked teaching evidence</span>
           </div>
 
           <div id="analysisFindings" class="analysis-shell hidden">
             <div class="finding-card conflict" id="conflictCard">
-              <h3>Conflict detected: outdated teaching logic</h3>
+              <h3>Conflict detected: framing of nicotine harm reduction</h3>
               <p>
-                Older slide fragments imply a simpler ethics sequence than current institutional
-                practice and risk teaching an outdated operational picture.
+                Three teaching sources present the topic with different emphasis:
               </p>
               <ul>
-                <li>Prior-year slides reference a pre-2022 ethics screening sequence.</li>
-                <li>Current lecture notes align with updated institutional guidance.</li>
-                <li>Students are presented with conflicting process logic across materials.</li>
+                <li>One older slide deck frames it primarily as a fallback after failed cessation.</li>
+                <li>A later seminar note positions it earlier as a comparative clinical strategy.</li>
+                <li>A reading note suggests a stronger evidence-first framing for students.</li>
               </ul>
             </div>
 
             <div class="finding-card gap" id="gapCard">
-              <h3>Gap detected: missing bridge from theory to practice</h3>
+              <h3>Gap detected: missing transition between evidence and patient communication</h3>
               <p>
-                The materials explain concepts clearly, but do not yet show how those concepts
-                affect real project startup workflows at the university.
+                The material explains evidence and policy well, but does not clearly define how the
+                professor bridges from scientific data to classroom explanation and patient-case discussion.
               </p>
             </div>
 
             <div class="finding-summary" id="analysisSummary">
-              <strong>1 inconsistency and 1 teaching gap detected.</strong>
-              Each is linked to teaching source materials and flagged for professor review.
+              <strong>1 conflict and 1 gap detected.</strong>
+              Each is linked to exact teaching sources and routed to the most relevant academic expert.
             </div>
           </div>
         </div>
@@ -97,8 +96,8 @@
       </div>
 
       <div class="next-prev">
-        <a class="btn btn-ghost" href="../professor/03-lesson-writer.html">← Lesson Writer</a>
-        <a class="btn btn-primary" href="../professor/05-review.html">Review →</a>
+        <a class="btn btn-ghost" href="../professor/03-lesson-writer.html">← Knowledge Writer</a>
+        <a class="btn btn-primary" href="../professor/05-review.html">Knowledge Verifier →</a>
       </div>
     </main>
   </div>

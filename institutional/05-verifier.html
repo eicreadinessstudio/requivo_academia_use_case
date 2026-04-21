@@ -57,28 +57,25 @@
         <div class="product-head">
           <div class="product-label">Verification Queue</div>
           <div style="display:flex;gap:6px;">
-            <span class="vpill auto">Auto-selected</span>
             <span class="vpill pending" id="pendingPill">1 pending</span>
           </div>
         </div>
         <div class="product-body">
           <div class="verifier-phone-layout">
 
-            <!-- Left: expert card + confirm button + resolution result -->
+            <!-- Left: expert card + resolution result -->
             <div>
               <div class="avatar-card">
-                <div class="avatar-badge">EM</div>
+                <div class="avatar-card-header">
+                  <div class="avatar-badge">EM</div>
+                  <span class="vpill auto">Auto-selected</span>
+                </div>
                 <h3>Dr. Elena Messina</h3>
                 <div class="avatar-role">Research Projects &amp; Ethics Coordinator</div>
                 <p>
-                  Selected because she holds the current operational logic behind ethics
-                  routing and project register ownership — including decisions that were
-                  never formally documented.
+                  Requivo detected that Elena authored the original doc. and has resolved similar
+                  conflicts 4 times before. She receives a focused question — no meeting required.
                 </p>
-              </div>
-
-              <div class="verifier-confirm-area">
-                <button class="btn btn-primary" id="elenaConfirmBtn">Confirm</button>
               </div>
 
               <div id="elenaResult" class="elena-result hidden">
@@ -132,6 +129,10 @@
           </div>
         </div>
       </section>
+
+      <div class="btn-row" style="margin-bottom:4px;">
+        <button class="btn btn-primary" id="elenaConfirmBtn">Elena taps 'Confirm'</button>
+      </div>
 
       <div id="threadSummary" class="hidden" style="margin-bottom:12px;">
         <div class="summary-banner">

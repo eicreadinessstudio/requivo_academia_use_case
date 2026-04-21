@@ -837,7 +837,14 @@ button { cursor: pointer; font-family: var(--font-sans); }
   border: 1px solid var(--border);
   border-radius: var(--r);
   padding: 15px;
-  text-align: center;
+  text-align: left;
+}
+
+.avatar-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .avatar-badge {
@@ -852,8 +859,9 @@ button { cursor: pointer; font-family: var(--font-sans); }
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 10px;
+  margin: 0;
   border: 2px solid rgba(30,58,95,0.18);
+  flex-shrink: 0;
 }
 
 .avatar-card h3 {
@@ -1550,19 +1558,6 @@ body[data-page="landing"] .editorial-section { margin-bottom: 24px; }
   opacity: 1;
 }
 
-/* === VERIFIER CONFIRM AREA (left side) === */
-.verifier-confirm-area {
-  margin-top: 10px;
-  padding: 11px 13px;
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-}
-
-.verifier-confirm-area .btn {
-  width: 100%;
-  justify-content: center;
-}
 
 /* === PROCEDURE NUMBER === */
 .procedure-number {
@@ -2829,6 +2824,14 @@ body[data-page="landing"] .editorial-section { margin-bottom: 24px; }
 .app-tile-search + .app-tile-manager-stat {
   padding-top: 6px;
   border-top: none;
+}
+
+/* === KNOWLEDGE MANAGER TILE — reduce bottom-push so search sits higher === */
+.app-tile--manager > p {
+  flex: 0 !important;
+}
+.app-tile--manager .app-tile-search {
+  margin-top: 14px !important;
 }
 
 /* === MCP INTERFACE — ENDPOINT LIST === */

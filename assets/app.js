@@ -326,75 +326,86 @@
     });
   }
 
+  async function runVerifierFlow(confirmBtn, replyText, resultId) {
+    confirmBtn.disabled = true;
+
+    const typingDots = document.getElementById("phoneTypingDots");
+    const pendingPill = document.getElementById("pendingPill");
+
+    if (pendingPill) pendingPill.textContent = "Responding…";
+
+    if (typingDots) {
+      typingDots.classList.remove("hidden");
+      typingDots.classList.add("active");
+    }
+
+    await wait(1600);
+
+    if (typingDots) {
+      typingDots.classList.remove("active");
+      typingDots.classList.add("hidden");
+    }
+
+    const replyMsg = document.getElementById("phoneReplyMsg");
+    if (replyMsg) {
+      replyMsg.classList.remove("hidden");
+      await wait(80);
+      await typeIntoElement(replyMsg, replyText, 24);
+    }
+
+    await wait(480);
+
+    const verifiedArea = document.getElementById("phoneVerifiedPill");
+    if (verifiedArea) {
+      verifiedArea.classList.remove("hidden");
+      verifiedArea.classList.add("flash");
+    }
+
+    if (pendingPill) {
+      pendingPill.textContent = "Confirmed";
+      pendingPill.classList.remove("pending");
+      pendingPill.classList.add("verified");
+    }
+
+    await wait(580);
+
+    const resultEl = document.getElementById(resultId);
+    if (resultEl) {
+      resultEl.classList.remove("hidden");
+      resultEl.classList.add("flash");
+    }
+
+    await wait(500);
+
+    const summary = document.getElementById("threadSummary");
+    if (summary) {
+      summary.classList.remove("hidden");
+      summary.classList.add("flash");
+    }
+  }
+
   function bindVerifierPage() {
-    const confirmBtn = document.getElementById("elenaConfirmBtn");
-    if (!confirmBtn) return;
+    const elenaBtn = document.getElementById("elenaConfirmBtn");
+    if (elenaBtn) {
+      elenaBtn.addEventListener("click", function () {
+        runVerifierFlow(
+          elenaBtn,
+          "Pre-screening after funding confirmation unless patient data category A. Register opens day 1, assigned to project office.",
+          "elenaResult"
+        );
+      });
+    }
 
-    confirmBtn.addEventListener("click", async function () {
-      confirmBtn.disabled = true;
-
-      const typingDots = document.getElementById("phoneTypingDots");
-      const pendingPill = document.getElementById("pendingPill");
-
-      if (pendingPill) pendingPill.textContent = "Responding…";
-
-      // Show typing indicator
-      if (typingDots) {
-        typingDots.classList.remove("hidden");
-        typingDots.classList.add("active");
-      }
-
-      await wait(1600);
-
-      // Hide typing dots
-      if (typingDots) {
-        typingDots.classList.remove("active");
-        typingDots.classList.add("hidden");
-      }
-
-      // Reply bubble appears empty, then text is typed in
-      const replyMsg = document.getElementById("phoneReplyMsg");
-      const replyText =
-        "Pre-screening after funding confirmation unless patient data category A. Register opens day 1, assigned to project office.";
-
-      if (replyMsg) {
-        replyMsg.classList.remove("hidden");
-        // Small pause so the empty bubble flashes briefly before typing
-        await wait(80);
-        await typeIntoElement(replyMsg, replyText, 24);
-      }
-
-      await wait(480);
-
-      // Verified area appears
-      const verifiedArea = document.getElementById("phoneVerifiedPill");
-      if (verifiedArea) {
-        verifiedArea.classList.remove("hidden");
-        verifiedArea.classList.add("flash");
-      }
-
-      if (pendingPill) {
-        pendingPill.textContent = "Confirmed";
-        pendingPill.classList.remove("pending");
-        pendingPill.classList.add("verified");
-      }
-
-      await wait(580);
-
-      const elenaResult = document.getElementById("elenaResult");
-      if (elenaResult) {
-        elenaResult.classList.remove("hidden");
-        elenaResult.classList.add("flash");
-      }
-
-      await wait(500);
-
-      const summary = document.getElementById("threadSummary");
-      if (summary) {
-        summary.classList.remove("hidden");
-        summary.classList.add("flash");
-      }
-    });
+    const matteoBtn = document.getElementById("matteoConfirmBtn");
+    if (matteoBtn) {
+      matteoBtn.addEventListener("click", function () {
+        runVerifierFlow(
+          matteoBtn,
+          "Introduce harm reduction only after cessation logic is clearly established. In the teaching sequence, evidence comes first, then patient communication, then comparative strategy.",
+          "matteoResult"
+        );
+      });
+    }
   }
 
   function bindGovernedPage() {
