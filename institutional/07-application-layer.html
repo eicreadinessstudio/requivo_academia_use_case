@@ -76,41 +76,34 @@
 
               <!-- Knowledge Writer -->
               <div class="app-tile">
-                <div class="app-tile-head">
-                  <div class="app-tile-icon">W</div>
-                  <span class="app-tile-kl-pill">Knowledge layer</span>
-                </div>
                 <h3>Knowledge Writer</h3>
-                <p>Generate and maintain structured institutional procedures from fragmented evidence.</p>
-                <div class="app-tile-pills-row">
-                  <span class="app-tile-status-pill draft">Draft</span>
-                  <span class="app-tile-status-pill verified">Verified</span>
-                  <span class="app-tile-status-pill review">Review</span>
+                <p>Auto-generate and maintain wiki articles from raw evidence.</p>
+                <div class="app-tile-writer-list">
+                  <div class="app-tile-writer-item">
+                    <span class="app-tile-writer-item-label">ethics pre-screening requirement</span>
+                    <span class="app-tile-status-pill draft">draft</span>
+                  </div>
+                  <div class="app-tile-writer-item">
+                    <span class="app-tile-writer-item-label">operational sequence for project launch</span>
+                    <span class="app-tile-status-pill verified">verified</span>
+                  </div>
+                  <div class="app-tile-writer-item">
+                    <span class="app-tile-writer-item-label">project checklist</span>
+                    <span class="app-tile-status-pill review">review</span>
+                  </div>
                 </div>
               </div>
 
               <!-- Knowledge Manager -->
               <div class="app-tile">
-                <div class="app-tile-head">
-                  <div class="app-tile-icon">M</div>
-                  <span class="app-tile-kl-pill">Knowledge layer</span>
-                </div>
                 <h3>Knowledge Manager</h3>
-                <p>Identify duplication, outdated guidance, and weakly covered process areas.</p>
-                <input class="app-tile-search" type="text" placeholder="Search procedures…" readonly tabindex="-1">
-                <div class="app-tile-stats">
-                  <div class="app-tile-stat"><strong>24</strong>Articles</div>
-                  <div class="app-tile-stat"><strong>87%</strong>Coverage</div>
-                  <div class="app-tile-stat"><strong>6</strong>Contributions</div>
-                </div>
+                <p>Browse, search, and manage the governed knowledge base.</p>
+                <input class="app-tile-search" type="text" placeholder="Search knowledge base…" readonly tabindex="-1">
+                <div class="app-tile-manager-stat">12 articles · 87 % coverage · 5 contributor</div>
               </div>
 
               <!-- Knowledge Verifier -->
               <div class="app-tile">
-                <div class="app-tile-head">
-                  <div class="app-tile-icon">V</div>
-                  <span class="app-tile-kl-pill">Knowledge layer</span>
-                </div>
                 <h3>Knowledge Verifier</h3>
                 <p>Route unresolved issues to the most relevant office or expert.</p>
                 <div class="app-tile-verifier-inner">
@@ -129,21 +122,20 @@
 
               <!-- MCP Interface -->
               <div class="app-tile">
-                <div class="app-tile-head">
-                  <div class="app-tile-icon">AI</div>
-                  <span class="app-tile-kl-pill">Knowledge layer</span>
-                </div>
                 <h3>MCP Interface</h3>
-                <p>Expose governed knowledge to AI tools — structured, cited, and verifiable.</p>
-                <div class="app-tile-mcp-inner">
-                  <div class="app-tile-mcp-header">
-                    <span class="app-tile-mcp-endpoint">requivo://knowledge/query</span>
-                    <span class="app-tile-mcp-badge">GET</span>
+                <p>Expose governed knowledge to AI assistants and external tools</p>
+                <div class="app-tile-mcp-endpoints">
+                  <div class="app-tile-mcp-ep">
+                    <span class="app-tile-mcp-method">GET</span>
+                    <span class="app-tile-mcp-ep-text">/api/knowledge → 12 governed items</span>
                   </div>
-                  <div class="app-tile-mcp-query">&gt;&nbsp;ethics timing externally funded</div>
-                  <div class="app-tile-mcp-response">
-                    <span class="app-tile-mcp-ok">200 OK</span>
-                    <span class="app-tile-mcp-meta">2 sources · verified · E. Messina</span>
+                  <div class="app-tile-mcp-ep">
+                    <span class="app-tile-mcp-method">POST</span>
+                    <span class="app-tile-mcp-ep-text">/api/verify → route to expert</span>
+                  </div>
+                  <div class="app-tile-mcp-ep">
+                    <span class="app-tile-mcp-method">GET</span>
+                    <span class="app-tile-mcp-ep-text">/api/health → 87 % coverage</span>
                   </div>
                 </div>
               </div>
@@ -152,27 +144,26 @@
 
             <!-- Coverage summary -->
             <div class="coverage-section" id="coverageSection">
-              <div class="coverage-section-label-row">
-                <div class="coverage-label">Knowledge layer coverage</div>
-                <div class="coverage-status-dot"></div>
-              </div>
               <div class="coverage-loading-line" id="coverageLoadingLine"></div>
               <div class="coverage-metrics-row" id="coverageMetrics">
-                <div class="cov-metric cov-metric--primary">
-                  <div class="cov-metric-value" id="coverageValue" data-target="87">—</div>
-                  <div class="cov-metric-label">Knowledge coverage</div>
+                <div class="cov-row cov-row--bar">
+                  <span class="cov-row-label">Coverage</span>
+                  <div class="cov-row-bar-track">
+                    <div class="cov-row-fill"></div>
+                  </div>
+                  <span class="cov-row-value cov-row-value--green" id="coverageValue" data-target="87">—</span>
                 </div>
-                <div class="cov-metric cov-metric--warn">
-                  <div class="cov-metric-value">3</div>
-                  <div class="cov-metric-label">Open conflicts</div>
+                <div class="cov-row">
+                  <span class="cov-row-label">Open conflicts</span>
+                  <span class="cov-row-value cov-row-value--red">0</span>
                 </div>
-                <div class="cov-metric cov-metric--warn">
-                  <div class="cov-metric-value">5</div>
-                  <div class="cov-metric-label">Knowledge gaps</div>
+                <div class="cov-row">
+                  <span class="cov-row-label">Knowledge gaps</span>
+                  <span class="cov-row-value cov-row-value--orange">2</span>
                 </div>
-                <div class="cov-metric cov-metric--ok">
-                  <div class="cov-metric-value">12</div>
-                  <div class="cov-metric-label">Verifications this month</div>
+                <div class="cov-row">
+                  <span class="cov-row-label">Team verifications this month</span>
+                  <span class="cov-row-value">14</span>
                 </div>
               </div>
             </div>
