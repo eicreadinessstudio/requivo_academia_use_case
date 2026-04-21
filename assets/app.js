@@ -75,19 +75,23 @@
 
     if (!fill || !number || !status) return;
 
-    const duration = 900 + Math.floor(Math.random() * 500);
+    const duration = 780 + Math.floor(Math.random() * 520);
     const start = performance.now();
+
+    // Ease-out for smooth deceleration toward 100%
+    const easeOut = (t) => 1 - Math.pow(1 - t, 2.4);
 
     return new Promise((resolve) => {
       function frame(now) {
         const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
+        const raw = Math.min(elapsed / duration, 1);
+        const progress = easeOut(raw);
         const percent = Math.round(progress * 100);
 
         fill.style.width = percent + "%";
         number.textContent = percent + "%";
 
-        if (progress < 1) {
+        if (raw < 1) {
           requestAnimationFrame(frame);
         } else {
           status.textContent = "✓";
@@ -112,16 +116,28 @@
 
     const rows = Array.from(container.querySelectorAll(".source-row"));
 
+    // Shuffle appearance order — less mechanical, more organic
+    const slots = rows.map((_, i) => i);
+    for (let i = slots.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [slots[i], slots[j]] = [slots[j], slots[i]];
+    }
+
+    const baseDelay = 88;
+    const jitter = () => Math.floor(Math.random() * 48);
+
     await Promise.all(
-      rows.map((row, i) =>
-        wait(i * 72).then(() => {
+      rows.map((row, i) => {
+        const delay = slots[i] * baseDelay + jitter();
+        return wait(delay).then(() => {
           row.classList.add("flash");
           return animateRowProgress(row);
-        })
-      )
+        });
+      })
     );
 
     if (summaryEl) {
+      await wait(80);
       summaryEl.classList.remove("hidden");
       summaryEl.classList.add("flash");
     }
@@ -381,50 +397,6 @@
     });
   }
 
-  async function verifyProcedureRow(item) {
-    const membersEl = item.querySelector(".procedure-members");
-    const statusEl = item.querySelector(".procedure-status");
-    const countEl = item.querySelector(".procedure-count");
-    if (!membersEl || !statusEl) return;
-
-    const members = (item.dataset.members || "").split(",").filter(Boolean);
-
-    // 1. Blue circles appear
-    members.forEach((m) => {
-      const circle = document.createElement("div");
-      circle.className = "member-circle neutral";
-      circle.textContent = m;
-      membersEl.appendChild(circle);
-    });
-    membersEl.classList.add("visible");
-
-    await wait(380);
-
-    const circles = membersEl.querySelectorAll(".member-circle");
-
-    // 2. First circle goes green
-    if (circles[0]) {
-      circles[0].classList.remove("neutral");
-      circles[0].classList.add("verified-member");
-    }
-    if (countEl) countEl.textContent = "1 of 2";
-    await wait(420);
-
-    // 3. Second circle goes green
-    if (circles[1]) {
-      circles[1].classList.remove("neutral");
-      circles[1].classList.add("verified-member");
-    }
-    if (countEl) countEl.textContent = "2 of 2";
-    await wait(320);
-
-    // 4. Row goes verified
-    statusEl.textContent = "Verified";
-    statusEl.classList.remove("pending");
-    statusEl.classList.add("verified");
-    item.classList.add("verified-row");
-  }
-
   function bindGovernedPage() {
     const activateBtn = document.getElementById("governedActivateBtn");
     if (!activateBtn) return;
@@ -432,15 +404,75 @@
     activateBtn.addEventListener("click", async function () {
       activateBtn.disabled = true;
 
-      const items = document.querySelectorAll(".procedure-item");
+      const items = Array.from(document.querySelectorAll(".procedure-item"));
 
-      for (let i = 0; i < items.length; i++) {
-        await verifyProcedureRow(items[i]);
-        await wait(180);
-      }
+      // Phase 1: Blue initials circles appear across ALL rows simultaneously
+      items.forEach((item, i) => {
+        setTimeout(() => {
+          const membersEl = item.querySelector(".procedure-members");
+          if (!membersEl) return;
+          const members = (item.dataset.members || "").split(",").filter(Boolean);
+          members.forEach((m) => {
+            const circle = document.createElement("div");
+            circle.className = "member-circle neutral";
+            circle.textContent = m;
+            membersEl.appendChild(circle);
+          });
+          membersEl.classList.add("visible");
+        }, i * 95);
+      });
 
-      // Blue banner slides in at the end
-      await wait(300);
+      await wait(items.length * 95 + 400);
+
+      // Phase 2: First verification — green propagates across rows (slightly irregular)
+      items.forEach((item, i) => {
+        const delay = i * 130 + (i % 2 === 0 ? 0 : 45);
+        setTimeout(() => {
+          const circles = item.querySelectorAll(".member-circle");
+          const countEl = item.querySelector(".procedure-count");
+          if (circles[0]) {
+            circles[0].classList.remove("neutral");
+            circles[0].classList.add("verified-member");
+          }
+          if (countEl) countEl.textContent = "1 of 2";
+        }, delay);
+      });
+
+      await wait(items.length * 130 + 380);
+
+      // Phase 3: Second verification — distributed, non-sequential order
+      const shuffled = items.map((_, i) => i).sort(() => Math.random() - 0.5);
+      items.forEach((item, i) => {
+        const slot = shuffled.indexOf(i);
+        setTimeout(() => {
+          const circles = item.querySelectorAll(".member-circle");
+          const countEl = item.querySelector(".procedure-count");
+          if (circles[1]) {
+            circles[1].classList.remove("neutral");
+            circles[1].classList.add("verified-member");
+          }
+          if (countEl) countEl.textContent = "2 of 2";
+        }, slot * 110 + Math.floor(Math.random() * 55));
+      });
+
+      await wait(items.length * 110 + 380);
+
+      // Phase 4: Verified states resolve (staggered)
+      items.forEach((item, i) => {
+        setTimeout(() => {
+          const statusEl = item.querySelector(".procedure-status");
+          if (statusEl) {
+            statusEl.textContent = "Verified";
+            statusEl.classList.remove("pending");
+            statusEl.classList.add("verified");
+          }
+          item.classList.add("verified-row");
+        }, i * 85);
+      });
+
+      await wait(items.length * 85 + 360);
+
+      // Blue banner slides in as final signal
       const blueBanner = document.getElementById("governedBlueBanner");
       if (blueBanner) blueBanner.classList.add("visible");
     });
@@ -453,47 +485,51 @@
     activateBtn.addEventListener("click", async function () {
       activateBtn.disabled = true;
 
-      // Tiles slide in one by one (horizontal)
+      // Tiles slide in sequentially — let each settle before the next
       const tiles = document.querySelectorAll(".app-tile");
       for (let i = 0; i < tiles.length; i++) {
-        await wait(260);
+        await wait(i === 0 ? 60 : 210);
         tiles[i].classList.add("active");
       }
 
-      // Show coverage section
+      // Pause: let all 4 tiles fully settle
       await wait(380);
+
+      // Coverage section rises in
       const coverageSection = document.getElementById("coverageSection");
       if (coverageSection) coverageSection.classList.add("active");
 
-      // Green loading line
-      await wait(80);
+      // Loading line starts after brief settle
+      await wait(90);
       const loadingLine = document.getElementById("coverageLoadingLine");
       if (loadingLine) loadingLine.classList.add("running");
 
-      // After line completes, show metrics
-      await wait(1500);
+      // Metrics appear after line completes (1500ms line + small buffer)
+      await wait(1540);
       const metrics = document.getElementById("coverageMetrics");
       if (metrics) metrics.classList.add("visible");
 
-      // Animate coverage value — eased rAF for natural deceleration
+      // Animate coverage value — eased deceleration
       const valueEl = document.getElementById("coverageValue");
+      const targetAttr = valueEl && valueEl.dataset.target;
+      const target = targetAttr ? parseInt(targetAttr, 10) : 87;
       if (valueEl) {
         valueEl.textContent = "0%";
-        const target = 87;
-        const duration = 1300;
+        const duration = 1100;
         const startTs = performance.now();
-        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-        const tickCoverage = (now) => {
+        const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+        const tick = (now) => {
           const elapsed = Math.min(now - startTs, duration);
-          const t = easeOutCubic(elapsed / duration);
+          const t = easeOut(elapsed / duration);
           valueEl.textContent = Math.round(t * target) + "%";
-          if (elapsed < duration) requestAnimationFrame(tickCoverage);
+          if (elapsed < duration) requestAnimationFrame(tick);
+          else valueEl.textContent = target + "%";
         };
-        requestAnimationFrame(tickCoverage);
+        requestAnimationFrame(tick);
       }
 
-      // Healthy banner slides in
-      await wait(1600);
+      // Healthy banner — strong final system signal
+      await wait(1300);
       const healthyBanner = document.getElementById("healthyBanner");
       if (healthyBanner) healthyBanner.classList.add("visible");
     });

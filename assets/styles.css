@@ -2408,3 +2408,314 @@ body[data-page="landing"] .editorial-section { margin-bottom: 24px; }
   min-height: 28px;
 }
 
+/* ===================================================
+   PRECISION REFINEMENTS — Apr 2026 quality pass
+   =================================================== */
+
+/* === LANDING HERO — LIGHTER, MORE BREATHABLE === */
+.landing-hero {
+  background: linear-gradient(148deg, #0c1c35 0%, #111827 100%);
+  border: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 44px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.16);
+}
+
+.landing-hero .hero-inner {
+  padding: 68px 56px 62px;
+}
+
+.landing-hero::before {
+  background: radial-gradient(ellipse 55% 80% at 12% 50%, rgba(45,82,130,0.3) 0%, transparent 65%);
+}
+
+/* Bottom edge accent — draws in on load */
+.landing-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(45,82,130,0.6) 20%,
+    rgba(96,165,250,0.85) 50%,
+    rgba(45,82,130,0.6) 80%,
+    transparent 100%
+  );
+  animation: heroEdgeAccent 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
+  pointer-events: none;
+}
+
+@keyframes heroEdgeAccent {
+  0%   { width: 0; opacity: 0; }
+  8%   { opacity: 1; }
+  100% { width: 100%; opacity: 1; }
+}
+
+.landing-hero .hero-title {
+  font-size: 34px;
+}
+
+.landing-hero .hero-lead {
+  font-size: 14px;
+  max-width: 560px;
+}
+
+/* === PATH CARDS — IMPROVED === */
+.path-card {
+  padding: 28px 28px 26px;
+  gap: 14px;
+}
+
+.path-card h2 {
+  font-size: 18px;
+}
+
+/* === APP TILE — PRECISION CARD ARCHITECTURE === */
+.app-tile {
+  padding: 18px 18px 16px;
+  transform: translateX(-14px);
+  transition: opacity 0.38s ease-out, transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s;
+}
+
+.app-tile.active {
+  transform: translateX(0);
+}
+
+/* Head row: icon left, pill right */
+.app-tile-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 11px;
+}
+
+.app-tile-head .app-tile-icon {
+  margin-bottom: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(30,58,95,0.14);
+  font-size: 10.5px;
+}
+
+.app-tile-head .app-tile-kl-pill {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.app-tile h3 {
+  font-size: 12.5px;
+  margin-bottom: 5px;
+  line-height: 1.28;
+}
+
+.app-tile p {
+  font-size: 11.5px;
+  line-height: 1.62;
+  margin-bottom: 0;
+}
+
+/* === COVERAGE SECTION ENTRANCE === */
+.coverage-section {
+  transform: translateY(8px);
+  transition: opacity 0.44s ease-out, transform 0.44s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.coverage-section.active {
+  transform: translateY(0);
+}
+
+.coverage-loading-line.running::after {
+  animation: coverageLineSweep 1.5s cubic-bezier(0.22, 0, 0.18, 1) forwards;
+}
+
+/* === KNOWLEDGE HEALTHY BANNER — STRONG FINAL SIGNAL === */
+.knowledge-healthy-banner {
+  border-left: 3px solid var(--green);
+  background: linear-gradient(135deg, #f0fdf4 0%, #f8fffc 100%);
+  box-shadow: 0 2px 14px rgba(21, 128, 61, 0.07);
+}
+
+.healthy-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  box-shadow: 0 0 0 4px rgba(21, 128, 61, 0.1);
+}
+
+.healthy-text strong {
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+/* === CONTACT PAGE === */
+.contact-panel {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0 6px;
+}
+
+.contact-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  border: 1px solid rgba(30,58,95,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 4px;
+}
+
+.contact-email {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: color 0.14s;
+}
+
+.contact-email:hover {
+  color: var(--accent-mid);
+}
+
+/* === PROFESSOR MEET PAGE — page-header variant === */
+.page-header-side-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+/* === APP TILE — CONTENT ZONE SEPARATOR === */
+/* Visual break between card header (icon/title/desc) and the UI demo area */
+.app-tile .app-tile-pills-row {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.app-tile .app-tile-search {
+  margin-top: 12px !important;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.app-tile .app-tile-verifier-inner {
+  margin-top: 12px !important;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.app-tile .app-tile-mcp-inner {
+  margin-top: 12px !important;
+}
+
+/* Tile transition: slightly longer for more elegance */
+.app-tile {
+  transition: opacity 0.44s ease-out, transform 0.44s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s;
+}
+
+/* Tile hover: subtle lift */
+.app-tile:hover {
+  border-color: rgba(30,58,95,0.22);
+  box-shadow: 0 2px 12px rgba(30,58,95,0.05);
+}
+
+/* Tiles grid: tighter gap */
+.app-tiles-grid {
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/* === COVERAGE METRICS — INLINE SEPARATOR STYLE === */
+/* Replace boxed metrics with a clean horizontal stat bar */
+.coverage-metrics-row {
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.cov-metric {
+  background: var(--paper);
+  border: none;
+  border-radius: 0;
+  border-right: 1px solid var(--border);
+  padding: 12px 14px;
+}
+
+.cov-metric:last-child {
+  border-right: none;
+}
+
+.cov-metric-value {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.cov-metric-label {
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+}
+
+/* First metric (Coverage%) — visually dominant */
+.coverage-metrics-row .cov-metric:first-child .cov-metric-value {
+  font-size: 26px;
+  color: var(--accent);
+}
+
+/* === COVERAGE SECTION — INTEGRATED HEADER === */
+.coverage-section {
+  padding: 16px 18px;
+}
+
+.coverage-section-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.coverage-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-mid);
+  opacity: 0.7;
+}
+
+/* === HEALTHY BANNER — FINAL SIGNAL REFINEMENTS === */
+.knowledge-healthy-banner {
+  margin-top: 12px;
+}
+
+.healthy-text p {
+  letter-spacing: 0.01em;
+}
+
+/* === INGESTION PAGE — PROFESSOR BUTTON IN PRODUCT-HEAD === */
+/* Move button out of product-head visually (already correct in institutional) */
+.product-head .btn {
+  margin-left: auto;
+}
+

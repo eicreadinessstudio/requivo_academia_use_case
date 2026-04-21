@@ -63,8 +63,10 @@
 
             <!-- Knowledge Writer -->
             <div class="app-tile">
-              <div class="app-tile-kl-pill">Knowledge layer</div>
-              <div class="app-tile-icon">W</div>
+              <div class="app-tile-head">
+                <div class="app-tile-icon">W</div>
+                <span class="app-tile-kl-pill">Knowledge layer</span>
+              </div>
               <h3>Knowledge Writer</h3>
               <p>Generate and maintain structured institutional procedures from fragmented evidence.</p>
               <div class="app-tile-pills-row">
@@ -76,8 +78,10 @@
 
             <!-- Knowledge Manager -->
             <div class="app-tile">
-              <div class="app-tile-kl-pill">Knowledge layer</div>
-              <div class="app-tile-icon">M</div>
+              <div class="app-tile-head">
+                <div class="app-tile-icon">M</div>
+                <span class="app-tile-kl-pill">Knowledge layer</span>
+              </div>
               <h3>Knowledge Manager</h3>
               <p>Identify duplication, outdated guidance, and weakly covered process areas.</p>
               <input class="app-tile-search" type="text" placeholder="Search procedures…" readonly tabindex="-1">
@@ -90,8 +94,10 @@
 
             <!-- Knowledge Verifier -->
             <div class="app-tile">
-              <div class="app-tile-kl-pill">Knowledge layer</div>
-              <div class="app-tile-icon">V</div>
+              <div class="app-tile-head">
+                <div class="app-tile-icon">V</div>
+                <span class="app-tile-kl-pill">Knowledge layer</span>
+              </div>
               <h3>Knowledge Verifier</h3>
               <p>Route unresolved issues to the most relevant office or expert.</p>
               <div class="app-tile-verifier-inner">
@@ -110,8 +116,10 @@
 
             <!-- MCP Interface -->
             <div class="app-tile">
-              <div class="app-tile-kl-pill">Knowledge layer</div>
-              <div class="app-tile-icon">AI</div>
+              <div class="app-tile-head">
+                <div class="app-tile-icon">AI</div>
+                <span class="app-tile-kl-pill">Knowledge layer</span>
+              </div>
               <h3>MCP Interface</h3>
               <p>Expose governed knowledge to AI tools — structured, cited, and verifiable.</p>
               <div class="app-tile-mcp-inner">
@@ -124,11 +132,14 @@
 
           <!-- Coverage summary -->
           <div class="coverage-section" id="coverageSection">
-            <div class="coverage-label">Knowledge layer coverage</div>
+            <div class="coverage-section-label-row">
+              <div class="coverage-label">Knowledge layer coverage</div>
+              <div class="coverage-status-dot"></div>
+            </div>
             <div class="coverage-loading-line" id="coverageLoadingLine"></div>
             <div class="coverage-metrics-row" id="coverageMetrics">
               <div class="cov-metric">
-                <div class="cov-metric-value" id="coverageValue">—</div>
+                <div class="cov-metric-value" id="coverageValue" data-target="87">—</div>
                 <div class="cov-metric-label">Coverage</div>
               </div>
               <div class="cov-metric">
@@ -146,7 +157,7 @@
             </div>
           </div>
 
-          <!-- Healthy banner -->
+          <!-- Healthy banner — final system signal -->
           <div id="healthyBanner" class="knowledge-healthy-banner">
             <div class="healthy-icon">✓</div>
             <div class="healthy-text">
