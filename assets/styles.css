@@ -120,6 +120,18 @@ button { cursor: pointer; font-family: var(--font-sans); }
   letter-spacing: 0.02em;
 }
 
+/* === DEMO DISCLAIMER === */
+.demo-disclaimer {
+  border-bottom: 1px solid var(--border);
+  padding: 7px 0;
+}
+.demo-disclaimer-inner {
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
 /* === PAGE LAYOUT (sidebar + content) === */
 .layout {
   display: grid;

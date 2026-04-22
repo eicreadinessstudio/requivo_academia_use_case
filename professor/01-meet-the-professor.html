@@ -20,6 +20,10 @@
     </div>
   </header>
 
+  <div class="demo-disclaimer">
+    <div class="wrap demo-disclaimer-inner">This walkthrough is for demonstration only; the interface and scenario are illustrative and do not represent the final product. All persons and organisations shown are fictitious.</div>
+  </div>
+
   <div class="wrap layout">
     <div id="sidebarHost"></div>
 
@@ -107,58 +111,60 @@
         </div>
       </section>
 
-      <section class="product-panel">
-        <div class="product-head">
-          <div class="product-label">But under the surface…</div>
-        </div>
-        <div class="product-body">
-          <div class="metrics-4" style="margin-bottom:14px;">
-            <div class="metric-card">
-              <span class="value">8+</span>
-              <p>Disconnected teaching knowledge sources</p>
-            </div>
-            <div class="metric-card">
-              <span class="value">1.9 h/week</span>
-              <p>Repeated reconstruction of lesson logic</p>
-            </div>
-            <div class="metric-card">
-              <span class="value">38%</span>
-              <p>Legacy teaching material not reviewed recently</p>
-            </div>
-            <div class="metric-card">
-              <span class="value">1</span>
-              <p>Recent assistant-prepared session requiring major correction</p>
-            </div>
-          </div>
-
-          <div class="alert red" style="margin-bottom:14px;">
-            <strong>Teaching inconsistency:</strong>
-            A teaching assistant prepared a seminar section using older slides and an incomplete article set.
-            The structure was technically correct, but it did not reflect the professor's intended sequence
-            of concepts and emphasis.
-          </div>
-        </div>
-      </section>
-
       <div class="btn-row">
-        <button class="btn btn-primary" data-reveal-target="costResults">See the cost of fragmentation</button>
+        <button class="btn btn-primary" data-reveal-target="painReveal">See the cost of fragmentation</button>
       </div>
 
-      <div id="costResults" class="hidden" style="margin-top:12px;margin-bottom:12px;">
-        <div class="inaction-reveal flash">
-          <div class="inaction-claim">If core teaching logic remains dependent on one professor's private material and tacit judgment:</div>
-          <div class="inaction-items">
-            <div class="inaction-item">
-              <div class="inaction-dot red"></div>
-              <span>Delegation stays slow — assistants cannot prepare independently with confidence</span>
+      <div id="painReveal" class="hidden">
+        <section class="product-panel" style="margin-top:12px;">
+          <div class="product-head">
+            <div class="product-label">But under the surface…</div>
+          </div>
+          <div class="product-body">
+            <div class="metrics-4" style="margin-bottom:14px;">
+              <div class="metric-card">
+                <span class="value">8+</span>
+                <p>Disconnected teaching knowledge sources</p>
+              </div>
+              <div class="metric-card">
+                <span class="value">1.9 h/week</span>
+                <p>Repeated reconstruction of lesson logic</p>
+              </div>
+              <div class="metric-card">
+                <span class="value">38%</span>
+                <p>Legacy teaching material not reviewed recently</p>
+              </div>
+              <div class="metric-card">
+                <span class="value">1</span>
+                <p>Recent assistant-prepared session requiring major correction</p>
+              </div>
             </div>
-            <div class="inaction-item">
-              <div class="inaction-dot red"></div>
-              <span>Course consistency weakens across semesters and teaching formats</span>
+
+            <div class="alert red" style="margin-bottom:14px;">
+              <strong>Teaching inconsistency:</strong>
+              A teaching assistant prepared a seminar section using older slides and an incomplete article set.
+              The structure was technically correct, but it did not reflect the professor's intended sequence
+              of concepts and emphasis.
             </div>
-            <div class="inaction-item">
-              <div class="inaction-dot amber"></div>
-              <span>Academic teaching quality remains fragile and person-dependent</span>
+          </div>
+        </section>
+
+        <div style="margin-top:12px;margin-bottom:12px;">
+          <div class="inaction-reveal">
+            <div class="inaction-claim">If core teaching logic remains dependent on one professor's private material and tacit judgment:</div>
+            <div class="inaction-items">
+              <div class="inaction-item">
+                <div class="inaction-dot red"></div>
+                <span>Delegation stays slow — assistants cannot prepare independently with confidence</span>
+              </div>
+              <div class="inaction-item">
+                <div class="inaction-dot red"></div>
+                <span>Course consistency weakens across semesters and teaching formats</span>
+              </div>
+              <div class="inaction-item">
+                <div class="inaction-dot amber"></div>
+                <span>Academic teaching quality remains fragile and person-dependent</span>
+              </div>
             </div>
           </div>
         </div>
